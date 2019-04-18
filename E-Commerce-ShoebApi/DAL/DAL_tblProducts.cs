@@ -10,7 +10,7 @@ namespace E_Commerce_ShoebApi.DAL
 {
     public class DAL_tblProducts : DAL_ItblProducts
     {
-        public int ProductId { get; set; }
+        public int ProductId { get; set;  }
         public int ProductCategoryId { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
