@@ -61,22 +61,22 @@ namespace E_Commerce_ShoebApi.DAL
 
 
                 //tblBankNameUser
-                tblBankNameUser_Sk newUser = new tblBankNameUser_Sk(){
-                BankId = 2,
-                Username = "pqrhere",
-                Password = "pqrhere",
-                Mobile = 1234567890,
-                AccountNumber = 882329,
-                Balance = 12000,
-                  IsActive = true,
-                    IsCreatedBy = "Shoeb",
-                    IsUpdatedBy = "Shoeb",
-                    IsCreatedOn = DateTime.Now,
-                    IsUpdatedOn = DateTime.Now,
-                    IsDeleted = false
-                };
-                db.tblBankNameUser_Sk.Add(newUser);
-                db.SaveChanges();
+                //tblBankNameUser_Sk newUser = new tblBankNameUser_Sk(){
+                //BankId = 2,
+                //Username = "pqrhere",
+                //Password = "pqrhere",
+                //Mobile = 1234567890,
+                //AccountNumber = 882329,
+                //Balance = 12000,
+                //  IsActive = true,
+                //    IsCreatedBy = "Shoeb",
+                //    IsUpdatedBy = "Shoeb",
+                //    IsCreatedOn = DateTime.Now,
+                //    IsUpdatedOn = DateTime.Now,
+                //    IsDeleted = false
+                //};
+                //db.tblBankNameUser_Sk.Add(newUser);
+                //db.SaveChanges();
 
                 //tblRole_Sk newRole = new tblRole_Sk();
                 //newRole.RoleName = "User";
@@ -106,6 +106,22 @@ namespace E_Commerce_ShoebApi.DAL
                 //db.tblUser_Sk.Add(user);
                 //db.SaveChanges();
 
+                //PtblPaymentMethod_Sk add details
+                tblPaymentMethod_Sk newMethod = new tblPaymentMethod_Sk()
+                {
+                    BankId = 1,
+                    Name = "Net Banking",
+                    IsActive = true,
+                    IsCreatedBy = "Shoeb",
+                    IsUpdatedBy = "Shoeb",
+                    IsCreatedOn = DateTime.Now,
+                    IsUpdatedOn = DateTime.Now,
+                    IsDeleted = false
+
+                };
+                db.tblPaymentMethod_Sk.Add(newMethod);
+                db.SaveChanges();
+
                 //user = db.tblUser_Sk.Find(2);
                 //var serializer = new JavaScriptSerializer();
                 //string utfString = Encoding.UTF8.GetString(user.Image, 0, user.Image.Length);
@@ -115,7 +131,7 @@ namespace E_Commerce_ShoebApi.DAL
 
             }
             //no need as it is directly giving us the required output
-           // var base64 = Convert.ToBase64String(getProducts[0].Image);
+            // var base64 = Convert.ToBase64String(getProducts[0].Image);
             return getProducts;
         }
     }
