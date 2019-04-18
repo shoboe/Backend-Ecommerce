@@ -17,10 +17,12 @@ namespace E_Commerce_ShoebApi.Controllers
     public class ViewController : ApiController
     {
         BAL_ItblProducts BAL_itblProducts;
+        BAL_IPostEmailPw BAL_iPostEmailPw;
 
-        public ViewController(BAL_ItblProducts BAL_itblProducts)
+        public ViewController(BAL_ItblProducts BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw)
         {
             this.BAL_itblProducts = BAL_itblProducts;
+            this.BAL_iPostEmailPw = BAL_iPostEmailPw;
         }
 
         [HttpGet]
@@ -30,20 +32,18 @@ namespace E_Commerce_ShoebApi.Controllers
             return Json(BAL_itblProducts.GetProducts(productName));
         }
         //// POST api/values
-        //[HttpPost]
-        //[Route("api/values/UserPw/{user}")]
-        //public IHttpActionResult PostUserPw(UserPwSk user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (myIBusinessAL.PostUserPw(user))
-        //            return Ok();
-        //        else
-        //            return Content(HttpStatusCode.BadRequest, "Request Successfull");
-        //    }
+        [HttpPost]
+        [Route("api/values/PostCredentials")]
+        public IHttpActionResult PostCredentials([FromBody]EmailPasswordView emailPasswordView )
+        {
+            if (ModelState.IsValid)
+            {
 
-        //    return Content(HttpStatusCode.BadRequest, "Request Successfull");
-        //}
+                return Json(BAL_iPostEmailPw.Post(emailPasswordView.Email, emailPasswordView.Password));
+            }
+
+            return Content(HttpStatusCode.BadRequest, "Request Successfull");
+        }
 
         //[HttpDelete]
         //[Route("api/values/Delete/{id}")]

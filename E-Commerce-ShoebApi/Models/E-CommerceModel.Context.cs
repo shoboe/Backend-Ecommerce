@@ -12,6 +12,8 @@ namespace E_Commerce_ShoebApi.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class sdirecttestdbEntities : DbContext
     {
@@ -34,6 +36,7 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblBuyers_Sk> tblBuyers_Sk { get; set; }
         public virtual DbSet<tblCity_Sk> tblCity_Sk { get; set; }
         public virtual DbSet<tblCountry_Sk> tblCountry_Sk { get; set; }
+        public virtual DbSet<tblDebitCards_Sk> tblDebitCards_Sk { get; set; }
         public virtual DbSet<tblInventory_Sk> tblInventory_Sk { get; set; }
         public virtual DbSet<tblItems_Sk> tblItems_Sk { get; set; }
         public virtual DbSet<tblNotifications_Sk> tblNotifications_Sk { get; set; }
@@ -46,9 +49,17 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblSellers_Sk> tblSellers_Sk { get; set; }
         public virtual DbSet<tblSellerStatus_Sk> tblSellerStatus_Sk { get; set; }
         public virtual DbSet<tblShippingMethod_Sk> tblShippingMethod_Sk { get; set; }
-        public virtual DbSet<tblState_Sk> tblState_Sk { get; set; }
+        public virtual DbSet<tblStates_AT> tblStates_AT { get; set; }
         public virtual DbSet<tbltemHistory_Sk> tbltemHistory_Sk { get; set; }
         public virtual DbSet<tblUser_Sk> tblUser_Sk { get; set; }
-        public virtual DbSet<tblDebitCards_Sk> tblDebitCards_Sk { get; set; }
+    
+        public virtual ObjectResult<GetUserDetails_Sk_Result> GetUserDetails_Sk(Nullable<int> num)
+        {
+            var numParameter = num.HasValue ?
+                new ObjectParameter("num", num) :
+                new ObjectParameter("num", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Sk_Result>("GetUserDetails_Sk", numParameter);
+        }
     }
 }

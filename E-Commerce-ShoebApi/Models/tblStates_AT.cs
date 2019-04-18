@@ -12,16 +12,17 @@ namespace E_Commerce_ShoebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblCountry_Sk
+    public partial class tblStates_AT
     {
-        public int CountryId { get; set; }
-        public string CountryName { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public System.DateTime IsCreatedOn { get; set; }
-        public string IsCreatedBy { get; set; }
-        public System.DateTime IsUpdatedOn { get; set; }
-        public string IsUpdatedBy { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
-        public string IsDeletedBy { get; set; }
+        public int StateID { get; set; }
+        public Nullable<int> CountryID { get; set; }
+        public string StateName { get; set; }
+        public string CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public string DeletedBy { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool IsActive { get; set; }
     }
 }

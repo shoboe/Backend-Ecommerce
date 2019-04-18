@@ -32,6 +32,8 @@ namespace E_Commerce_ShoebApi.Models
         public string IsUpdatedBy { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
+        public string Address { get; set; }
+        public long Pincode { get; set; }
     
         public virtual tblCity_Sk tblCity_Sk { get; set; }
         public virtual tblUser_Sk tblUser_Sk { get; set; }

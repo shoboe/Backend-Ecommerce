@@ -117,128 +117,136 @@
   <ItemGroup>
     <Content Include="App_Readme\readme.txt" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ECommerceModel.Context.tt">
+    <Content Include="Models\E-CommerceModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ECommerceModel.Context.cs</LastGenOutput>
-      <DependentUpon>ECommerceModel.edmx</DependentUpon>
+      <DependentUpon>E-CommerceModel.edmx</DependentUpon>
+      <LastGenOutput>E-CommerceModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ECommerceModel.tt">
+    <Content Include="Models\E-CommerceModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ECommerceModel.edmx</DependentUpon>
-      <LastGenOutput>ECommerceModel.cs</LastGenOutput>
+      <DependentUpon>E-CommerceModel.edmx</DependentUpon>
+      <LastGenOutput>E-CommerceModel.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BAL\BAL_IPostEmailPw.cs" />
     <Compile Include="BAL\BAL_ItblProducts.cs" />
+    <Compile Include="BAL\BAL_PostEmailPw.cs" />
     <Compile Include="BAL\BAL_tblProducts.cs" />
     <Compile Include="Controllers\ViewController.cs" />
+    <Compile Include="DAL\DAL_IPostEmailPw.cs" />
     <Compile Include="DAL\DAL_ItblProducts.cs" />
+    <Compile Include="DAL\DAL_PostEmailPw.cs" />
     <Compile Include="DAL\DAL_tblProducts.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ECommerceModel.Context.cs">
+    <Compile Include="Models\E-CommerceModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ECommerceModel.Context.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ECommerceModel.cs">
+    <Compile Include="Models\E-CommerceModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ECommerceModel.Designer.cs">
+    <Compile Include="Models\E-CommerceModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ECommerceModel.edmx</DependentUpon>
+      <DependentUpon>E-CommerceModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailPasswordView.cs" />
+    <Compile Include="Models\GetUserDetails_Sk_Result.cs">
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAddress_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblAdminTasks_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBankNameUser_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBank_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBorrowMoney_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBusinessType_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBuyers_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCity_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblCountry_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDebitCards_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblInventory_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblItems_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblNotifications_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblOrderStatus_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblOrders_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPaymentMethod_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProductsCategory_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProducts_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblRole_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSellerStatus_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSellers_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblShippingMethod_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblState_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    <Compile Include="Models\tblStates_AT.cs">
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbltemHistory_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblUser_Sk.cs">
-      <DependentUpon>ECommerceModel.tt</DependentUpon>
+      <DependentUpon>E-CommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\ECommerceModel.edmx">
+    <EntityDeploy Include="Models\E-CommerceModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ECommerceModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>E-CommerceModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ECommerceModel.edmx.diagram">
-      <DependentUpon>ECommerceModel.edmx</DependentUpon>
+    <Content Include="Models\E-CommerceModel.edmx.diagram">
+      <DependentUpon>E-CommerceModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

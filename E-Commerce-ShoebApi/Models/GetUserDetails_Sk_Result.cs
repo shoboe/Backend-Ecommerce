@@ -10,18 +10,20 @@
 namespace E_Commerce_ShoebApi.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblCountry_Sk
+    public partial class GetUserDetails_Sk_Result
     {
-        public int CountryId { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Mobile { get; set; }
+        public string Address { get; set; }
+        public long Pincode { get; set; }
+        public int UserId { get; set; }
+        public string CityName { get; set; }
+        public string StateName { get; set; }
         public string CountryName { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public System.DateTime IsCreatedOn { get; set; }
-        public string IsCreatedBy { get; set; }
-        public System.DateTime IsUpdatedOn { get; set; }
-        public string IsUpdatedBy { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
-        public string IsDeletedBy { get; set; }
     }
 }

@@ -25,9 +25,9 @@ namespace E_Commerce_ShoebApi.Models
         public int BankId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public int Mobile { get; set; }
+        public long Mobile { get; set; }
         public int Balance { get; set; }
-        public int AccountNumber { get; set; }
+        public long AccountNumber { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
