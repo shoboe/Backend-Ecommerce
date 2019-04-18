@@ -107,10 +107,26 @@ namespace E_Commerce_ShoebApi.DAL
                 //db.SaveChanges();
 
                 //PtblPaymentMethod_Sk add details
-                tblPaymentMethod_Sk newMethod = new tblPaymentMethod_Sk()
+                //tblPaymentMethod_Sk newMethod = new tblPaymentMethod_Sk()
+                //{
+                //    BankId = 2,
+                //    Name = "Debit Card",
+                //    IsActive = true,
+                //    IsCreatedBy = "Shoeb",
+                //    IsUpdatedBy = "Shoeb",
+                //    IsCreatedOn = DateTime.Now,
+                //    IsUpdatedOn = DateTime.Now,
+                //    IsDeleted = false
+
+                //};
+                //db.tblPaymentMethod_Sk.Add(newMethod);
+                //db.SaveChanges();
+
+                tblBorrowMoney_Sk obj = new tblBorrowMoney_Sk()
                 {
-                    BankId = 1,
-                    Name = "Net Banking",
+                    BankNameUserId = 1,
+                    MoneyBorrowed = 0,
+                    Password = "ABC111",
                     IsActive = true,
                     IsCreatedBy = "Shoeb",
                     IsUpdatedBy = "Shoeb",
@@ -119,7 +135,7 @@ namespace E_Commerce_ShoebApi.DAL
                     IsDeleted = false
 
                 };
-                db.tblPaymentMethod_Sk.Add(newMethod);
+                db.tblBorrowMoney_Sk.Add(obj);
                 db.SaveChanges();
 
                 //user = db.tblUser_Sk.Find(2);

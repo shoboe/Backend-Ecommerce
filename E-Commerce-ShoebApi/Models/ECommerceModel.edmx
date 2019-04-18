@@ -58,9 +58,9 @@
           <Property Name="BankId" Type="int" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Mobile" Type="int" Nullable="false" />
+          <Property Name="Mobile" Type="bigint" Nullable="false" />
           <Property Name="Balance" Type="int" Nullable="false" />
-          <Property Name="AccountNumber" Type="int" Nullable="false" />
+          <Property Name="AccountNumber" Type="bigint" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
           <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" />
@@ -83,6 +83,7 @@
           <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="tblBusinessType_Sk">
           <Key>
@@ -351,7 +352,6 @@
           <Property Name="ShippingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Time" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
           <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" />
@@ -359,6 +359,7 @@
           <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Duration" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="tblState_Sk">
           <Key>
@@ -1049,6 +1050,7 @@
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblBorrow__BankN__243E37A4" FromRole="tblBorrowMoney_Sk" ToRole="tblBankNameUser_Sk" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblBusinessType_Sk">
           <Key>
@@ -1341,7 +1343,6 @@
           <Property Name="ShippingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="Time" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1350,6 +1351,7 @@
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Shipp__785FB566" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
+          <Property Name="Duration" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblState_Sk">
           <Key>
@@ -1402,7 +1404,7 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Mobile" Type="String" Nullable="false" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2050,6 +2052,7 @@
           <EntitySetMapping Name="tblBorrowMoney_Sk">
             <EntityTypeMapping TypeName="sdirecttestdbModel.tblBorrowMoney_Sk">
               <MappingFragment StoreEntitySet="tblBorrowMoney_Sk">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="BorrowMoneyId" ColumnName="BorrowMoneyId" />
                 <ScalarProperty Name="BankNameUserId" ColumnName="BankNameUserId" />
                 <ScalarProperty Name="MoneyBorrowed" ColumnName="MoneyBorrowed" />
@@ -2325,10 +2328,10 @@
           <EntitySetMapping Name="tblShippingMethod_Sk">
             <EntityTypeMapping TypeName="sdirecttestdbModel.tblShippingMethod_Sk">
               <MappingFragment StoreEntitySet="tblShippingMethod_Sk">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="ShippingMethodId" ColumnName="ShippingMethodId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
                 <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />

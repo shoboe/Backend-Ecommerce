@@ -32,9 +32,9 @@ namespace E_Commerce_ShoebApi.Models
         public string Password { get; set; }
         public string Mobile { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public System.DateTime? IsCreatedOn { get; set; }
+        public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
-        public System.DateTime? IsUpdatedOn { get; set; }
+        public System.DateTime IsUpdatedOn { get; set; }
         public string IsUpdatedBy { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
