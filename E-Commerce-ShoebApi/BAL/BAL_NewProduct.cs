@@ -13,9 +13,9 @@ namespace E_Commerce_ShoebApi.BAL
         {
             this.DAL_iNewProduct = DAL_iNewProduct;
         }
-        public void AddProduct()
+        public void AddProduct(AddProductView newProduct)
         {
-            DAL_iNewProduct.AddProduct();
+            DAL_iNewProduct.AddProduct(newProduct);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_Commerce_ShoebApi.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace E_Commerce_ShoebApi.BAL
 {
     public interface BAL_INewProduct
     {
-        void AddProduct();
+        void AddProduct(AddProductView newProduct);
     }
 }

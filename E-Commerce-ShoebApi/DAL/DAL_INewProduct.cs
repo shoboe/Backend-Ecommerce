@@ -8,6 +8,6 @@ namespace E_Commerce_ShoebApi.DAL
 {
     public interface DAL_INewProduct
     {
-        void AddProduct();
+        void AddProduct(AddProductView newProduct);
     }
 }

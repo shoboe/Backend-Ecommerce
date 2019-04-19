@@ -8,6 +8,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.Results;
 using System.Web.Script.Serialization;
 using E_Commerce_ShoebApi.BAL;
+using E_Commerce_ShoebApi.DAL;
 using E_Commerce_ShoebApi.Models;
 using Newtonsoft.Json;
 
@@ -18,11 +19,13 @@ namespace E_Commerce_ShoebApi.Controllers
     {
         BAL_ItblProducts BAL_itblProducts;
         BAL_IPostEmailPw BAL_iPostEmailPw;
+        BAL_INewProduct BAL_iNewProduct;
 
-        public ViewController(BAL_ItblProducts BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw)
+        public ViewController(BAL_ItblProducts BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw, BAL_INewProduct BAL_iNewProduct)
         {
             this.BAL_itblProducts = BAL_itblProducts;
             this.BAL_iPostEmailPw = BAL_iPostEmailPw;
+            this.BAL_iNewProduct = BAL_iNewProduct;
         }
 
         [HttpGet]
@@ -42,7 +45,21 @@ namespace E_Commerce_ShoebApi.Controllers
                 return Json(BAL_iPostEmailPw.Post(emailPasswordView.Email, emailPasswordView.Password));
             }
 
-            return Content(HttpStatusCode.BadRequest, "Request Successfull");
+            return Content(HttpStatusCode.BadRequest, "Request Failed");
+        }
+      
+
+        [HttpPost]
+        [Route("api/view/PostNewProduct")]
+        public IHttpActionResult PostNewProduct([FromBody]AddProductView newProduct)
+        {
+            if (ModelState.IsValid)
+            {
+                BAL_iNewProduct.AddProduct(newProduct);
+                return Ok(); 
+            }
+            return Content(HttpStatusCode.BadRequest, "Request Failed");
+
         }
 
         //[HttpDelete]
