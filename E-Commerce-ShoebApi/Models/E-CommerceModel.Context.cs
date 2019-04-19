@@ -61,5 +61,50 @@ namespace E_Commerce_ShoebApi.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Sk_Result>("GetUserDetails_Sk", numParameter);
         }
+    
+        public virtual int AddProduct_Sk(Nullable<int> productCategoryId, string productName, string description, string brand, byte[] image, string sellerName, string updaterName, Nullable<int> pricePerUnit, Nullable<int> productCount, Nullable<int> sellerId)
+        {
+            var productCategoryIdParameter = productCategoryId.HasValue ?
+                new ObjectParameter("ProductCategoryId", productCategoryId) :
+                new ObjectParameter("ProductCategoryId", typeof(int));
+    
+            var productNameParameter = productName != null ?
+                new ObjectParameter("ProductName", productName) :
+                new ObjectParameter("ProductName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var brandParameter = brand != null ?
+                new ObjectParameter("Brand", brand) :
+                new ObjectParameter("Brand", typeof(string));
+    
+            var imageParameter = image != null ?
+                new ObjectParameter("Image", image) :
+                new ObjectParameter("Image", typeof(byte[]));
+    
+            var sellerNameParameter = sellerName != null ?
+                new ObjectParameter("SellerName", sellerName) :
+                new ObjectParameter("SellerName", typeof(string));
+    
+            var updaterNameParameter = updaterName != null ?
+                new ObjectParameter("UpdaterName", updaterName) :
+                new ObjectParameter("UpdaterName", typeof(string));
+    
+            var pricePerUnitParameter = pricePerUnit.HasValue ?
+                new ObjectParameter("PricePerUnit", pricePerUnit) :
+                new ObjectParameter("PricePerUnit", typeof(int));
+    
+            var productCountParameter = productCount.HasValue ?
+                new ObjectParameter("ProductCount", productCount) :
+                new ObjectParameter("ProductCount", typeof(int));
+    
+            var sellerIdParameter = sellerId.HasValue ?
+                new ObjectParameter("SellerId", sellerId) :
+                new ObjectParameter("SellerId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProduct_Sk", productCategoryIdParameter, productNameParameter, descriptionParameter, brandParameter, imageParameter, sellerNameParameter, updaterNameParameter, pricePerUnitParameter, productCountParameter, sellerIdParameter);
+        }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sdirecttestdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sdirecttestdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAddress_Sk">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -779,6 +779,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddProduct_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductCategoryId" Type="int" Mode="In" />
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Brand" Type="varchar" Mode="In" />
+          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="SellerName" Type="varchar" Mode="In" />
+          <Parameter Name="UpdaterName" Type="varchar" Mode="In" />
+          <Parameter Name="PricePerUnit" Type="int" Mode="In" />
+          <Parameter Name="ProductCount" Type="int" Mode="In" />
+          <Parameter Name="SellerId" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetUserDetails_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="num" Type="int" Mode="In" />
         </Function>
@@ -929,8 +941,7 @@
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sdirecttestdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1915,7 +1926,19 @@
             <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
           </AssociationSet>
           <FunctionImport Name="GetUserDetails_Sk" ReturnType="Collection(sdirecttestdbModel.GetUserDetails_Sk_Result)">
-            <Parameter Name="num" Mode="In" Type="Int32" />
+          <Parameter Name="num" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddProduct_Sk">
+            <Parameter Name="ProductCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Brand" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="SellerName" Mode="In" Type="String" />
+            <Parameter Name="UpdaterName" Mode="In" Type="String" />
+            <Parameter Name="PricePerUnit" Mode="In" Type="Int32" />
+            <Parameter Name="ProductCount" Mode="In" Type="Int32" />
+            <Parameter Name="SellerId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserDetails_Sk_Result">
@@ -2395,6 +2418,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddProduct_Sk" FunctionName="sdirecttestdbModel.Store.AddProduct_Sk" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -132,13 +132,21 @@
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BAL\BAL_Cart.cs" />
+    <Compile Include="BAL\BAL_ICart.cs" />
+    <Compile Include="BAL\BAL_INewProduct.cs" />
     <Compile Include="BAL\BAL_IPostEmailPw.cs" />
     <Compile Include="BAL\BAL_ItblProducts.cs" />
+    <Compile Include="BAL\BAL_NewProduct.cs" />
     <Compile Include="BAL\BAL_PostEmailPw.cs" />
     <Compile Include="BAL\BAL_tblProducts.cs" />
     <Compile Include="Controllers\ViewController.cs" />
+    <Compile Include="DAL\DAL_Cart.cs" />
+    <Compile Include="DAL\DAL_ICart.cs" />
+    <Compile Include="DAL\DAL_INewProduct.cs" />
     <Compile Include="DAL\DAL_IPostEmailPw.cs" />
     <Compile Include="DAL\DAL_ItblProducts.cs" />
+    <Compile Include="DAL\DAL_NewProduct.cs" />
     <Compile Include="DAL\DAL_PostEmailPw.cs" />
     <Compile Include="DAL\DAL_tblProducts.cs" />
     <Compile Include="Global.asax.cs">
