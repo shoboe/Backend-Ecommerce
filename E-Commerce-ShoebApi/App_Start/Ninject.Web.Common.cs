@@ -64,8 +64,8 @@ namespace E_Commerce_ShoebApi.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<BAL_ItblProducts>().To<BAL_tblProducts>();
-            kernel.Bind<DAL_ItblProducts>().To<DAL_tblProducts>();
+            kernel.Bind<BAL_ISearchProduct>().To<BAL_SearchProduct>();
+            kernel.Bind<DAL_ISearchProduct>().To<DAL_SearchProduct>();
             kernel.Bind<BAL_IPostEmailPw>().To<BAL_PostEmailPw>();
             kernel.Bind<DAL_IPostEmailPw>().To<DAL_PostEmailPw>();
             kernel.Bind<BAL_INewProduct>().To<BAL_NewProduct>();

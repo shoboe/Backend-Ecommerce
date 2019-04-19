@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_ShoebApi.BAL
 {
-    public interface BAL_ItblProducts
+    public interface BAL_ISearchProduct
     {
-        List<DAL_tblProducts> GetProducts(string productName);
+        List<SearchProductView> GetProducts(string productName);
 
     }
 }

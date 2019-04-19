@@ -7,14 +7,14 @@ using E_Commerce_ShoebApi.Models;
 
 namespace E_Commerce_ShoebApi.BAL
 {
-    public class BAL_tblProducts : BAL_ItblProducts
+    public class BAL_SearchProduct : BAL_ISearchProduct
     {
-        DAL_ItblProducts DAL_itblProductsL;
-        public BAL_tblProducts(DAL_ItblProducts DAL_itblProductsL)
+        DAL_ISearchProduct DAL_itblProductsL;
+        public BAL_SearchProduct(DAL_ISearchProduct DAL_itblProductsL)
         {
             this.DAL_itblProductsL = DAL_itblProductsL;
         }
-        public List<DAL_tblProducts> GetProducts(string productName)
+        public List<SearchProductView> GetProducts(string productName)
         {
             return DAL_itblProductsL.GetProducts(productName);
         }

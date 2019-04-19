@@ -8,50 +8,26 @@ using E_Commerce_ShoebApi.Models;
 
 namespace E_Commerce_ShoebApi.DAL
 {
-    public class DAL_tblProducts : DAL_ItblProducts
+    public class DAL_SearchProduct :ImageFormat, DAL_ISearchProduct
     {
-        public int ProductId { get; set;  }
-        public int ProductCategoryId { get; set; }
-        public string ProductName { get; set; }
-        public string Description { get; set; }
-        public string Brand { get; set; }
-        public byte[] Image { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public List<DAL_tblProducts> GetProducts(string productName)
+
+        public List<SearchProductView> GetProducts(string productName)
         {
-            List<DAL_tblProducts> getProducts = new List<DAL_tblProducts>();
+            List<SearchProductView> products = new List<SearchProductView>();
             using (var db = new sdirecttestdbEntities())
             {
-                //getProducts.AddRange((from obj in db.tblProducts_Sk
-                //                      where (obj.ProductName == productName)
-                //                      select new DAL_tblProducts()
-                //                      {
-                //                          ProductName = obj.ProductName,
-                //                          ProductId = obj.ProductId,
-                //                          ProductCategoryId = obj.ProductCategoryId,
-                //                          Description = obj.Description,
-                //                          Brand = obj.Brand,
-                //                          Image = obj.Image,
-                //                      }
-                //                     ).ToList());
-                //byte[] array = Encoding.ASCII.GetBytes(input);
-
-                //tblProducts_Sk newProduct = new tblProducts_Sk()
-                //{
-                //    ProductCategoryId = 4,
-                //    ProductName = "Gate",
-                //    Description = "Prepare with the best",
-                //    Brand = "Pearson",
-                //    IsActive = true,
-                //    IsCreatedBy = "Shoeb",
-                //    IsUpdatedBy = "Shoeb",
-                //    IsCreatedOn = DateTime.Now,
-                //    IsUpdatedOn = DateTime.Now,
-                //    IsDeleted = false,
-                //    Image = array
-                //};
-                //db.tblProducts_Sk.Add(newProduct);
-                //db.SaveChanges();
+                products.AddRange((from x in db.tblProducts_Sk
+                                      where (x.ProductName == productName)
+                                      select new SearchProductView()
+                                      {
+                                          ProductName = x.ProductName,
+                                          ProductId = x.ProductId,
+                                          ProductCategoryId = x.ProductCategoryId,
+                                          Description = x.Description,
+                                          Brand = x.Brand,
+                                          Image = this.ByteArrayToString(x.Image)
+                                      }
+                                     ).ToList());
 
                 //to update something
                 //tblProducts_Sk updateProduct = db.tblProducts_Sk.Find(6);
@@ -148,7 +124,7 @@ namespace E_Commerce_ShoebApi.DAL
             }
             //no need as it is directly giving us the required output
             // var base64 = Convert.ToBase64String(getProducts[0].Image);
-            return getProducts;
+            return products;
         }
     }
 }

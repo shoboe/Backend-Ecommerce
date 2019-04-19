@@ -17,11 +17,11 @@ namespace E_Commerce_ShoebApi.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ViewController : ApiController
     {
-        BAL_ItblProducts BAL_itblProducts;
+        BAL_ISearchProduct BAL_itblProducts;
         BAL_IPostEmailPw BAL_iPostEmailPw;
         BAL_INewProduct BAL_iNewProduct;
 
-        public ViewController(BAL_ItblProducts BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw, BAL_INewProduct BAL_iNewProduct)
+        public ViewController(BAL_ISearchProduct BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw, BAL_INewProduct BAL_iNewProduct)
         {
             this.BAL_itblProducts = BAL_itblProducts;
             this.BAL_iPostEmailPw = BAL_iPostEmailPw;
