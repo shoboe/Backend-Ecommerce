@@ -23,6 +23,7 @@ namespace E_Commerce_ShoebApi.Controllers
         BAL_IAddBankAccount BAL_iAddBankAccount;
         BAL_IRegisterUser BAL_iRegisterUser;
 
+
         public ViewController(BAL_ISearchProduct BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw,
             BAL_INewProduct BAL_iNewProduct, BAL_IAddBankAccount BAL_iAddBankAccount,
              BAL_IRegisterUser BAL_iRegisterUser)
