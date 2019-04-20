@@ -26,7 +26,6 @@ namespace E_Commerce_ShoebApi.Models
         public int SellerStatusId { get; set; }
         public int BusinessTypeId { get; set; }
         public int Rating { get; set; }
-        public byte[] Logo { get; set; }
         public int BankId { get; set; }
         public int AccountNumber { get; set; }
         public Nullable<bool> IsActive { get; set; }

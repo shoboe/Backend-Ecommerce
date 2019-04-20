@@ -14,6 +14,13 @@ namespace E_Commerce_ShoebApi.Models
     
     public partial class tblCountry_Sk
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblCountry_Sk()
+        {
+            this.tblState_Sk = new HashSet<tblState_Sk>();
+            this.tblState_Sk1 = new HashSet<tblState_Sk>();
+        }
+    
         public int CountryId { get; set; }
         public string CountryName { get; set; }
         public Nullable<bool> IsActive { get; set; }
@@ -23,5 +30,10 @@ namespace E_Commerce_ShoebApi.Models
         public string IsUpdatedBy { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblState_Sk> tblState_Sk { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblState_Sk> tblState_Sk1 { get; set; }
     }
 }

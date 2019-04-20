@@ -18,6 +18,7 @@ namespace E_Commerce_ShoebApi.Models
         public tblShippingMethod_Sk()
         {
             this.tblOrders_Sk = new HashSet<tblOrders_Sk>();
+            this.tblOrders_Sk1 = new HashSet<tblOrders_Sk>();
         }
     
         public int ShippingMethodId { get; set; }
@@ -34,5 +35,7 @@ namespace E_Commerce_ShoebApi.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrders_Sk> tblOrders_Sk { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblOrders_Sk> tblOrders_Sk1 { get; set; }
     }
 }

@@ -36,5 +36,7 @@ namespace E_Commerce_ShoebApi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSellers_Sk> tblSellers_Sk { get; set; }
         public virtual tblUser_Sk tblUser_Sk { get; set; }
+        public virtual tblUser_Sk tblUser_Sk1 { get; set; }
+        public virtual tblUser_Sk tblUser_Sk2 { get; set; }
     }
 }

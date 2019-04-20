@@ -21,6 +21,8 @@ namespace E_Commerce_ShoebApi.Models
             this.tblAdminTasks_Sk = new HashSet<tblAdminTasks_Sk>();
             this.tblBuyers_Sk = new HashSet<tblBuyers_Sk>();
             this.tblSellerStatus_Sk = new HashSet<tblSellerStatus_Sk>();
+            this.tblSellerStatus_Sk1 = new HashSet<tblSellerStatus_Sk>();
+            this.tblSellerStatus_Sk2 = new HashSet<tblSellerStatus_Sk>();
         }
     
         public int UserId { get; set; }
@@ -49,5 +51,9 @@ namespace E_Commerce_ShoebApi.Models
         public virtual tblRole_Sk tblRole_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSellerStatus_Sk> tblSellerStatus_Sk { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSellerStatus_Sk> tblSellerStatus_Sk1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSellerStatus_Sk> tblSellerStatus_Sk2 { get; set; }
     }
 }

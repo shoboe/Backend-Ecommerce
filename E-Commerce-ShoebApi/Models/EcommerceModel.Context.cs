@@ -49,18 +49,9 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblSellers_Sk> tblSellers_Sk { get; set; }
         public virtual DbSet<tblSellerStatus_Sk> tblSellerStatus_Sk { get; set; }
         public virtual DbSet<tblShippingMethod_Sk> tblShippingMethod_Sk { get; set; }
-        public virtual DbSet<tblStates_AT> tblStates_AT { get; set; }
+        public virtual DbSet<tblState_Sk> tblState_Sk { get; set; }
         public virtual DbSet<tbltemHistory_Sk> tbltemHistory_Sk { get; set; }
         public virtual DbSet<tblUser_Sk> tblUser_Sk { get; set; }
-    
-        public virtual ObjectResult<GetUserDetails_Sk_Result> GetUserDetails_Sk(Nullable<int> num)
-        {
-            var numParameter = num.HasValue ?
-                new ObjectParameter("num", num) :
-                new ObjectParameter("num", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Sk_Result>("GetUserDetails_Sk", numParameter);
-        }
     
         public virtual int AddProduct_Sk(Nullable<int> productCategoryId, string productName, string description, string brand, byte[] image, string sellerName, string updaterName, Nullable<int> pricePerUnit, Nullable<int> productCount, Nullable<int> sellerId)
         {
@@ -105,6 +96,96 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("SellerId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProduct_Sk", productCategoryIdParameter, productNameParameter, descriptionParameter, brandParameter, imageParameter, sellerNameParameter, updaterNameParameter, pricePerUnitParameter, productCountParameter, sellerIdParameter);
+        }
+    
+        public virtual ObjectResult<GetUserDetails_Sk_Result> GetUserDetails_Sk(Nullable<int> num)
+        {
+            var numParameter = num.HasValue ?
+                new ObjectParameter("num", num) :
+                new ObjectParameter("num", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Sk_Result>("GetUserDetails_Sk", numParameter);
+        }
+    
+        public virtual int RegisterUser_Sk(string firstName, string middleName, string lastName, string email, string password, byte[] image, Nullable<long> mobile, string cityName1, Nullable<long> pincode1, string type1, string address1, string type2, string cityName2, Nullable<long> pincode2, string address2, Nullable<bool> isSeller, string businessType, string bankName, Nullable<long> accountNumber)
+        {
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var middleNameParameter = middleName != null ?
+                new ObjectParameter("MiddleName", middleName) :
+                new ObjectParameter("MiddleName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var imageParameter = image != null ?
+                new ObjectParameter("Image", image) :
+                new ObjectParameter("Image", typeof(byte[]));
+    
+            var mobileParameter = mobile.HasValue ?
+                new ObjectParameter("Mobile", mobile) :
+                new ObjectParameter("Mobile", typeof(long));
+    
+            var cityName1Parameter = cityName1 != null ?
+                new ObjectParameter("CityName1", cityName1) :
+                new ObjectParameter("CityName1", typeof(string));
+    
+            var pincode1Parameter = pincode1.HasValue ?
+                new ObjectParameter("Pincode1", pincode1) :
+                new ObjectParameter("Pincode1", typeof(long));
+    
+            var type1Parameter = type1 != null ?
+                new ObjectParameter("Type1", type1) :
+                new ObjectParameter("Type1", typeof(string));
+    
+            var address1Parameter = address1 != null ?
+                new ObjectParameter("Address1", address1) :
+                new ObjectParameter("Address1", typeof(string));
+    
+            var type2Parameter = type2 != null ?
+                new ObjectParameter("Type2", type2) :
+                new ObjectParameter("Type2", typeof(string));
+    
+            var cityName2Parameter = cityName2 != null ?
+                new ObjectParameter("CityName2", cityName2) :
+                new ObjectParameter("CityName2", typeof(string));
+    
+            var pincode2Parameter = pincode2.HasValue ?
+                new ObjectParameter("Pincode2", pincode2) :
+                new ObjectParameter("Pincode2", typeof(long));
+    
+            var address2Parameter = address2 != null ?
+                new ObjectParameter("Address2", address2) :
+                new ObjectParameter("Address2", typeof(string));
+    
+            var isSellerParameter = isSeller.HasValue ?
+                new ObjectParameter("IsSeller", isSeller) :
+                new ObjectParameter("IsSeller", typeof(bool));
+    
+            var businessTypeParameter = businessType != null ?
+                new ObjectParameter("BusinessType", businessType) :
+                new ObjectParameter("BusinessType", typeof(string));
+    
+            var bankNameParameter = bankName != null ?
+                new ObjectParameter("BankName", bankName) :
+                new ObjectParameter("BankName", typeof(string));
+    
+            var accountNumberParameter = accountNumber.HasValue ?
+                new ObjectParameter("AccountNumber", accountNumber) :
+                new ObjectParameter("AccountNumber", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterUser_Sk", firstNameParameter, middleNameParameter, lastNameParameter, emailParameter, passwordParameter, imageParameter, mobileParameter, cityName1Parameter, pincode1Parameter, type1Parameter, address1Parameter, type2Parameter, cityName2Parameter, pincode2Parameter, address2Parameter, isSellerParameter, businessTypeParameter, bankNameParameter, accountNumberParameter);
         }
     }
 }

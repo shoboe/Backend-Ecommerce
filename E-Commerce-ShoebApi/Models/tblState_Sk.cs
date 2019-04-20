@@ -12,17 +12,17 @@ namespace E_Commerce_ShoebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblCity_Sk
+    public partial class tblState_Sk
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblCity_Sk()
+        public tblState_Sk()
         {
-            this.tblAddress_Sk = new HashSet<tblAddress_Sk>();
+            this.tblCity_Sk = new HashSet<tblCity_Sk>();
         }
     
-        public int CityId { get; set; }
-        public string CityName { get; set; }
         public int StateId { get; set; }
+        public string StateName { get; set; }
+        public int CountryId { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
@@ -32,7 +32,8 @@ namespace E_Commerce_ShoebApi.Models
         public string IsDeletedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAddress_Sk> tblAddress_Sk { get; set; }
-        public virtual tblState_Sk tblState_Sk { get; set; }
+        public virtual ICollection<tblCity_Sk> tblCity_Sk { get; set; }
+        public virtual tblCountry_Sk tblCountry_Sk { get; set; }
+        public virtual tblCountry_Sk tblCountry_Sk1 { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="sdirecttestdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="sdirecttestdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAddress_Sk">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -319,7 +319,6 @@
           <Property Name="SellerStatusId" Type="int" Nullable="false" />
           <Property Name="BusinessTypeId" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
-          <Property Name="Logo" Type="varbinary(max)" Nullable="false" />
           <Property Name="BankId" Type="int" Nullable="false" />
           <Property Name="AccountNumber" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
@@ -363,20 +362,20 @@
           <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
           <Property Name="Duration" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblStates_AT">
+        <EntityType Name="tblState_Sk">
           <Key>
-            <PropertyRef Name="StateID" />
+            <PropertyRef Name="StateId" />
           </Key>
-          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CountryID" Type="int" />
-          <Property Name="StateName" Type="varchar" MaxLength="50" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletedBy" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbltemHistory_Sk">
           <Key>
@@ -419,7 +418,7 @@
           <Property Name="Image" Type="varbinary(max)" Nullable="false" />
           <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblAddres__CityI__237F1D95">
+        <Association Name="FK__tblAddres__CityI__49C3F6B7">
           <End Role="tblCity_Sk" Type="Self.tblCity_Sk" Multiplicity="1" />
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -431,7 +430,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAddres__UserI__228AF95C">
+        <Association Name="FK__tblAddres__UserI__4AB81AF0">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -443,7 +442,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAdminT__UserI__2A2C1B24">
+        <Association Name="FK__tblAdminT__UserI__5165187F">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblAdminTasks_Sk" Type="Self.tblAdminTasks_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -455,7 +454,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBankNa__BankI__17D860BF">
+        <Association Name="FK__tblBankNa__BankI__40058253">
           <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
           <End Role="tblBankNameUser_Sk" Type="Self.tblBankNameUser_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -467,7 +466,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBorrow__BankN__243E37A4">
+        <Association Name="FK__tblBorrow__BankN__4D5F7D71">
           <End Role="tblBankNameUser_Sk" Type="Self.tblBankNameUser_Sk" Multiplicity="1" />
           <End Role="tblBorrowMoney_Sk" Type="Self.tblBorrowMoney_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -479,7 +478,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBuyers__Billi__4F5D9FD3">
+        <Association Name="FK__tblBuyers__Billi__1CBC4616">
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -491,7 +490,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBuyers__Shipp__4E697B9A">
+        <Association Name="FK__tblBuyers__Shipp__1DB06A4F">
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -503,7 +502,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBuyers__UserI__4D755761">
+        <Association Name="FK__tblBuyers__UserI__1EA48E88">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -515,7 +514,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblDebitC__BankN__3C15C135">
+        <Association Name="FK__tblCity_S__State__36B12243">
+          <End Role="tblState_Sk" Type="Self.tblState_Sk" Multiplicity="1" />
+          <End Role="tblCity_Sk" Type="Self.tblCity_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState_Sk">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblCity_Sk">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDebitC__BankN__46B27FE2">
           <End Role="tblBankNameUser_Sk" Type="Self.tblBankNameUser_Sk" Multiplicity="1" />
           <End Role="tblDebitCards_Sk" Type="Self.tblDebitCards_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -527,7 +538,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblInvent__Produ__62707447">
+        <Association Name="FK__tblInvent__Produ__04E4BC85">
           <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="1" />
           <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -539,7 +550,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblInvent__Selle__63649880">
+        <Association Name="FK__tblInvent__Selle__05D8E0BE">
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
           <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -551,7 +562,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblItems___Inven__08961D2F">
+        <Association Name="FK__tblItems___Inven__2FCF1A8A">
           <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="1" />
           <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -563,7 +574,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblItems___Order__07A1F8F6">
+        <Association Name="FK__tblItems___Order__30C33EC3">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -575,7 +586,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblNotifi__Buyer__2CD37DA5">
+        <Association Name="FK__tblNotifi__Buyer__55009F39">
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
           <End Role="tblNotifications_Sk" Type="Self.tblNotifications_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -587,7 +598,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblNotifi__Order__2BDF596C">
+        <Association Name="FK__tblNotifi__Order__55F4C372">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tblNotifications_Sk" Type="Self.tblNotifications_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -599,7 +610,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblNotifi__Selle__2AEB3533">
+        <Association Name="FK__tblNotifi__Selle__56E8E7AB">
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
           <End Role="tblNotifications_Sk" Type="Self.tblNotifications_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -611,7 +622,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrders__Buyer__76776CF4">
+        <Association Name="FK__tblOrders__Buyer__2739D489">
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -623,7 +634,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrderS__Order__00F4FB67">
+        <Association Name="FK__tblOrderS__Order__5D95E53A">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tblOrderStatus_Sk" Type="Self.tblOrderStatus_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -635,7 +646,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrders__Payme__7A47FDD8">
+        <Association Name="FK__tblOrders__Payme__282DF8C2">
           <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="1" />
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -647,7 +658,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrders__Shipp__785FB566">
+        <Association Name="FK__tblOrders__Shipp__160F4887">
           <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -659,7 +670,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblPaymen__BankI__6FCA6F65">
+        <Association Name="FK__tblOrders__Shipp__29221CFB">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPaymen__BankI__25518C17">
           <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
           <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -671,7 +694,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProduc__Produ__5BC376B8">
+        <Association Name="FK__tblProduc__Produ__7E37BEF6">
           <End Role="tblProductsCategory_Sk" Type="Self.tblProductsCategory_Sk" Multiplicity="1" />
           <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -683,7 +706,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__BankI__46C859D2">
+        <Association Name="FK__tblSeller__BankI__6EF57B66">
           <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -695,7 +718,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__Busin__43EBED27">
+        <Association Name="FK__tblSeller__Busin__6FE99F9F">
           <End Role="tblBusinessType_Sk" Type="Self.tblBusinessType_Sk" Multiplicity="1" />
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -707,7 +730,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__Selle__42F7C8EE">
+        <Association Name="FK__tblSeller__Selle__70DDC3D8">
           <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="1" />
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -719,7 +742,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__UserI__3691F209">
+        <Association Name="FK__tblSeller__UserI__5DCAEF64">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -731,7 +754,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbltemHis__Order__10373EF7">
+        <Association Name="FK__tblSeller__UserI__656C112C">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__6754599E">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblState___Count__300424B4">
+          <End Role="tblCountry_Sk" Type="Self.tblCountry_Sk" Multiplicity="1" />
+          <End Role="tblState_Sk" Type="Self.tblState_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry_Sk">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblState_Sk">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblState___Count__5F7E2DAC">
+          <End Role="tblCountry_Sk" Type="Self.tblCountry_Sk" Multiplicity="1" />
+          <End Role="tblState_Sk" Type="Self.tblState_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry_Sk">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblState_Sk">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbltemHis__Order__37703C52">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tbltemHistory_Sk" Type="Self.tbltemHistory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -743,7 +814,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbltemHis__Produ__0F431ABE">
+        <Association Name="FK__tbltemHis__Produ__3864608B">
           <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="1" />
           <End Role="tbltemHistory_Sk" Type="Self.tbltemHistory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -755,7 +826,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbltemHis__Selle__112B6330">
+        <Association Name="FK__tbltemHis__Selle__395884C4">
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
           <End Role="tbltemHistory_Sk" Type="Self.tbltemHistory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -767,7 +838,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblUser_S__RoleI__1BDDFBCD">
+        <Association Name="FK__tblUser_S__RoleI__4316F928">
           <End Role="tblRole_Sk" Type="Self.tblRole_Sk" Multiplicity="1" />
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -794,6 +865,27 @@
         <Function Name="GetUserDetails_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="num" Type="int" Mode="In" />
         </Function>
+        <Function Name="RegisterUser_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="Mobile" Type="bigint" Mode="In" />
+          <Parameter Name="CityName1" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode1" Type="bigint" Mode="In" />
+          <Parameter Name="Type1" Type="char" Mode="In" />
+          <Parameter Name="Address1" Type="varchar" Mode="In" />
+          <Parameter Name="Type2" Type="char" Mode="In" />
+          <Parameter Name="CityName2" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode2" Type="bigint" Mode="In" />
+          <Parameter Name="Address2" Type="varchar" Mode="In" />
+          <Parameter Name="IsSeller" Type="bit" Mode="In" />
+          <Parameter Name="BusinessType" Type="varchar" Mode="In" />
+          <Parameter Name="BankName" Type="varchar" Mode="In" />
+          <Parameter Name="AccountNumber" Type="bigint" Mode="In" />
+        </Function>
         <EntityContainer Name="sdirecttestdbModelStoreContainer">
           <EntitySet Name="tblAddress_Sk" EntityType="Self.tblAddress_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAdminTasks_Sk" EntityType="Self.tblAdminTasks_Sk" Schema="dbo" store:Type="Tables" />
@@ -817,131 +909,156 @@
           <EntitySet Name="tblSellers_Sk" EntityType="Self.tblSellers_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSellerStatus_Sk" EntityType="Self.tblSellerStatus_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblShippingMethod_Sk" EntityType="Self.tblShippingMethod_Sk" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblStates_AT" EntityType="Self.tblStates_AT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblState_Sk" EntityType="Self.tblState_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbltemHistory_Sk" EntityType="Self.tbltemHistory_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser_Sk" EntityType="Self.tblUser_Sk" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tblAddres__CityI__237F1D95" Association="Self.FK__tblAddres__CityI__237F1D95">
+          <AssociationSet Name="FK__tblAddres__CityI__49C3F6B7" Association="Self.FK__tblAddres__CityI__49C3F6B7">
             <End Role="tblCity_Sk" EntitySet="tblCity_Sk" />
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAddres__UserI__228AF95C" Association="Self.FK__tblAddres__UserI__228AF95C">
+          <AssociationSet Name="FK__tblAddres__UserI__4AB81AF0" Association="Self.FK__tblAddres__UserI__4AB81AF0">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAdminT__UserI__2A2C1B24" Association="Self.FK__tblAdminT__UserI__2A2C1B24">
+          <AssociationSet Name="FK__tblAdminT__UserI__5165187F" Association="Self.FK__tblAdminT__UserI__5165187F">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblAdminTasks_Sk" EntitySet="tblAdminTasks_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBankNa__BankI__17D860BF" Association="Self.FK__tblBankNa__BankI__17D860BF">
+          <AssociationSet Name="FK__tblBankNa__BankI__40058253" Association="Self.FK__tblBankNa__BankI__40058253">
             <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
             <End Role="tblBankNameUser_Sk" EntitySet="tblBankNameUser_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBorrow__BankN__243E37A4" Association="Self.FK__tblBorrow__BankN__243E37A4">
+          <AssociationSet Name="FK__tblBorrow__BankN__4D5F7D71" Association="Self.FK__tblBorrow__BankN__4D5F7D71">
             <End Role="tblBankNameUser_Sk" EntitySet="tblBankNameUser_Sk" />
             <End Role="tblBorrowMoney_Sk" EntitySet="tblBorrowMoney_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBuyers__Billi__4F5D9FD3" Association="Self.FK__tblBuyers__Billi__4F5D9FD3">
+          <AssociationSet Name="FK__tblBuyers__Billi__1CBC4616" Association="Self.FK__tblBuyers__Billi__1CBC4616">
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBuyers__Shipp__4E697B9A" Association="Self.FK__tblBuyers__Shipp__4E697B9A">
+          <AssociationSet Name="FK__tblBuyers__Shipp__1DB06A4F" Association="Self.FK__tblBuyers__Shipp__1DB06A4F">
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBuyers__UserI__4D755761" Association="Self.FK__tblBuyers__UserI__4D755761">
+          <AssociationSet Name="FK__tblBuyers__UserI__1EA48E88" Association="Self.FK__tblBuyers__UserI__1EA48E88">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblDebitC__BankN__3C15C135" Association="Self.FK__tblDebitC__BankN__3C15C135">
+          <AssociationSet Name="FK__tblCity_S__State__36B12243" Association="Self.FK__tblCity_S__State__36B12243">
+            <End Role="tblState_Sk" EntitySet="tblState_Sk" />
+            <End Role="tblCity_Sk" EntitySet="tblCity_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDebitC__BankN__46B27FE2" Association="Self.FK__tblDebitC__BankN__46B27FE2">
             <End Role="tblBankNameUser_Sk" EntitySet="tblBankNameUser_Sk" />
             <End Role="tblDebitCards_Sk" EntitySet="tblDebitCards_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblInvent__Produ__62707447" Association="Self.FK__tblInvent__Produ__62707447">
+          <AssociationSet Name="FK__tblInvent__Produ__04E4BC85" Association="Self.FK__tblInvent__Produ__04E4BC85">
             <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
             <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblInvent__Selle__63649880" Association="Self.FK__tblInvent__Selle__63649880">
+          <AssociationSet Name="FK__tblInvent__Selle__05D8E0BE" Association="Self.FK__tblInvent__Selle__05D8E0BE">
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
             <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblItems___Inven__08961D2F" Association="Self.FK__tblItems___Inven__08961D2F">
+          <AssociationSet Name="FK__tblItems___Inven__2FCF1A8A" Association="Self.FK__tblItems___Inven__2FCF1A8A">
             <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
             <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblItems___Order__07A1F8F6" Association="Self.FK__tblItems___Order__07A1F8F6">
+          <AssociationSet Name="FK__tblItems___Order__30C33EC3" Association="Self.FK__tblItems___Order__30C33EC3">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblNotifi__Buyer__2CD37DA5" Association="Self.FK__tblNotifi__Buyer__2CD37DA5">
+          <AssociationSet Name="FK__tblNotifi__Buyer__55009F39" Association="Self.FK__tblNotifi__Buyer__55009F39">
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
             <End Role="tblNotifications_Sk" EntitySet="tblNotifications_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblNotifi__Order__2BDF596C" Association="Self.FK__tblNotifi__Order__2BDF596C">
+          <AssociationSet Name="FK__tblNotifi__Order__55F4C372" Association="Self.FK__tblNotifi__Order__55F4C372">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tblNotifications_Sk" EntitySet="tblNotifications_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblNotifi__Selle__2AEB3533" Association="Self.FK__tblNotifi__Selle__2AEB3533">
+          <AssociationSet Name="FK__tblNotifi__Selle__56E8E7AB" Association="Self.FK__tblNotifi__Selle__56E8E7AB">
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
             <End Role="tblNotifications_Sk" EntitySet="tblNotifications_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrders__Buyer__76776CF4" Association="Self.FK__tblOrders__Buyer__76776CF4">
+          <AssociationSet Name="FK__tblOrders__Buyer__2739D489" Association="Self.FK__tblOrders__Buyer__2739D489">
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrderS__Order__00F4FB67" Association="Self.FK__tblOrderS__Order__00F4FB67">
+          <AssociationSet Name="FK__tblOrderS__Order__5D95E53A" Association="Self.FK__tblOrderS__Order__5D95E53A">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tblOrderStatus_Sk" EntitySet="tblOrderStatus_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrders__Payme__7A47FDD8" Association="Self.FK__tblOrders__Payme__7A47FDD8">
+          <AssociationSet Name="FK__tblOrders__Payme__282DF8C2" Association="Self.FK__tblOrders__Payme__282DF8C2">
             <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrders__Shipp__785FB566" Association="Self.FK__tblOrders__Shipp__785FB566">
+          <AssociationSet Name="FK__tblOrders__Shipp__160F4887" Association="Self.FK__tblOrders__Shipp__160F4887">
             <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblPaymen__BankI__6FCA6F65" Association="Self.FK__tblPaymen__BankI__6FCA6F65">
+          <AssociationSet Name="FK__tblOrders__Shipp__29221CFB" Association="Self.FK__tblOrders__Shipp__29221CFB">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPaymen__BankI__25518C17" Association="Self.FK__tblPaymen__BankI__25518C17">
             <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
             <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProduc__Produ__5BC376B8" Association="Self.FK__tblProduc__Produ__5BC376B8">
+          <AssociationSet Name="FK__tblProduc__Produ__7E37BEF6" Association="Self.FK__tblProduc__Produ__7E37BEF6">
             <End Role="tblProductsCategory_Sk" EntitySet="tblProductsCategory_Sk" />
             <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__BankI__46C859D2" Association="Self.FK__tblSeller__BankI__46C859D2">
+          <AssociationSet Name="FK__tblSeller__BankI__6EF57B66" Association="Self.FK__tblSeller__BankI__6EF57B66">
             <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__Busin__43EBED27" Association="Self.FK__tblSeller__Busin__43EBED27">
+          <AssociationSet Name="FK__tblSeller__Busin__6FE99F9F" Association="Self.FK__tblSeller__Busin__6FE99F9F">
             <End Role="tblBusinessType_Sk" EntitySet="tblBusinessType_Sk" />
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__Selle__42F7C8EE" Association="Self.FK__tblSeller__Selle__42F7C8EE">
+          <AssociationSet Name="FK__tblSeller__Selle__70DDC3D8" Association="Self.FK__tblSeller__Selle__70DDC3D8">
             <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__UserI__3691F209" Association="Self.FK__tblSeller__UserI__3691F209">
+          <AssociationSet Name="FK__tblSeller__UserI__5DCAEF64" Association="Self.FK__tblSeller__UserI__5DCAEF64">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbltemHis__Order__10373EF7" Association="Self.FK__tbltemHis__Order__10373EF7">
+          <AssociationSet Name="FK__tblSeller__UserI__656C112C" Association="Self.FK__tblSeller__UserI__656C112C">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__6754599E" Association="Self.FK__tblSeller__UserI__6754599E">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblState___Count__300424B4" Association="Self.FK__tblState___Count__300424B4">
+            <End Role="tblCountry_Sk" EntitySet="tblCountry_Sk" />
+            <End Role="tblState_Sk" EntitySet="tblState_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblState___Count__5F7E2DAC" Association="Self.FK__tblState___Count__5F7E2DAC">
+            <End Role="tblCountry_Sk" EntitySet="tblCountry_Sk" />
+            <End Role="tblState_Sk" EntitySet="tblState_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbltemHis__Order__37703C52" Association="Self.FK__tbltemHis__Order__37703C52">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tbltemHistory_Sk" EntitySet="tbltemHistory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbltemHis__Produ__0F431ABE" Association="Self.FK__tbltemHis__Produ__0F431ABE">
+          <AssociationSet Name="FK__tbltemHis__Produ__3864608B" Association="Self.FK__tbltemHis__Produ__3864608B">
             <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
             <End Role="tbltemHistory_Sk" EntitySet="tbltemHistory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbltemHis__Selle__112B6330" Association="Self.FK__tbltemHis__Selle__112B6330">
+          <AssociationSet Name="FK__tbltemHis__Selle__395884C4" Association="Self.FK__tbltemHis__Selle__395884C4">
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
             <End Role="tbltemHistory_Sk" EntitySet="tbltemHistory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblUser_S__RoleI__1BDDFBCD" Association="Self.FK__tblUser_S__RoleI__1BDDFBCD">
+          <AssociationSet Name="FK__tblUser_S__RoleI__4316F928" Association="Self.FK__tblUser_S__RoleI__4316F928">
             <End Role="tblRole_Sk" EntitySet="tblRole_Sk" />
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sdirecttestdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -962,10 +1079,10 @@
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Pincode" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="tblCity_Sk" Relationship="Self.FK__tblAddres__CityI__237F1D95" FromRole="tblAddress_Sk" ToRole="tblCity_Sk" />
-          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblAddres__UserI__228AF95C" FromRole="tblAddress_Sk" ToRole="tblUser_Sk" />
-          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblBuyers__Billi__4F5D9FD3" FromRole="tblAddress_Sk" ToRole="tblBuyers_Sk" />
-          <NavigationProperty Name="tblBuyers_Sk1" Relationship="Self.FK__tblBuyers__Shipp__4E697B9A" FromRole="tblAddress_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblCity_Sk" Relationship="Self.FK__tblAddres__CityI__49C3F6B7" FromRole="tblAddress_Sk" ToRole="tblCity_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblAddres__UserI__4AB81AF0" FromRole="tblAddress_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblBuyers__Billi__1CBC4616" FromRole="tblAddress_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk1" Relationship="Self.FK__tblBuyers__Shipp__1DB06A4F" FromRole="tblAddress_Sk" ToRole="tblBuyers_Sk" />
         </EntityType>
         <EntityType Name="tblAdminTasks_Sk">
           <Key>
@@ -981,7 +1098,7 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblAdminT__UserI__2A2C1B24" FromRole="tblAdminTasks_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblAdminT__UserI__5165187F" FromRole="tblAdminTasks_Sk" ToRole="tblUser_Sk" />
         </EntityType>
         <EntityType Name="tblBank_Sk">
           <Key>
@@ -996,9 +1113,9 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblBankNa__BankI__17D860BF" FromRole="tblBank_Sk" ToRole="tblBankNameUser_Sk" />
-          <NavigationProperty Name="tblPaymentMethod_Sk" Relationship="Self.FK__tblPaymen__BankI__6FCA6F65" FromRole="tblBank_Sk" ToRole="tblPaymentMethod_Sk" />
-          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__BankI__46C859D2" FromRole="tblBank_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblBankNa__BankI__40058253" FromRole="tblBank_Sk" ToRole="tblBankNameUser_Sk" />
+          <NavigationProperty Name="tblPaymentMethod_Sk" Relationship="Self.FK__tblPaymen__BankI__25518C17" FromRole="tblBank_Sk" ToRole="tblPaymentMethod_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__BankI__6EF57B66" FromRole="tblBank_Sk" ToRole="tblSellers_Sk" />
         </EntityType>
         <EntityType Name="tblBankNameUser_Sk">
           <Key>
@@ -1018,9 +1135,9 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblBankNa__BankI__17D860BF" FromRole="tblBankNameUser_Sk" ToRole="tblBank_Sk" />
-          <NavigationProperty Name="tblBorrowMoney_Sk" Relationship="Self.FK__tblBorrow__BankN__243E37A4" FromRole="tblBankNameUser_Sk" ToRole="tblBorrowMoney_Sk" />
-          <NavigationProperty Name="tblDebitCards_Sk" Relationship="Self.FK__tblDebitC__BankN__3C15C135" FromRole="tblBankNameUser_Sk" ToRole="tblDebitCards_Sk" />
+          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblBankNa__BankI__40058253" FromRole="tblBankNameUser_Sk" ToRole="tblBank_Sk" />
+          <NavigationProperty Name="tblBorrowMoney_Sk" Relationship="Self.FK__tblBorrow__BankN__4D5F7D71" FromRole="tblBankNameUser_Sk" ToRole="tblBorrowMoney_Sk" />
+          <NavigationProperty Name="tblDebitCards_Sk" Relationship="Self.FK__tblDebitC__BankN__46B27FE2" FromRole="tblBankNameUser_Sk" ToRole="tblDebitCards_Sk" />
         </EntityType>
         <EntityType Name="tblBorrowMoney_Sk">
           <Key>
@@ -1037,7 +1154,7 @@
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblBorrow__BankN__243E37A4" FromRole="tblBorrowMoney_Sk" ToRole="tblBankNameUser_Sk" />
+          <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblBorrow__BankN__4D5F7D71" FromRole="tblBorrowMoney_Sk" ToRole="tblBankNameUser_Sk" />
         </EntityType>
         <EntityType Name="tblBusinessType_Sk">
           <Key>
@@ -1052,7 +1169,7 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__Busin__43EBED27" FromRole="tblBusinessType_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__Busin__6FE99F9F" FromRole="tblBusinessType_Sk" ToRole="tblSellers_Sk" />
         </EntityType>
         <EntityType Name="tblBuyers_Sk">
           <Key>
@@ -1069,11 +1186,11 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblBuyers__Billi__4F5D9FD3" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
-          <NavigationProperty Name="tblAddress_Sk1" Relationship="Self.FK__tblBuyers__Shipp__4E697B9A" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
-          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblBuyers__UserI__4D755761" FromRole="tblBuyers_Sk" ToRole="tblUser_Sk" />
-          <NavigationProperty Name="tblNotifications_Sk" Relationship="Self.FK__tblNotifi__Buyer__2CD37DA5" FromRole="tblBuyers_Sk" ToRole="tblNotifications_Sk" />
-          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Buyer__76776CF4" FromRole="tblBuyers_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblBuyers__Billi__1CBC4616" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblAddress_Sk1" Relationship="Self.FK__tblBuyers__Shipp__1DB06A4F" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblBuyers__UserI__1EA48E88" FromRole="tblBuyers_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblNotifications_Sk" Relationship="Self.FK__tblNotifi__Buyer__55009F39" FromRole="tblBuyers_Sk" ToRole="tblNotifications_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Buyer__2739D489" FromRole="tblBuyers_Sk" ToRole="tblOrders_Sk" />
         </EntityType>
         <EntityType Name="tblCity_Sk">
           <Key>
@@ -1089,7 +1206,8 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblAddres__CityI__237F1D95" FromRole="tblCity_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblAddres__CityI__49C3F6B7" FromRole="tblCity_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblState_Sk" Relationship="Self.FK__tblCity_S__State__36B12243" FromRole="tblCity_Sk" ToRole="tblState_Sk" />
         </EntityType>
         <EntityType Name="tblCountry_Sk">
           <Key>
@@ -1104,6 +1222,8 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblState_Sk" Relationship="Self.FK__tblState___Count__300424B4" FromRole="tblCountry_Sk" ToRole="tblState_Sk" />
+          <NavigationProperty Name="tblState_Sk1" Relationship="Self.FK__tblState___Count__5F7E2DAC" FromRole="tblCountry_Sk" ToRole="tblState_Sk" />
         </EntityType>
         <EntityType Name="tblDebitCards_Sk">
           <Key>
@@ -1120,7 +1240,7 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblDebitC__BankN__3C15C135" FromRole="tblDebitCards_Sk" ToRole="tblBankNameUser_Sk" />
+          <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblDebitC__BankN__46B27FE2" FromRole="tblDebitCards_Sk" ToRole="tblBankNameUser_Sk" />
         </EntityType>
         <EntityType Name="tblInventory_Sk">
           <Key>
@@ -1138,9 +1258,9 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tblInvent__Produ__62707447" FromRole="tblInventory_Sk" ToRole="tblProducts_Sk" />
-          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblInvent__Selle__63649880" FromRole="tblInventory_Sk" ToRole="tblSellers_Sk" />
-          <NavigationProperty Name="tblItems_Sk" Relationship="Self.FK__tblItems___Inven__08961D2F" FromRole="tblInventory_Sk" ToRole="tblItems_Sk" />
+          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tblInvent__Produ__04E4BC85" FromRole="tblInventory_Sk" ToRole="tblProducts_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblInvent__Selle__05D8E0BE" FromRole="tblInventory_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblItems_Sk" Relationship="Self.FK__tblItems___Inven__2FCF1A8A" FromRole="tblInventory_Sk" ToRole="tblItems_Sk" />
         </EntityType>
         <EntityType Name="tblItems_Sk">
           <Key>
@@ -1158,8 +1278,8 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblItems___Inven__08961D2F" FromRole="tblItems_Sk" ToRole="tblInventory_Sk" />
-          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblItems___Order__07A1F8F6" FromRole="tblItems_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblItems___Inven__2FCF1A8A" FromRole="tblItems_Sk" ToRole="tblInventory_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblItems___Order__30C33EC3" FromRole="tblItems_Sk" ToRole="tblOrders_Sk" />
         </EntityType>
         <EntityType Name="tblNotifications_Sk">
           <Key>
@@ -1178,9 +1298,9 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblNotifi__Buyer__2CD37DA5" FromRole="tblNotifications_Sk" ToRole="tblBuyers_Sk" />
-          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblNotifi__Order__2BDF596C" FromRole="tblNotifications_Sk" ToRole="tblOrders_Sk" />
-          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblNotifi__Selle__2AEB3533" FromRole="tblNotifications_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblNotifi__Buyer__55009F39" FromRole="tblNotifications_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblNotifi__Order__55F4C372" FromRole="tblNotifications_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblNotifi__Selle__56E8E7AB" FromRole="tblNotifications_Sk" ToRole="tblSellers_Sk" />
         </EntityType>
         <EntityType Name="tblOrders_Sk">
           <Key>
@@ -1199,13 +1319,14 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblOrders__Buyer__76776CF4" FromRole="tblOrders_Sk" ToRole="tblBuyers_Sk" />
-          <NavigationProperty Name="tblItems_Sk" Relationship="Self.FK__tblItems___Order__07A1F8F6" FromRole="tblOrders_Sk" ToRole="tblItems_Sk" />
-          <NavigationProperty Name="tblNotifications_Sk" Relationship="Self.FK__tblNotifi__Order__2BDF596C" FromRole="tblOrders_Sk" ToRole="tblNotifications_Sk" />
-          <NavigationProperty Name="tblOrderStatus_Sk" Relationship="Self.FK__tblOrderS__Order__00F4FB67" FromRole="tblOrders_Sk" ToRole="tblOrderStatus_Sk" />
-          <NavigationProperty Name="tblPaymentMethod_Sk" Relationship="Self.FK__tblOrders__Payme__7A47FDD8" FromRole="tblOrders_Sk" ToRole="tblPaymentMethod_Sk" />
-          <NavigationProperty Name="tblShippingMethod_Sk" Relationship="Self.FK__tblOrders__Shipp__785FB566" FromRole="tblOrders_Sk" ToRole="tblShippingMethod_Sk" />
-          <NavigationProperty Name="tbltemHistory_Sk" Relationship="Self.FK__tbltemHis__Order__10373EF7" FromRole="tblOrders_Sk" ToRole="tbltemHistory_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblOrders__Buyer__2739D489" FromRole="tblOrders_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblItems_Sk" Relationship="Self.FK__tblItems___Order__30C33EC3" FromRole="tblOrders_Sk" ToRole="tblItems_Sk" />
+          <NavigationProperty Name="tblNotifications_Sk" Relationship="Self.FK__tblNotifi__Order__55F4C372" FromRole="tblOrders_Sk" ToRole="tblNotifications_Sk" />
+          <NavigationProperty Name="tblOrderStatus_Sk" Relationship="Self.FK__tblOrderS__Order__5D95E53A" FromRole="tblOrders_Sk" ToRole="tblOrderStatus_Sk" />
+          <NavigationProperty Name="tblPaymentMethod_Sk" Relationship="Self.FK__tblOrders__Payme__282DF8C2" FromRole="tblOrders_Sk" ToRole="tblPaymentMethod_Sk" />
+          <NavigationProperty Name="tblShippingMethod_Sk" Relationship="Self.FK__tblOrders__Shipp__160F4887" FromRole="tblOrders_Sk" ToRole="tblShippingMethod_Sk" />
+          <NavigationProperty Name="tblShippingMethod_Sk1" Relationship="Self.FK__tblOrders__Shipp__29221CFB" FromRole="tblOrders_Sk" ToRole="tblShippingMethod_Sk" />
+          <NavigationProperty Name="tbltemHistory_Sk" Relationship="Self.FK__tbltemHis__Order__37703C52" FromRole="tblOrders_Sk" ToRole="tbltemHistory_Sk" />
         </EntityType>
         <EntityType Name="tblOrderStatus_Sk">
           <Key>
@@ -1223,7 +1344,7 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrderS__Order__00F4FB67" FromRole="tblOrderStatus_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrderS__Order__5D95E53A" FromRole="tblOrderStatus_Sk" ToRole="tblOrders_Sk" />
         </EntityType>
         <EntityType Name="tblPaymentMethod_Sk">
           <Key>
@@ -1239,8 +1360,8 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblPaymen__BankI__6FCA6F65" FromRole="tblPaymentMethod_Sk" ToRole="tblBank_Sk" />
-          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Payme__7A47FDD8" FromRole="tblPaymentMethod_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblPaymen__BankI__25518C17" FromRole="tblPaymentMethod_Sk" ToRole="tblBank_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Payme__282DF8C2" FromRole="tblPaymentMethod_Sk" ToRole="tblOrders_Sk" />
         </EntityType>
         <EntityType Name="tblProducts_Sk">
           <Key>
@@ -1259,9 +1380,9 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblInvent__Produ__62707447" FromRole="tblProducts_Sk" ToRole="tblInventory_Sk" />
-          <NavigationProperty Name="tblProductsCategory_Sk" Relationship="Self.FK__tblProduc__Produ__5BC376B8" FromRole="tblProducts_Sk" ToRole="tblProductsCategory_Sk" />
-          <NavigationProperty Name="tbltemHistory_Sk" Relationship="Self.FK__tbltemHis__Produ__0F431ABE" FromRole="tblProducts_Sk" ToRole="tbltemHistory_Sk" />
+          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblInvent__Produ__04E4BC85" FromRole="tblProducts_Sk" ToRole="tblInventory_Sk" />
+          <NavigationProperty Name="tblProductsCategory_Sk" Relationship="Self.FK__tblProduc__Produ__7E37BEF6" FromRole="tblProducts_Sk" ToRole="tblProductsCategory_Sk" />
+          <NavigationProperty Name="tbltemHistory_Sk" Relationship="Self.FK__tbltemHis__Produ__3864608B" FromRole="tblProducts_Sk" ToRole="tbltemHistory_Sk" />
         </EntityType>
         <EntityType Name="tblProductsCategory_Sk">
           <Key>
@@ -1277,7 +1398,7 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tblProduc__Produ__5BC376B8" FromRole="tblProductsCategory_Sk" ToRole="tblProducts_Sk" />
+          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tblProduc__Produ__7E37BEF6" FromRole="tblProductsCategory_Sk" ToRole="tblProducts_Sk" />
         </EntityType>
         <EntityType Name="tblRole_Sk">
           <Key>
@@ -1292,7 +1413,7 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblUser_S__RoleI__1BDDFBCD" FromRole="tblRole_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblUser_S__RoleI__4316F928" FromRole="tblRole_Sk" ToRole="tblUser_Sk" />
         </EntityType>
         <EntityType Name="tblSellers_Sk">
           <Key>
@@ -1302,7 +1423,6 @@
           <Property Name="SellerStatusId" Type="Int32" Nullable="false" />
           <Property Name="BusinessTypeId" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="Int32" Nullable="false" />
-          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="BankId" Type="Int32" Nullable="false" />
           <Property Name="AccountNumber" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" />
@@ -1312,12 +1432,12 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblSeller__BankI__46C859D2" FromRole="tblSellers_Sk" ToRole="tblBank_Sk" />
-          <NavigationProperty Name="tblBusinessType_Sk" Relationship="Self.FK__tblSeller__Busin__43EBED27" FromRole="tblSellers_Sk" ToRole="tblBusinessType_Sk" />
-          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblInvent__Selle__63649880" FromRole="tblSellers_Sk" ToRole="tblInventory_Sk" />
-          <NavigationProperty Name="tblNotifications_Sk" Relationship="Self.FK__tblNotifi__Selle__2AEB3533" FromRole="tblSellers_Sk" ToRole="tblNotifications_Sk" />
-          <NavigationProperty Name="tblSellerStatus_Sk" Relationship="Self.FK__tblSeller__Selle__42F7C8EE" FromRole="tblSellers_Sk" ToRole="tblSellerStatus_Sk" />
-          <NavigationProperty Name="tbltemHistory_Sk" Relationship="Self.FK__tbltemHis__Selle__112B6330" FromRole="tblSellers_Sk" ToRole="tbltemHistory_Sk" />
+          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblSeller__BankI__6EF57B66" FromRole="tblSellers_Sk" ToRole="tblBank_Sk" />
+          <NavigationProperty Name="tblBusinessType_Sk" Relationship="Self.FK__tblSeller__Busin__6FE99F9F" FromRole="tblSellers_Sk" ToRole="tblBusinessType_Sk" />
+          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblInvent__Selle__05D8E0BE" FromRole="tblSellers_Sk" ToRole="tblInventory_Sk" />
+          <NavigationProperty Name="tblNotifications_Sk" Relationship="Self.FK__tblNotifi__Selle__56E8E7AB" FromRole="tblSellers_Sk" ToRole="tblNotifications_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk" Relationship="Self.FK__tblSeller__Selle__70DDC3D8" FromRole="tblSellers_Sk" ToRole="tblSellerStatus_Sk" />
+          <NavigationProperty Name="tbltemHistory_Sk" Relationship="Self.FK__tbltemHis__Selle__395884C4" FromRole="tblSellers_Sk" ToRole="tbltemHistory_Sk" />
         </EntityType>
         <EntityType Name="tblSellerStatus_Sk">
           <Key>
@@ -1335,8 +1455,10 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__Selle__42F7C8EE" FromRole="tblSellerStatus_Sk" ToRole="tblSellers_Sk" />
-          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblSeller__UserI__3691F209" FromRole="tblSellerStatus_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__Selle__70DDC3D8" FromRole="tblSellerStatus_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblSeller__UserI__5DCAEF64" FromRole="tblSellerStatus_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblUser_Sk1" Relationship="Self.FK__tblSeller__UserI__656C112C" FromRole="tblSellerStatus_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblUser_Sk2" Relationship="Self.FK__tblSeller__UserI__6754599E" FromRole="tblSellerStatus_Sk" ToRole="tblUser_Sk" />
         </EntityType>
         <EntityType Name="tblShippingMethod_Sk">
           <Key>
@@ -1353,22 +1475,26 @@
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Duration" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Shipp__785FB566" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Shipp__160F4887" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblOrders_Sk1" Relationship="Self.FK__tblOrders__Shipp__29221CFB" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
         </EntityType>
-        <EntityType Name="tblStates_AT">
+        <EntityType Name="tblState_Sk">
           <Key>
-            <PropertyRef Name="StateID" />
+            <PropertyRef Name="StateId" />
           </Key>
-          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryID" Type="Int32" />
-          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCity_Sk" Relationship="Self.FK__tblCity_S__State__36B12243" FromRole="tblState_Sk" ToRole="tblCity_Sk" />
+          <NavigationProperty Name="tblCountry_Sk" Relationship="Self.FK__tblState___Count__300424B4" FromRole="tblState_Sk" ToRole="tblCountry_Sk" />
+          <NavigationProperty Name="tblCountry_Sk1" Relationship="Self.FK__tblState___Count__5F7E2DAC" FromRole="tblState_Sk" ToRole="tblCountry_Sk" />
         </EntityType>
         <EntityType Name="tbltemHistory_Sk">
           <Key>
@@ -1389,9 +1515,9 @@
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tbltemHis__Order__10373EF7" FromRole="tbltemHistory_Sk" ToRole="tblOrders_Sk" />
-          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tbltemHis__Produ__0F431ABE" FromRole="tbltemHistory_Sk" ToRole="tblProducts_Sk" />
-          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tbltemHis__Selle__112B6330" FromRole="tbltemHistory_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tbltemHis__Order__37703C52" FromRole="tbltemHistory_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tbltemHis__Produ__3864608B" FromRole="tbltemHistory_Sk" ToRole="tblProducts_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tbltemHis__Selle__395884C4" FromRole="tbltemHistory_Sk" ToRole="tblSellers_Sk" />
         </EntityType>
         <EntityType Name="tblUser_Sk">
           <Key>
@@ -1413,13 +1539,15 @@
           <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblAddres__UserI__228AF95C" FromRole="tblUser_Sk" ToRole="tblAddress_Sk" />
-          <NavigationProperty Name="tblAdminTasks_Sk" Relationship="Self.FK__tblAdminT__UserI__2A2C1B24" FromRole="tblUser_Sk" ToRole="tblAdminTasks_Sk" />
-          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblBuyers__UserI__4D755761" FromRole="tblUser_Sk" ToRole="tblBuyers_Sk" />
-          <NavigationProperty Name="tblRole_Sk" Relationship="Self.FK__tblUser_S__RoleI__1BDDFBCD" FromRole="tblUser_Sk" ToRole="tblRole_Sk" />
-          <NavigationProperty Name="tblSellerStatus_Sk" Relationship="Self.FK__tblSeller__UserI__3691F209" FromRole="tblUser_Sk" ToRole="tblSellerStatus_Sk" />
+          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblAddres__UserI__4AB81AF0" FromRole="tblUser_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblAdminTasks_Sk" Relationship="Self.FK__tblAdminT__UserI__5165187F" FromRole="tblUser_Sk" ToRole="tblAdminTasks_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblBuyers__UserI__1EA48E88" FromRole="tblUser_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblRole_Sk" Relationship="Self.FK__tblUser_S__RoleI__4316F928" FromRole="tblUser_Sk" ToRole="tblRole_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk" Relationship="Self.FK__tblSeller__UserI__5DCAEF64" FromRole="tblUser_Sk" ToRole="tblSellerStatus_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk1" Relationship="Self.FK__tblSeller__UserI__656C112C" FromRole="tblUser_Sk" ToRole="tblSellerStatus_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk2" Relationship="Self.FK__tblSeller__UserI__6754599E" FromRole="tblUser_Sk" ToRole="tblSellerStatus_Sk" />
         </EntityType>
-        <Association Name="FK__tblAddres__CityI__237F1D95">
+        <Association Name="FK__tblAddres__CityI__49C3F6B7">
           <End Role="tblCity_Sk" Type="Self.tblCity_Sk" Multiplicity="1" />
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1431,7 +1559,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAddres__UserI__228AF95C">
+        <Association Name="FK__tblAddres__UserI__4AB81AF0">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1443,7 +1571,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBuyers__Billi__4F5D9FD3">
+        <Association Name="FK__tblBuyers__Billi__1CBC4616">
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1455,7 +1583,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBuyers__Shipp__4E697B9A">
+        <Association Name="FK__tblBuyers__Shipp__1DB06A4F">
           <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1467,7 +1595,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblAdminT__UserI__2A2C1B24">
+        <Association Name="FK__tblAdminT__UserI__5165187F">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblAdminTasks_Sk" Type="Self.tblAdminTasks_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1479,7 +1607,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBankNa__BankI__17D860BF">
+        <Association Name="FK__tblBankNa__BankI__40058253">
           <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
           <End Role="tblBankNameUser_Sk" Type="Self.tblBankNameUser_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1491,7 +1619,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblPaymen__BankI__6FCA6F65">
+        <Association Name="FK__tblPaymen__BankI__25518C17">
           <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
           <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1503,7 +1631,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__BankI__46C859D2">
+        <Association Name="FK__tblSeller__BankI__6EF57B66">
           <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1515,7 +1643,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBorrow__BankN__243E37A4">
+        <Association Name="FK__tblBorrow__BankN__4D5F7D71">
           <End Role="tblBankNameUser_Sk" Type="Self.tblBankNameUser_Sk" Multiplicity="1" />
           <End Role="tblBorrowMoney_Sk" Type="Self.tblBorrowMoney_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1527,7 +1655,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblDebitC__BankN__3C15C135">
+        <Association Name="FK__tblDebitC__BankN__46B27FE2">
           <End Role="tblBankNameUser_Sk" Type="Self.tblBankNameUser_Sk" Multiplicity="1" />
           <End Role="tblDebitCards_Sk" Type="Self.tblDebitCards_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1539,7 +1667,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__Busin__43EBED27">
+        <Association Name="FK__tblSeller__Busin__6FE99F9F">
           <End Role="tblBusinessType_Sk" Type="Self.tblBusinessType_Sk" Multiplicity="1" />
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1551,7 +1679,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblBuyers__UserI__4D755761">
+        <Association Name="FK__tblBuyers__UserI__1EA48E88">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1563,7 +1691,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblNotifi__Buyer__2CD37DA5">
+        <Association Name="FK__tblNotifi__Buyer__55009F39">
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
           <End Role="tblNotifications_Sk" Type="Self.tblNotifications_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1575,7 +1703,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrders__Buyer__76776CF4">
+        <Association Name="FK__tblOrders__Buyer__2739D489">
           <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1587,7 +1715,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblInvent__Produ__62707447">
+        <Association Name="FK__tblCity_S__State__36B12243">
+          <End Role="tblState_Sk" Type="Self.tblState_Sk" Multiplicity="1" />
+          <End Role="tblCity_Sk" Type="Self.tblCity_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState_Sk">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblCity_Sk">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblState___Count__300424B4">
+          <End Role="tblCountry_Sk" Type="Self.tblCountry_Sk" Multiplicity="1" />
+          <End Role="tblState_Sk" Type="Self.tblState_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry_Sk">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblState_Sk">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblState___Count__5F7E2DAC">
+          <End Role="tblCountry_Sk" Type="Self.tblCountry_Sk" Multiplicity="1" />
+          <End Role="tblState_Sk" Type="Self.tblState_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry_Sk">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblState_Sk">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblInvent__Produ__04E4BC85">
           <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="1" />
           <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1599,7 +1763,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblInvent__Selle__63649880">
+        <Association Name="FK__tblInvent__Selle__05D8E0BE">
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
           <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1611,7 +1775,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblItems___Inven__08961D2F">
+        <Association Name="FK__tblItems___Inven__2FCF1A8A">
           <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="1" />
           <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1623,7 +1787,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblItems___Order__07A1F8F6">
+        <Association Name="FK__tblItems___Order__30C33EC3">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1635,7 +1799,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblNotifi__Order__2BDF596C">
+        <Association Name="FK__tblNotifi__Order__55F4C372">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tblNotifications_Sk" Type="Self.tblNotifications_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1647,7 +1811,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblNotifi__Selle__2AEB3533">
+        <Association Name="FK__tblNotifi__Selle__56E8E7AB">
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
           <End Role="tblNotifications_Sk" Type="Self.tblNotifications_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1659,7 +1823,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrderS__Order__00F4FB67">
+        <Association Name="FK__tblOrderS__Order__5D95E53A">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tblOrderStatus_Sk" Type="Self.tblOrderStatus_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1671,7 +1835,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrders__Payme__7A47FDD8">
+        <Association Name="FK__tblOrders__Payme__282DF8C2">
           <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="1" />
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1683,7 +1847,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOrders__Shipp__785FB566">
+        <Association Name="FK__tblOrders__Shipp__160F4887">
           <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1695,7 +1859,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbltemHis__Order__10373EF7">
+        <Association Name="FK__tblOrders__Shipp__29221CFB">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbltemHis__Order__37703C52">
           <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
           <End Role="tbltemHistory_Sk" Type="Self.tbltemHistory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1707,7 +1883,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblProduc__Produ__5BC376B8">
+        <Association Name="FK__tblProduc__Produ__7E37BEF6">
           <End Role="tblProductsCategory_Sk" Type="Self.tblProductsCategory_Sk" Multiplicity="1" />
           <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1719,7 +1895,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbltemHis__Produ__0F431ABE">
+        <Association Name="FK__tbltemHis__Produ__3864608B">
           <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="1" />
           <End Role="tbltemHistory_Sk" Type="Self.tbltemHistory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1731,7 +1907,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblUser_S__RoleI__1BDDFBCD">
+        <Association Name="FK__tblUser_S__RoleI__4316F928">
           <End Role="tblRole_Sk" Type="Self.tblRole_Sk" Multiplicity="1" />
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1743,7 +1919,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__Selle__42F7C8EE">
+        <Association Name="FK__tblSeller__Selle__70DDC3D8">
           <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="1" />
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1755,7 +1931,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbltemHis__Selle__112B6330">
+        <Association Name="FK__tbltemHis__Selle__395884C4">
           <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
           <End Role="tbltemHistory_Sk" Type="Self.tbltemHistory_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1767,7 +1943,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblSeller__UserI__3691F209">
+        <Association Name="FK__tblSeller__UserI__5DCAEF64">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__656C112C">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__6754599E">
           <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
           <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1802,132 +2002,153 @@
           <EntitySet Name="tblSellers_Sk" EntityType="Self.tblSellers_Sk" />
           <EntitySet Name="tblSellerStatus_Sk" EntityType="Self.tblSellerStatus_Sk" />
           <EntitySet Name="tblShippingMethod_Sk" EntityType="Self.tblShippingMethod_Sk" />
-          <EntitySet Name="tblStates_AT" EntityType="Self.tblStates_AT" />
+          <EntitySet Name="tblState_Sk" EntityType="Self.tblState_Sk" />
           <EntitySet Name="tbltemHistory_Sk" EntityType="Self.tbltemHistory_Sk" />
           <EntitySet Name="tblUser_Sk" EntityType="Self.tblUser_Sk" />
-          <AssociationSet Name="FK__tblAddres__CityI__237F1D95" Association="Self.FK__tblAddres__CityI__237F1D95">
+          <AssociationSet Name="FK__tblAddres__CityI__49C3F6B7" Association="Self.FK__tblAddres__CityI__49C3F6B7">
             <End Role="tblCity_Sk" EntitySet="tblCity_Sk" />
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAddres__UserI__228AF95C" Association="Self.FK__tblAddres__UserI__228AF95C">
+          <AssociationSet Name="FK__tblAddres__UserI__4AB81AF0" Association="Self.FK__tblAddres__UserI__4AB81AF0">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBuyers__Billi__4F5D9FD3" Association="Self.FK__tblBuyers__Billi__4F5D9FD3">
+          <AssociationSet Name="FK__tblBuyers__Billi__1CBC4616" Association="Self.FK__tblBuyers__Billi__1CBC4616">
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBuyers__Shipp__4E697B9A" Association="Self.FK__tblBuyers__Shipp__4E697B9A">
+          <AssociationSet Name="FK__tblBuyers__Shipp__1DB06A4F" Association="Self.FK__tblBuyers__Shipp__1DB06A4F">
             <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblAdminT__UserI__2A2C1B24" Association="Self.FK__tblAdminT__UserI__2A2C1B24">
+          <AssociationSet Name="FK__tblAdminT__UserI__5165187F" Association="Self.FK__tblAdminT__UserI__5165187F">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblAdminTasks_Sk" EntitySet="tblAdminTasks_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBankNa__BankI__17D860BF" Association="Self.FK__tblBankNa__BankI__17D860BF">
+          <AssociationSet Name="FK__tblBankNa__BankI__40058253" Association="Self.FK__tblBankNa__BankI__40058253">
             <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
             <End Role="tblBankNameUser_Sk" EntitySet="tblBankNameUser_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblPaymen__BankI__6FCA6F65" Association="Self.FK__tblPaymen__BankI__6FCA6F65">
+          <AssociationSet Name="FK__tblPaymen__BankI__25518C17" Association="Self.FK__tblPaymen__BankI__25518C17">
             <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
             <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__BankI__46C859D2" Association="Self.FK__tblSeller__BankI__46C859D2">
+          <AssociationSet Name="FK__tblSeller__BankI__6EF57B66" Association="Self.FK__tblSeller__BankI__6EF57B66">
             <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBorrow__BankN__243E37A4" Association="Self.FK__tblBorrow__BankN__243E37A4">
+          <AssociationSet Name="FK__tblBorrow__BankN__4D5F7D71" Association="Self.FK__tblBorrow__BankN__4D5F7D71">
             <End Role="tblBankNameUser_Sk" EntitySet="tblBankNameUser_Sk" />
             <End Role="tblBorrowMoney_Sk" EntitySet="tblBorrowMoney_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblDebitC__BankN__3C15C135" Association="Self.FK__tblDebitC__BankN__3C15C135">
+          <AssociationSet Name="FK__tblDebitC__BankN__46B27FE2" Association="Self.FK__tblDebitC__BankN__46B27FE2">
             <End Role="tblBankNameUser_Sk" EntitySet="tblBankNameUser_Sk" />
             <End Role="tblDebitCards_Sk" EntitySet="tblDebitCards_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__Busin__43EBED27" Association="Self.FK__tblSeller__Busin__43EBED27">
+          <AssociationSet Name="FK__tblSeller__Busin__6FE99F9F" Association="Self.FK__tblSeller__Busin__6FE99F9F">
             <End Role="tblBusinessType_Sk" EntitySet="tblBusinessType_Sk" />
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblBuyers__UserI__4D755761" Association="Self.FK__tblBuyers__UserI__4D755761">
+          <AssociationSet Name="FK__tblBuyers__UserI__1EA48E88" Association="Self.FK__tblBuyers__UserI__1EA48E88">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblNotifi__Buyer__2CD37DA5" Association="Self.FK__tblNotifi__Buyer__2CD37DA5">
+          <AssociationSet Name="FK__tblNotifi__Buyer__55009F39" Association="Self.FK__tblNotifi__Buyer__55009F39">
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
             <End Role="tblNotifications_Sk" EntitySet="tblNotifications_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrders__Buyer__76776CF4" Association="Self.FK__tblOrders__Buyer__76776CF4">
+          <AssociationSet Name="FK__tblOrders__Buyer__2739D489" Association="Self.FK__tblOrders__Buyer__2739D489">
             <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblInvent__Produ__62707447" Association="Self.FK__tblInvent__Produ__62707447">
+          <AssociationSet Name="FK__tblCity_S__State__36B12243" Association="Self.FK__tblCity_S__State__36B12243">
+            <End Role="tblState_Sk" EntitySet="tblState_Sk" />
+            <End Role="tblCity_Sk" EntitySet="tblCity_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblState___Count__300424B4" Association="Self.FK__tblState___Count__300424B4">
+            <End Role="tblCountry_Sk" EntitySet="tblCountry_Sk" />
+            <End Role="tblState_Sk" EntitySet="tblState_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblState___Count__5F7E2DAC" Association="Self.FK__tblState___Count__5F7E2DAC">
+            <End Role="tblCountry_Sk" EntitySet="tblCountry_Sk" />
+            <End Role="tblState_Sk" EntitySet="tblState_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblInvent__Produ__04E4BC85" Association="Self.FK__tblInvent__Produ__04E4BC85">
             <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
             <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblInvent__Selle__63649880" Association="Self.FK__tblInvent__Selle__63649880">
+          <AssociationSet Name="FK__tblInvent__Selle__05D8E0BE" Association="Self.FK__tblInvent__Selle__05D8E0BE">
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
             <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblItems___Inven__08961D2F" Association="Self.FK__tblItems___Inven__08961D2F">
+          <AssociationSet Name="FK__tblItems___Inven__2FCF1A8A" Association="Self.FK__tblItems___Inven__2FCF1A8A">
             <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
             <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblItems___Order__07A1F8F6" Association="Self.FK__tblItems___Order__07A1F8F6">
+          <AssociationSet Name="FK__tblItems___Order__30C33EC3" Association="Self.FK__tblItems___Order__30C33EC3">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblNotifi__Order__2BDF596C" Association="Self.FK__tblNotifi__Order__2BDF596C">
+          <AssociationSet Name="FK__tblNotifi__Order__55F4C372" Association="Self.FK__tblNotifi__Order__55F4C372">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tblNotifications_Sk" EntitySet="tblNotifications_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblNotifi__Selle__2AEB3533" Association="Self.FK__tblNotifi__Selle__2AEB3533">
+          <AssociationSet Name="FK__tblNotifi__Selle__56E8E7AB" Association="Self.FK__tblNotifi__Selle__56E8E7AB">
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
             <End Role="tblNotifications_Sk" EntitySet="tblNotifications_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrderS__Order__00F4FB67" Association="Self.FK__tblOrderS__Order__00F4FB67">
+          <AssociationSet Name="FK__tblOrderS__Order__5D95E53A" Association="Self.FK__tblOrderS__Order__5D95E53A">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tblOrderStatus_Sk" EntitySet="tblOrderStatus_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrders__Payme__7A47FDD8" Association="Self.FK__tblOrders__Payme__7A47FDD8">
+          <AssociationSet Name="FK__tblOrders__Payme__282DF8C2" Association="Self.FK__tblOrders__Payme__282DF8C2">
             <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOrders__Shipp__785FB566" Association="Self.FK__tblOrders__Shipp__785FB566">
+          <AssociationSet Name="FK__tblOrders__Shipp__160F4887" Association="Self.FK__tblOrders__Shipp__160F4887">
             <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbltemHis__Order__10373EF7" Association="Self.FK__tbltemHis__Order__10373EF7">
+          <AssociationSet Name="FK__tblOrders__Shipp__29221CFB" Association="Self.FK__tblOrders__Shipp__29221CFB">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbltemHis__Order__37703C52" Association="Self.FK__tbltemHis__Order__37703C52">
             <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
             <End Role="tbltemHistory_Sk" EntitySet="tbltemHistory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblProduc__Produ__5BC376B8" Association="Self.FK__tblProduc__Produ__5BC376B8">
+          <AssociationSet Name="FK__tblProduc__Produ__7E37BEF6" Association="Self.FK__tblProduc__Produ__7E37BEF6">
             <End Role="tblProductsCategory_Sk" EntitySet="tblProductsCategory_Sk" />
             <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbltemHis__Produ__0F431ABE" Association="Self.FK__tbltemHis__Produ__0F431ABE">
+          <AssociationSet Name="FK__tbltemHis__Produ__3864608B" Association="Self.FK__tbltemHis__Produ__3864608B">
             <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
             <End Role="tbltemHistory_Sk" EntitySet="tbltemHistory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblUser_S__RoleI__1BDDFBCD" Association="Self.FK__tblUser_S__RoleI__1BDDFBCD">
+          <AssociationSet Name="FK__tblUser_S__RoleI__4316F928" Association="Self.FK__tblUser_S__RoleI__4316F928">
             <End Role="tblRole_Sk" EntitySet="tblRole_Sk" />
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__Selle__42F7C8EE" Association="Self.FK__tblSeller__Selle__42F7C8EE">
+          <AssociationSet Name="FK__tblSeller__Selle__70DDC3D8" Association="Self.FK__tblSeller__Selle__70DDC3D8">
             <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbltemHis__Selle__112B6330" Association="Self.FK__tbltemHis__Selle__112B6330">
+          <AssociationSet Name="FK__tbltemHis__Selle__395884C4" Association="Self.FK__tbltemHis__Selle__395884C4">
             <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
             <End Role="tbltemHistory_Sk" EntitySet="tbltemHistory_Sk" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblSeller__UserI__3691F209" Association="Self.FK__tblSeller__UserI__3691F209">
+          <AssociationSet Name="FK__tblSeller__UserI__5DCAEF64" Association="Self.FK__tblSeller__UserI__5DCAEF64">
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
           </AssociationSet>
-          <FunctionImport Name="GetUserDetails_Sk" ReturnType="Collection(sdirecttestdbModel.GetUserDetails_Sk_Result)">
-          <Parameter Name="num" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <AssociationSet Name="FK__tblSeller__UserI__656C112C" Association="Self.FK__tblSeller__UserI__656C112C">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__6754599E" Association="Self.FK__tblSeller__UserI__6754599E">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
           <FunctionImport Name="AddProduct_Sk">
             <Parameter Name="ProductCategoryId" Mode="In" Type="Int32" />
             <Parameter Name="ProductName" Mode="In" Type="String" />
@@ -1939,6 +2160,30 @@
             <Parameter Name="PricePerUnit" Mode="In" Type="Int32" />
             <Parameter Name="ProductCount" Mode="In" Type="Int32" />
             <Parameter Name="SellerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserDetails_Sk" ReturnType="Collection(sdirecttestdbModel.GetUserDetails_Sk_Result)">
+            <Parameter Name="num" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RegisterUser_Sk">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="Mobile" Mode="In" Type="Int64" />
+            <Parameter Name="CityName1" Mode="In" Type="String" />
+            <Parameter Name="Pincode1" Mode="In" Type="Int64" />
+            <Parameter Name="Type1" Mode="In" Type="String" />
+            <Parameter Name="Address1" Mode="In" Type="String" />
+            <Parameter Name="Type2" Mode="In" Type="String" />
+            <Parameter Name="CityName2" Mode="In" Type="String" />
+            <Parameter Name="Pincode2" Mode="In" Type="Int64" />
+            <Parameter Name="Address2" Mode="In" Type="String" />
+            <Parameter Name="IsSeller" Mode="In" Type="Boolean" />
+            <Parameter Name="BusinessType" Mode="In" Type="String" />
+            <Parameter Name="BankName" Mode="In" Type="String" />
+            <Parameter Name="AccountNumber" Mode="In" Type="Int64" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetUserDetails_Sk_Result">
@@ -2293,7 +2538,6 @@
                 <ScalarProperty Name="SellerStatusId" ColumnName="SellerStatusId" />
                 <ScalarProperty Name="BusinessTypeId" ColumnName="BusinessTypeId" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
                 <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -2341,19 +2585,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblStates_AT">
-            <EntityTypeMapping TypeName="sdirecttestdbModel.tblStates_AT">
-              <MappingFragment StoreEntitySet="tblStates_AT">
-                <ScalarProperty Name="StateID" ColumnName="StateID" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <EntitySetMapping Name="tblState_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblState_Sk">
+              <MappingFragment StoreEntitySet="tblState_Sk">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2400,6 +2644,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddProduct_Sk" FunctionName="sdirecttestdbModel.Store.AddProduct_Sk" />
           <FunctionImportMapping FunctionImportName="GetUserDetails_Sk" FunctionName="sdirecttestdbModel.Store.GetUserDetails_Sk">
             <ResultMapping>
               <ComplexTypeMapping TypeName="sdirecttestdbModel.GetUserDetails_Sk_Result">
@@ -2418,7 +2663,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="AddProduct_Sk" FunctionName="sdirecttestdbModel.Store.AddProduct_Sk" />
+          <FunctionImportMapping FunctionImportName="RegisterUser_Sk" FunctionName="sdirecttestdbModel.Store.RegisterUser_Sk" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

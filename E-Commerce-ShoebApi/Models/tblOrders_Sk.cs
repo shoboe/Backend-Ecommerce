@@ -46,6 +46,7 @@ namespace E_Commerce_ShoebApi.Models
         public virtual ICollection<tblOrderStatus_Sk> tblOrderStatus_Sk { get; set; }
         public virtual tblPaymentMethod_Sk tblPaymentMethod_Sk { get; set; }
         public virtual tblShippingMethod_Sk tblShippingMethod_Sk { get; set; }
+        public virtual tblShippingMethod_Sk tblShippingMethod_Sk1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbltemHistory_Sk> tbltemHistory_Sk { get; set; }
     }
