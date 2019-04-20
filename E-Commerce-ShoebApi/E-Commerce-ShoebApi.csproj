@@ -141,10 +141,14 @@
     <Compile Include="BAL\BAL_ISearchProduct.cs" />
     <Compile Include="BAL\BAL_NewProduct.cs" />
     <Compile Include="BAL\BAL_PostEmailPw.cs" />
+    <Compile Include="BAL\BAL_IRegisterUser.cs" />
+    <Compile Include="BAL\BAL_RegisterUser.cs" />
     <Compile Include="BAL\BAL_SearchProduct.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="DAL\AddBankAccountView.cs" />
-    <Compile Include="DAL\AddProductView.cs" />
+    <Compile Include="DAL\DAL_IRegisterUser.cs" />
+    <Compile Include="DAL\DAL_RegisterUser.cs" />
+    <Compile Include="Models\AddProductView.cs" />
     <Compile Include="DAL\DAL_AddBankAccount.cs" />
     <Compile Include="DAL\DAL_Cart.cs" />
     <Compile Include="DAL\DAL_IAddBankAccount.cs" />
@@ -179,6 +183,7 @@
     <Compile Include="Models\GetUserDetails_Sk_Result.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterUserView.cs" />
     <Compile Include="Models\tblAddress_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>

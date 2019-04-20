@@ -20,12 +20,18 @@ namespace E_Commerce_ShoebApi.Controllers
         BAL_ISearchProduct BAL_itblProducts;
         BAL_IPostEmailPw BAL_iPostEmailPw;
         BAL_INewProduct BAL_iNewProduct;
+        BAL_IAddBankAccount BAL_iAddBankAccount;
+        BAL_IRegisterUser BAL_iRegisterUser;
 
-        public ViewController(BAL_ISearchProduct BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw, BAL_INewProduct BAL_iNewProduct)
+        public ViewController(BAL_ISearchProduct BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw,
+            BAL_INewProduct BAL_iNewProduct, BAL_IAddBankAccount BAL_iAddBankAccount,
+             BAL_IRegisterUser BAL_iRegisterUser)
         {
             this.BAL_itblProducts = BAL_itblProducts;
             this.BAL_iPostEmailPw = BAL_iPostEmailPw;
             this.BAL_iNewProduct = BAL_iNewProduct;
+            this.BAL_iAddBankAccount = BAL_iAddBankAccount;
+            this.BAL_iRegisterUser = BAL_iRegisterUser;
         }
 
         [HttpGet]
@@ -50,7 +56,7 @@ namespace E_Commerce_ShoebApi.Controllers
       
 
         [HttpPost]
-        [Route("api/view/PostNewProduct")]
+        [Route("api/view/RegisterNewProduct")]
         public IHttpActionResult PostNewProduct([FromBody]AddProductView newProduct)
         {
             if (ModelState.IsValid)
@@ -61,6 +67,19 @@ namespace E_Commerce_ShoebApi.Controllers
             return Content(HttpStatusCode.BadRequest, "Request Failed");
 
         }
+        [HttpPost]
+        [Route("api/view/RegisterNewUser")]
+        public IHttpActionResult PostRegisterNewUser([FromBody]RegisterUserView user)
+        {
+            if (ModelState.IsValid)
+            {
+                BAL_iRegisterUser.Register(user);
+                return Ok();
+            }
+            return Content(HttpStatusCode.BadRequest, "Request Failed");
+
+        }
+
 
         //[HttpDelete]
         //[Route("api/values/Delete/{id}")]

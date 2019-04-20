@@ -70,6 +70,10 @@ namespace E_Commerce_ShoebApi.App_Start
             kernel.Bind<DAL_IPostEmailPw>().To<DAL_PostEmailPw>();
             kernel.Bind<BAL_INewProduct>().To<BAL_NewProduct>();
             kernel.Bind<DAL_INewProduct>().To<DAL_NewProduct>();
+            kernel.Bind<BAL_IAddBankAccount>().To<BAL_AddBankAccount>();
+            kernel.Bind<DAL_IAddBankAccount>().To<DAL_AddBankAccount>();
+            kernel.Bind<BAL_IRegisterUser>().To<BAL_RegisterUser>();
+            kernel.Bind<DAL_IRegisterUser>().To<DAL_RegisterUser>();
         }        
     }
 }
