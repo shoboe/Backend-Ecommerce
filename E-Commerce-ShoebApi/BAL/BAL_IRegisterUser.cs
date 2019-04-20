@@ -10,5 +10,6 @@ namespace E_Commerce_ShoebApi.BAL
     public interface BAL_IRegisterUser
     {
         void Register(RegisterUserView user);
+
     }
 }
