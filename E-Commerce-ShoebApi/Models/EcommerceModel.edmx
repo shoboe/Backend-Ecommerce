@@ -2193,6 +2193,7 @@
           <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="1" />
           <Property Type="String" Name="Address" Nullable="false" MaxLength="100" />
           <Property Type="Int64" Name="Pincode" Nullable="false" />
           <Property Type="Int32" Name="UserId" Nullable="false" />
@@ -2654,6 +2655,7 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Pincode" ColumnName="Pincode" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />

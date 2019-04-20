@@ -19,6 +19,7 @@ namespace E_Commerce_ShoebApi.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string Mobile { get; set; }
+        public string Type { get; set; }
         public string Address { get; set; }
         public long Pincode { get; set; }
         public int UserId { get; set; }

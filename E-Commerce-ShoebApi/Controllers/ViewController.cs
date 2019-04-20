@@ -43,12 +43,12 @@ namespace E_Commerce_ShoebApi.Controllers
         //// POST api/values
         [HttpPost]
         [Route("api/values/PostCredentials")]
-        public IHttpActionResult PostCredentials([FromBody]EmailPasswordView emailPasswordView )
+        public IHttpActionResult PostCredentials([FromBody]EmailPasswordView credentials)
         {
             if (ModelState.IsValid)
             {
 
-                return Json(BAL_iPostEmailPw.Post(emailPasswordView.Email, emailPasswordView.Password));
+                return Json(BAL_iPostEmailPw.Post(credentials));
             }
 
             return Content(HttpStatusCode.BadRequest, "Request Failed");

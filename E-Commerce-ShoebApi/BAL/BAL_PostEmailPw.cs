@@ -1,4 +1,5 @@
 ﻿using E_Commerce_ShoebApi.DAL;
+using E_Commerce_ShoebApi.Models;
 
 namespace E_Commerce_ShoebApi.BAL
 {
@@ -9,9 +10,9 @@ namespace E_Commerce_ShoebApi.BAL
         {
             this.DAL_IPostEmailPw = DAL_IPostEmailPw;
         }
-        public DAL_PostEmailPw Post(string email, string password)
+        public UserView Post(EmailPasswordView credentials)
         {
-            return DAL_IPostEmailPw.Post(email, password);
+            return DAL_IPostEmailPw.Post(credentials);
         }
 
     }

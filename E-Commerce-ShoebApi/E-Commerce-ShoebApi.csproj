@@ -138,6 +138,7 @@
     <Compile Include="BAL\BAL_ICart.cs" />
     <Compile Include="BAL\BAL_INewProduct.cs" />
     <Compile Include="BAL\BAL_IPostEmailPw.cs" />
+    <Compile Include="BAL\BAL_IRegisterSeller.cs" />
     <Compile Include="BAL\BAL_ISearchProduct.cs" />
     <Compile Include="BAL\BAL_NewProduct.cs" />
     <Compile Include="BAL\BAL_PostEmailPw.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Models\GetUserDetails_Sk_Result.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterSellerView.cs" />
     <Compile Include="Models\RegisterUserView.cs" />
     <Compile Include="Models\tblAddress_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
@@ -259,6 +261,7 @@
     <Compile Include="Models\tblUser_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
