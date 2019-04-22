@@ -10,8 +10,7 @@ namespace E_Commerce_ShoebApi.DAL
     {
         public void AddProduct(AddProductView newProduct)
         {
-            
-            using (var db = new sdirecttestdbEntities())
+             using (var db = new sdirecttestdbEntities())
             {
                 db.AddProduct_Sk(newProduct.ProductCategoryId,
                     newProduct.ProductName,
