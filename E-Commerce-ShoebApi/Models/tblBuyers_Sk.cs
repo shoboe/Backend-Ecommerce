@@ -17,15 +17,15 @@ namespace E_Commerce_ShoebApi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblBuyers_Sk()
         {
-            this.tblNotifications_Sk = new HashSet<tblNotifications_Sk>();
             this.tblOrders_Sk = new HashSet<tblOrders_Sk>();
+            this.tblOrders_Sk1 = new HashSet<tblOrders_Sk>();
         }
     
         public int BuyerId { get; set; }
         public int UserId { get; set; }
         public int ShippingAddress { get; set; }
         public int BillingAddress { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
         public System.DateTime IsUpdatedOn { get; set; }
@@ -37,8 +37,8 @@ namespace E_Commerce_ShoebApi.Models
         public virtual tblAddress_Sk tblAddress_Sk1 { get; set; }
         public virtual tblUser_Sk tblUser_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblNotifications_Sk> tblNotifications_Sk { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrders_Sk> tblOrders_Sk { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblOrders_Sk> tblOrders_Sk1 { get; set; }
     }
 }

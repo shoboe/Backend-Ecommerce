@@ -28,18 +28,14 @@ namespace E_Commerce_ShoebApi.Models
         }
     
         public virtual DbSet<tblAddress_Sk> tblAddress_Sk { get; set; }
-        public virtual DbSet<tblAdminTasks_Sk> tblAdminTasks_Sk { get; set; }
         public virtual DbSet<tblBank_Sk> tblBank_Sk { get; set; }
         public virtual DbSet<tblBankNameUser_Sk> tblBankNameUser_Sk { get; set; }
-        public virtual DbSet<tblBorrowMoney_Sk> tblBorrowMoney_Sk { get; set; }
         public virtual DbSet<tblBusinessType_Sk> tblBusinessType_Sk { get; set; }
         public virtual DbSet<tblBuyers_Sk> tblBuyers_Sk { get; set; }
         public virtual DbSet<tblCity_Sk> tblCity_Sk { get; set; }
         public virtual DbSet<tblCountry_Sk> tblCountry_Sk { get; set; }
-        public virtual DbSet<tblDebitCards_Sk> tblDebitCards_Sk { get; set; }
         public virtual DbSet<tblInventory_Sk> tblInventory_Sk { get; set; }
         public virtual DbSet<tblItems_Sk> tblItems_Sk { get; set; }
-        public virtual DbSet<tblNotifications_Sk> tblNotifications_Sk { get; set; }
         public virtual DbSet<tblOrders_Sk> tblOrders_Sk { get; set; }
         public virtual DbSet<tblOrderStatus_Sk> tblOrderStatus_Sk { get; set; }
         public virtual DbSet<tblPaymentMethod_Sk> tblPaymentMethod_Sk { get; set; }
@@ -50,7 +46,6 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblSellerStatus_Sk> tblSellerStatus_Sk { get; set; }
         public virtual DbSet<tblShippingMethod_Sk> tblShippingMethod_Sk { get; set; }
         public virtual DbSet<tblState_Sk> tblState_Sk { get; set; }
-        public virtual DbSet<tbltemHistory_Sk> tbltemHistory_Sk { get; set; }
         public virtual DbSet<tblUser_Sk> tblUser_Sk { get; set; }
     
         public virtual int AddProduct_Sk(Nullable<int> productCategoryId, string productName, string description, string brand, byte[] image, string sellerName, string updaterName, Nullable<int> pricePerUnit, Nullable<int> productCount, Nullable<int> sellerId)
@@ -96,6 +91,58 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("SellerId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProduct_Sk", productCategoryIdParameter, productNameParameter, descriptionParameter, brandParameter, imageParameter, sellerNameParameter, updaterNameParameter, pricePerUnitParameter, productCountParameter, sellerIdParameter);
+        }
+    
+        public virtual int AddShippingMethod_Sk(Nullable<int> uSERID, Nullable<int> oRDERID, string shippingMethod)
+        {
+            var uSERIDParameter = uSERID.HasValue ?
+                new ObjectParameter("USERID", uSERID) :
+                new ObjectParameter("USERID", typeof(int));
+    
+            var oRDERIDParameter = oRDERID.HasValue ?
+                new ObjectParameter("ORDERID", oRDERID) :
+                new ObjectParameter("ORDERID", typeof(int));
+    
+            var shippingMethodParameter = shippingMethod != null ?
+                new ObjectParameter("ShippingMethod", shippingMethod) :
+                new ObjectParameter("ShippingMethod", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddShippingMethod_Sk", uSERIDParameter, oRDERIDParameter, shippingMethodParameter);
+        }
+    
+        public virtual int ChangeSellerStatus_Sk(Nullable<int> sELLERID, Nullable<bool> fLAG)
+        {
+            var sELLERIDParameter = sELLERID.HasValue ?
+                new ObjectParameter("SELLERID", sELLERID) :
+                new ObjectParameter("SELLERID", typeof(int));
+    
+            var fLAGParameter = fLAG.HasValue ?
+                new ObjectParameter("FLAG", fLAG) :
+                new ObjectParameter("FLAG", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeSellerStatus_Sk", sELLERIDParameter, fLAGParameter);
+        }
+    
+        public virtual int CreateOrder_Sk(Nullable<int> uSERID, Nullable<int> pRODUCTID)
+        {
+            var uSERIDParameter = uSERID.HasValue ?
+                new ObjectParameter("USERID", uSERID) :
+                new ObjectParameter("USERID", typeof(int));
+    
+            var pRODUCTIDParameter = pRODUCTID.HasValue ?
+                new ObjectParameter("PRODUCTID", pRODUCTID) :
+                new ObjectParameter("PRODUCTID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateOrder_Sk", uSERIDParameter, pRODUCTIDParameter);
+        }
+    
+        public virtual int FinalizeOrder_Sk(Nullable<int> oRDERID)
+        {
+            var oRDERIDParameter = oRDERID.HasValue ?
+                new ObjectParameter("ORDERID", oRDERID) :
+                new ObjectParameter("ORDERID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FinalizeOrder_Sk", oRDERIDParameter);
         }
     
         public virtual ObjectResult<GetUserDetails_Sk_Result> GetUserDetails_Sk(Nullable<int> num)
@@ -186,6 +233,11 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("AccountNumber", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterUser_Sk", firstNameParameter, middleNameParameter, lastNameParameter, emailParameter, passwordParameter, imageParameter, mobileParameter, cityName1Parameter, pincode1Parameter, type1Parameter, address1Parameter, type2Parameter, cityName2Parameter, pincode2Parameter, address2Parameter, isSellerParameter, businessTypeParameter, bankNameParameter, accountNumberParameter);
+        }
+    
+        public virtual ObjectResult<SellerRequests_Sk_Result> SellerRequests_Sk()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SellerRequests_Sk_Result>("SellerRequests_Sk");
         }
     }
 }

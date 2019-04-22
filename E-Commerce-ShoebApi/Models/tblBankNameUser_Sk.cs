@@ -14,13 +14,6 @@ namespace E_Commerce_ShoebApi.Models
     
     public partial class tblBankNameUser_Sk
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblBankNameUser_Sk()
-        {
-            this.tblBorrowMoney_Sk = new HashSet<tblBorrowMoney_Sk>();
-            this.tblDebitCards_Sk = new HashSet<tblDebitCards_Sk>();
-        }
-    
         public int BankNameUserId { get; set; }
         public int BankId { get; set; }
         public string Username { get; set; }
@@ -33,13 +26,9 @@ namespace E_Commerce_ShoebApi.Models
         public string IsCreatedBy { get; set; }
         public System.DateTime IsUpdatedOn { get; set; }
         public string IsUpdatedBy { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
     
         public virtual tblBank_Sk tblBank_Sk { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblBorrowMoney_Sk> tblBorrowMoney_Sk { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblDebitCards_Sk> tblDebitCards_Sk { get; set; }
     }
 }

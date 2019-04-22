@@ -24,7 +24,7 @@ namespace E_Commerce_ShoebApi.Models
     
         public int BankId { get; set; }
         public string BankName { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
         public System.DateTime IsUpdatedOn { get; set; }

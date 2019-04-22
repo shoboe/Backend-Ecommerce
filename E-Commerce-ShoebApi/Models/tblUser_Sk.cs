@@ -18,7 +18,6 @@ namespace E_Commerce_ShoebApi.Models
         public tblUser_Sk()
         {
             this.tblAddress_Sk = new HashSet<tblAddress_Sk>();
-            this.tblAdminTasks_Sk = new HashSet<tblAdminTasks_Sk>();
             this.tblBuyers_Sk = new HashSet<tblBuyers_Sk>();
             this.tblSellerStatus_Sk = new HashSet<tblSellerStatus_Sk>();
             this.tblSellerStatus_Sk1 = new HashSet<tblSellerStatus_Sk>();
@@ -32,20 +31,18 @@ namespace E_Commerce_ShoebApi.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
         public System.DateTime IsUpdatedOn { get; set; }
         public string IsUpdatedBy { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
         public byte[] Image { get; set; }
         public string Mobile { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAddress_Sk> tblAddress_Sk { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAdminTasks_Sk> tblAdminTasks_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBuyers_Sk> tblBuyers_Sk { get; set; }
         public virtual tblRole_Sk tblRole_Sk { get; set; }

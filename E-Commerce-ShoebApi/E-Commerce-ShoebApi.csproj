@@ -122,10 +122,13 @@
       <DependentUpon>EcommerceModel.edmx</DependentUpon>
       <LastGenOutput>EcommerceModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\EcommerceModel.edmx.diagram">
+      <DependentUpon>EcommerceModel.edmx</DependentUpon>
+    </Content>
     <Content Include="Models\EcommerceModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EcommerceModel.edmx</DependentUpon>
       <LastGenOutput>EcommerceModel.cs</LastGenOutput>
+      <DependentUpon>EcommerceModel.edmx</DependentUpon>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -138,17 +141,20 @@
     <Compile Include="BAL\BAL_ICart.cs" />
     <Compile Include="BAL\BAL_INewProduct.cs" />
     <Compile Include="BAL\BAL_IPostEmailPw.cs" />
-    <Compile Include="BAL\BAL_IRegisterSeller.cs" />
+    <Compile Include="BAL\BAL_ISellerRequestAction.cs" />
     <Compile Include="BAL\BAL_ISearchProduct.cs" />
     <Compile Include="BAL\BAL_NewProduct.cs" />
     <Compile Include="BAL\BAL_PostEmailPw.cs" />
     <Compile Include="BAL\BAL_IRegisterUser.cs" />
+    <Compile Include="BAL\BAL_SellerRequestAction.cs" />
     <Compile Include="BAL\BAL_RegisterUser.cs" />
     <Compile Include="BAL\BAL_SearchProduct.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="DAL\AddBankAccountView.cs" />
+    <Compile Include="DAL\DAL_ISellerRequestAction.cs" />
     <Compile Include="DAL\DAL_IRegisterUser.cs" />
     <Compile Include="DAL\DAL_RegisterUser.cs" />
+    <Compile Include="DAL\DAL_SellerRequestAction.cs" />
     <Compile Include="Models\AddProductView.cs" />
     <Compile Include="DAL\DAL_AddBankAccount.cs" />
     <Compile Include="DAL\DAL_Cart.cs" />
@@ -171,13 +177,13 @@
       <DependentUpon>EcommerceModel.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EcommerceModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>EcommerceModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\EcommerceModel.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>EcommerceModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EmailPasswordView.cs" />
@@ -186,19 +192,16 @@
     </Compile>
     <Compile Include="Models\RegisterSellerView.cs" />
     <Compile Include="Models\RegisterUserView.cs" />
-    <Compile Include="Models\tblAddress_Sk.cs">
+    <Compile Include="Models\SellerRequests_Sk_Result.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblAdminTasks_Sk.cs">
+    <Compile Include="Models\tblAddress_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBankNameUser_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBank_Sk.cs">
-      <DependentUpon>EcommerceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblBorrowMoney_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblBusinessType_Sk.cs">
@@ -213,16 +216,10 @@
     <Compile Include="Models\tblCountry_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblDebitCards_Sk.cs">
-      <DependentUpon>EcommerceModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblInventory_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblItems_Sk.cs">
-      <DependentUpon>EcommerceModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblNotifications_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblOrderStatus_Sk.cs">
@@ -255,9 +252,6 @@
     <Compile Include="Models\tblState_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbltemHistory_Sk.cs">
-      <DependentUpon>EcommerceModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblUser_Sk.cs">
       <DependentUpon>EcommerceModel.tt</DependentUpon>
     </Compile>
@@ -269,9 +263,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EcommerceModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EcommerceModel.edmx.diagram">
-      <DependentUpon>EcommerceModel.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

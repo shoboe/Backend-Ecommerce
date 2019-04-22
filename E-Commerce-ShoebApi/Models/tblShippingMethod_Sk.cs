@@ -19,17 +19,19 @@ namespace E_Commerce_ShoebApi.Models
         {
             this.tblOrders_Sk = new HashSet<tblOrders_Sk>();
             this.tblOrders_Sk1 = new HashSet<tblOrders_Sk>();
+            this.tblOrders_Sk2 = new HashSet<tblOrders_Sk>();
+            this.tblOrders_Sk3 = new HashSet<tblOrders_Sk>();
         }
     
         public int ShippingMethodId { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
         public System.DateTime IsUpdatedOn { get; set; }
         public string IsUpdatedBy { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
         public string Duration { get; set; }
     
@@ -37,5 +39,9 @@ namespace E_Commerce_ShoebApi.Models
         public virtual ICollection<tblOrders_Sk> tblOrders_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrders_Sk> tblOrders_Sk1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblOrders_Sk> tblOrders_Sk2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblOrders_Sk> tblOrders_Sk3 { get; set; }
     }
 }

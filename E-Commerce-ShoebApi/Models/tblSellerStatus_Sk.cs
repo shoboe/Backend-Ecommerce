@@ -25,12 +25,12 @@ namespace E_Commerce_ShoebApi.Models
         public string StatusName { get; set; }
         public System.DateTime StatusChangedOn { get; set; }
         public string StatusChangedBy { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
         public System.DateTime IsUpdatedOn { get; set; }
         public string IsUpdatedBy { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

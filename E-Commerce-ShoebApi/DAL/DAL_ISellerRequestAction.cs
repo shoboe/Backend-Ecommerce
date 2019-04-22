@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce_ShoebApi.BAL
+namespace E_Commerce_ShoebApi.DAL
 {
-    public interface BAL_IRegisterSeller
+    public interface DAL_ISellerRequestAction
     {
-        void RegisterSeller(RegisterSellerView decision);
+        void RegisterSeller(List<RegisterSellerView> decision);
     }
 }

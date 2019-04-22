@@ -18,7 +18,6 @@ namespace E_Commerce_ShoebApi.Models
         public tblProducts_Sk()
         {
             this.tblInventory_Sk = new HashSet<tblInventory_Sk>();
-            this.tbltemHistory_Sk = new HashSet<tbltemHistory_Sk>();
         }
     
         public int ProductId { get; set; }
@@ -27,18 +26,16 @@ namespace E_Commerce_ShoebApi.Models
         public string Description { get; set; }
         public string Brand { get; set; }
         public byte[] Image { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
         public System.DateTime IsUpdatedOn { get; set; }
         public string IsUpdatedBy { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInventory_Sk> tblInventory_Sk { get; set; }
         public virtual tblProductsCategory_Sk tblProductsCategory_Sk { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbltemHistory_Sk> tbltemHistory_Sk { get; set; }
     }
 }
