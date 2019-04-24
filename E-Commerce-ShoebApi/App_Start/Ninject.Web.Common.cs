@@ -74,6 +74,7 @@ namespace E_Commerce_ShoebApi.App_Start
             kernel.Bind<DAL_IAddBankAccount>().To<DAL_AddBankAccount>();
             kernel.Bind<BAL_IRegisterUser>().To<BAL_RegisterUser>();
             kernel.Bind<DAL_IRegisterUser>().To<DAL_RegisterUser>();
+            kernel.Bind<DAL_IGenerateOTP>().To<Models.GenerateOTP>();
         }        
     }
 }

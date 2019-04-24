@@ -16,7 +16,7 @@ namespace E_Commerce_ShoebApi.BAL
         }
         public void RegisterSeller(List<RegisterSellerView> decision)
         {
-            DAL_iRegisterSeller.RegisterSeller(List<RegisterSellerView> decision)
+            DAL_iRegisterSeller.RegisterSeller(decision);
         }
     }
 }

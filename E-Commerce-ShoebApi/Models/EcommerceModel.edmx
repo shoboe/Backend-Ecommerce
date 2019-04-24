@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sdirecttestdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sdirecttestdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblAddress_Sk">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -183,6 +183,15 @@
           <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOtp_Sk">
+          <Key>
+            <PropertyRef Name="OtpId" />
+          </Key>
+          <Property Name="OtpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OTP" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblPaymentMethod_Sk">
           <Key>
@@ -693,6 +702,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddOtp_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="OTP" Type="int" Mode="In" />
+        </Function>
         <Function Name="AddProduct_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductCategoryId" Type="int" Mode="In" />
           <Parameter Name="ProductName" Type="varchar" Mode="In" />
@@ -758,6 +771,7 @@
           <EntitySet Name="tblItems_Sk" EntityType="Self.tblItems_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrders_Sk" EntityType="Self.tblOrders_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrderStatus_Sk" EntityType="Self.tblOrderStatus_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOtp_Sk" EntityType="Self.tblOtp_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPaymentMethod_Sk" EntityType="Self.tblPaymentMethod_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProducts_Sk" EntityType="Self.tblProducts_Sk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProductsCategory_Sk" EntityType="Self.tblProductsCategory_Sk" Schema="dbo" store:Type="Tables" />
@@ -888,8 +902,7 @@
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sdirecttestdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1808,10 +1821,10 @@
             <Parameter Name="PRODUCTID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="FinalizeOrder_Sk">
-            <Parameter Name="ORDERID" Mode="In" Type="Int32" />
+          <Parameter Name="ORDERID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUserDetails_Sk" ReturnType="Collection(sdirecttestdbModel.GetUserDetails_Sk_Result)">
-            <Parameter Name="num" Mode="In" Type="Int32" />
+          <Parameter Name="num" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="RegisterUser_Sk">
             <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -1835,6 +1848,11 @@
             <Parameter Name="AccountNumber" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="SellerRequests_Sk" ReturnType="Collection(sdirecttestdbModel.SellerRequests_Sk_Result)" />
+          <FunctionImport Name="AddOtp_Sk">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="OTP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblOtp_Sk" EntityType="sdirecttestdbModel.tblOtp_Sk" />
         </EntityContainer>
         <ComplexType Name="GetUserDetails_Sk_Result">
           <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
@@ -1860,6 +1878,15 @@
           <Property Type="String" Name="StatusName" Nullable="false" MaxLength="20" />
           <Property Type="DateTime" Name="StatusChangedOn" Nullable="false" Precision="23" />
         </ComplexType>
+        <EntityType Name="tblOtp_Sk">
+          <Key>
+            <PropertyRef Name="OtpId" />
+          </Key>
+          <Property Name="OtpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OTP" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2252,6 +2279,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddOtp_Sk" FunctionName="sdirecttestdbModel.Store.AddOtp_Sk" />
+          <EntitySetMapping Name="tblOtp_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblOtp_Sk">
+              <MappingFragment StoreEntitySet="tblOtp_Sk">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OtpId" ColumnName="OtpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -98,21 +98,21 @@ namespace E_Commerce_ShoebApi.DAL
                 //db.tblPaymentMethod_Sk.Add(newMethod);
                 //db.SaveChanges();
 
-                tblBorrowMoney_Sk obj = new tblBorrowMoney_Sk()
-                {
-                    BankNameUserId = 1,
-                    MoneyBorrowed = 0,
-                    Password = "ABC111",
-                    IsActive = true,
-                    IsCreatedBy = "Shoeb",
-                    IsUpdatedBy = "Shoeb",
-                    IsCreatedOn = DateTime.Now,
-                    IsUpdatedOn = DateTime.Now,
-                    IsDeleted = false
+                //tblBorrowMoney_Sk obj = new tblBorrowMoney_Sk()
+                //{
+                //    BankNameUserId = 1,
+                //    MoneyBorrowed = 0,
+                //    Password = "ABC111",
+                //    IsActive = true,
+                //    IsCreatedBy = "Shoeb",
+                //    IsUpdatedBy = "Shoeb",
+                //    IsCreatedOn = DateTime.Now,
+                //    IsUpdatedOn = DateTime.Now,
+                //    IsDeleted = false
 
-                };
-                db.tblBorrowMoney_Sk.Add(obj);
-                db.SaveChanges();
+                //};
+                //db.tblBorrowMoney_Sk.Add(obj);
+                //db.SaveChanges();
 
                 //user = db.tblUser_Sk.Find(2);
                 //var serializer = new JavaScriptSerializer();

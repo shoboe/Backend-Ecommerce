@@ -47,6 +47,7 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblShippingMethod_Sk> tblShippingMethod_Sk { get; set; }
         public virtual DbSet<tblState_Sk> tblState_Sk { get; set; }
         public virtual DbSet<tblUser_Sk> tblUser_Sk { get; set; }
+        public virtual DbSet<tblOtp_Sk> tblOtp_Sk { get; set; }
     
         public virtual int AddProduct_Sk(Nullable<int> productCategoryId, string productName, string description, string brand, byte[] image, string sellerName, string updaterName, Nullable<int> pricePerUnit, Nullable<int> productCount, Nullable<int> sellerId)
         {
@@ -238,6 +239,19 @@ namespace E_Commerce_ShoebApi.Models
         public virtual ObjectResult<SellerRequests_Sk_Result> SellerRequests_Sk()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SellerRequests_Sk_Result>("SellerRequests_Sk");
+        }
+    
+        public virtual int AddOtp_Sk(string email, Nullable<int> oTP)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var oTPParameter = oTP.HasValue ?
+                new ObjectParameter("OTP", oTP) :
+                new ObjectParameter("OTP", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddOtp_Sk", emailParameter, oTPParameter);
         }
     }
 }

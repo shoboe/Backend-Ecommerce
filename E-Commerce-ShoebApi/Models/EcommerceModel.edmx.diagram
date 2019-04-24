@@ -55,6 +55,7 @@
         <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__UserI__082C08DB" ManuallyRouted="false" />
         <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__UserI__09202D14" ManuallyRouted="false" />
         <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__UserI__0A14514D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblOtp_Sk" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

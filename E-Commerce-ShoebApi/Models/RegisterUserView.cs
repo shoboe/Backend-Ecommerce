@@ -26,6 +26,7 @@ namespace E_Commerce_ShoebApi.Models
         public long Pincode2 { get; set; }
         public string Type2 { get; set; }
         public string Address2 { get; set; }
+        public int OTP { get; set; }
 
     }
 }

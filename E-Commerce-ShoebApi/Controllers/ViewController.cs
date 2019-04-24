@@ -22,16 +22,17 @@ namespace E_Commerce_ShoebApi.Controllers
         BAL_INewProduct BAL_iNewProduct;
         BAL_IAddBankAccount BAL_iAddBankAccount;
         BAL_IRegisterUser BAL_iRegisterUser;
-
+        DAL_IGenerateOTP DAL_iGenererate;
         public ViewController(BAL_ISearchProduct BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw,
             BAL_INewProduct BAL_iNewProduct, BAL_IAddBankAccount BAL_iAddBankAccount,
-             BAL_IRegisterUser BAL_iRegisterUser)
+             BAL_IRegisterUser BAL_iRegisterUser, DAL_IGenerateOTP DAL_iGenererate)
         {
             this.BAL_itblProducts = BAL_itblProducts;
             this.BAL_iPostEmailPw = BAL_iPostEmailPw;
             this.BAL_iNewProduct = BAL_iNewProduct;
             this.BAL_iAddBankAccount = BAL_iAddBankAccount;
             this.BAL_iRegisterUser = BAL_iRegisterUser;
+            this.DAL_iGenererate = DAL_iGenererate;
         }
 
         [HttpGet]
@@ -41,16 +42,14 @@ namespace E_Commerce_ShoebApi.Controllers
             return Json(BAL_itblProducts.GetProducts(productName));
         }
         //// POST api/values
-        [HttpPost]
+        [HttpPost] 
         [Route("api/values/PostCredentials")]
         public IHttpActionResult PostCredentials([FromBody]EmailPasswordView credentials)
         {
             if (ModelState.IsValid)
             {
-
                 return Json(BAL_iPostEmailPw.Post(credentials));
             }
-
             return Content(HttpStatusCode.BadRequest, "Request Failed");
         }
       
@@ -65,20 +64,41 @@ namespace E_Commerce_ShoebApi.Controllers
                 return Ok(); 
             }
             return Content(HttpStatusCode.BadRequest, "Request Failed");
+         }
 
+        [HttpPost]
+        [Route("api/view/GenerateOtp")]
+        public void GenerateOtp(string email)
+        {
+            DAL_iGenererate.GenerateOTPviaEmail(email);
         }
+
+
         [HttpPost]
         [Route("api/view/RegisterNewUser")]
         public IHttpActionResult PostRegisterNewUser([FromBody]RegisterUserView user)
         {
             if (ModelState.IsValid)
             {
-                BAL_iRegisterUser.Register(user);
-                return Ok();
+                if (DAL_iGenererate.VerifyOtp(user.Email, user.OTP))
+                {
+                    BAL_iRegisterUser.Register(user);
+                    return Ok();
+                }
             }
             return Content(HttpStatusCode.BadRequest, "Request Failed");
-
         }
+        [HttpGet]
+        [Route("api/view/GetSellerRequests")]
+        public IHttpActionResult GetSellerRequests()
+        {
+            using(var db = new sdirecttestdbEntities())
+            {
+                return Json(db.SellerRequests_Sk().ToList());
+            }
+        }
+
+
 
 
         //[HttpDelete]
