@@ -12,7 +12,6 @@ namespace E_Commerce_ShoebApi.Models
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
         public string Mobile { get; set; }
         public string Type1 { get; set; }
         public string Address1 { get; set; }
@@ -26,6 +25,7 @@ namespace E_Commerce_ShoebApi.Models
         public string StateName2 { get; set; }
         public long Pincode2 { get; set; }
         public string CountryName2 { get; set; }
-        
+        public string Image { get; set; }
+
     }
 }

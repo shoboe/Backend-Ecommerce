@@ -6,16 +6,15 @@ using E_Commerce_ShoebApi.Models;
 
 namespace E_Commerce_ShoebApi.DAL
 {
-    public class DAL_PostEmailPw : DAL_IPostEmailPw
+    public class DAL_PostEmailPw :ImageFormat, DAL_IPostEmailPw
     {
         public UserView Post(EmailPasswordView credentials)
         {
             using(var db = new sdirecttestdbEntities())
             {
                 var result = (from obj in db.tblUser_Sk
-                              where (obj.Email == credentials.Email &&
-                                obj.Password == credentials.Password)
-                              select obj);
+                              where (obj.Email == credentials.Email)
+                              select obj).ToList();
 
                 var user = new UserView();
                 int k = 0;
@@ -33,7 +32,6 @@ namespace E_Commerce_ShoebApi.DAL
                             user.MiddleName = j.MiddleName;
                             user.LastName = j.LastName;
                             user.Email = j.Email;
-                            user.Password = j.Password;
                             user.Type1 = j.Type;
                             user.CityName1 = j.CityName;
                             user.StateName1 = j.StateName;
@@ -41,6 +39,7 @@ namespace E_Commerce_ShoebApi.DAL
                             user.Pincode1 = j.Pincode;
                             user.Address1 = j.Address;
                             user.CountryName1 = j.CountryName;
+                            user.Image = this.ByteArrayToString(j.Image);
                         }
                         else
                         {

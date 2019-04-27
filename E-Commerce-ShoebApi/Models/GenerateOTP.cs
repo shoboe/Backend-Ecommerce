@@ -26,13 +26,22 @@ namespace E_Commerce_ShoebApi.Models
                 //can be obtained from your model
                 MailMessage msg = new MailMessage();
                 msg.From = new MailAddress("rahulpatel.rbl.p@gmail.com");
-                msg.To.Add(new MailAddress("shoeb96k@gmail.com"));
+                msg.To.Add(new MailAddress(userEmail));
 
                 msg.Subject = "OTP For Registeration on EzBuy";
                 msg.IsBodyHtml = true;
                 msg.Body = "Your OTP is: "+num.ToString();
-                
-                using(var db = new sdirecttestdbEntities()) {
+
+                try
+                {
+                 client.Send(msg);
+                 }
+                 catch (Exception ex)
+                 {
+
+                 }
+
+            using (var db = new sdirecttestdbEntities()) {
                     db.AddOtp_Sk(userEmail, num);
                 }
             

@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 namespace E_Commerce_ShoebApi.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class ViewController : ApiController
     {
         BAL_ISearchProduct BAL_itblProducts;
@@ -42,6 +43,7 @@ namespace E_Commerce_ShoebApi.Controllers
             return Json(BAL_itblProducts.GetProducts(productName));
         }
         //// POST api/values
+        [Authorize]
         [HttpPost] 
         [Route("api/values/PostCredentials")]
         public IHttpActionResult PostCredentials([FromBody]EmailPasswordView credentials)
@@ -68,9 +70,14 @@ namespace E_Commerce_ShoebApi.Controllers
 
         [HttpPost]
         [Route("api/view/GenerateOtp")]
-        public void GenerateOtp(string email)
+        public void GenerateOtp([FromBody]EmailView email)
         {
-            DAL_iGenererate.GenerateOTPviaEmail(email);
+            DAL_iGenererate.GenerateOTPviaEmail(email.Email);
+        }
+
+        public class EmailView
+        {
+            public string Email { get; set; }
         }
 
 

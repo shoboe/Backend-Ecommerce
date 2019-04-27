@@ -146,15 +146,6 @@ namespace E_Commerce_ShoebApi.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FinalizeOrder_Sk", oRDERIDParameter);
         }
     
-        public virtual ObjectResult<GetUserDetails_Sk_Result> GetUserDetails_Sk(Nullable<int> num)
-        {
-            var numParameter = num.HasValue ?
-                new ObjectParameter("num", num) :
-                new ObjectParameter("num", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Sk_Result>("GetUserDetails_Sk", numParameter);
-        }
-    
         public virtual int RegisterUser_Sk(string firstName, string middleName, string lastName, string email, string password, byte[] image, Nullable<long> mobile, string cityName1, Nullable<long> pincode1, string type1, string address1, string type2, string cityName2, Nullable<long> pincode2, string address2, Nullable<bool> isSeller, string businessType, string bankName, Nullable<long> accountNumber)
         {
             var firstNameParameter = firstName != null ?
@@ -252,6 +243,15 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("OTP", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddOtp_Sk", emailParameter, oTPParameter);
+        }
+    
+        public virtual ObjectResult<GetUserDetails_Sk_Result> GetUserDetails_Sk(Nullable<int> num)
+        {
+            var numParameter = num.HasValue ?
+                new ObjectParameter("num", num) :
+                new ObjectParameter("num", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Sk_Result>("GetUserDetails_Sk", numParameter);
         }
     }
 }

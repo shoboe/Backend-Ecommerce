@@ -35,7 +35,7 @@
           <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" />
-          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblBankNameUser_Sk">
           <Key>
@@ -84,7 +84,7 @@
           <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="IsDeleted" Type="bit" />
-          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblCity_Sk">
           <Key>
@@ -940,7 +940,7 @@
           <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblBankNameUser_Sk" Relationship="Self.FK__tblBankNa__BankI__687E5358" FromRole="tblBank_Sk" ToRole="tblBankNameUser_Sk" />
           <NavigationProperty Name="tblPaymentMethod_Sk" Relationship="Self.FK__tblPaymen__BankI__4EBE8155" FromRole="tblBank_Sk" ToRole="tblPaymentMethod_Sk" />
           <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__BankI__176E4C6B" FromRole="tblBank_Sk" ToRole="tblSellers_Sk" />
@@ -994,7 +994,7 @@
           <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblBuyers__Billi__20F7B6A5" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
           <NavigationProperty Name="tblAddress_Sk1" Relationship="Self.FK__tblBuyers__Shipp__21EBDADE" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
           <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblBuyers__UserI__22DFFF17" FromRole="tblBuyers_Sk" ToRole="tblUser_Sk" />
@@ -1823,9 +1823,6 @@
           <FunctionImport Name="FinalizeOrder_Sk">
           <Parameter Name="ORDERID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetUserDetails_Sk" ReturnType="Collection(sdirecttestdbModel.GetUserDetails_Sk_Result)">
-          <Parameter Name="num" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="RegisterUser_Sk">
             <Parameter Name="FirstName" Mode="In" Type="String" />
             <Parameter Name="MiddleName" Mode="In" Type="String" />
@@ -1853,22 +1850,10 @@
             <Parameter Name="OTP" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="tblOtp_Sk" EntityType="sdirecttestdbModel.tblOtp_Sk" />
+          <FunctionImport Name="GetUserDetails_Sk" ReturnType="Collection(sdirecttestdbModel.GetUserDetails_Sk_Result)">
+            <Parameter Name="num" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="GetUserDetails_Sk_Result">
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="Address" Nullable="false" MaxLength="100" />
-          <Property Type="Int64" Name="Pincode" Nullable="false" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="SellerRequests_Sk_Result">
           <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
@@ -1887,6 +1872,22 @@
           <Property Name="OTP" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
+        <ComplexType Name="GetUserDetails_Sk_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Image" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Pincode" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2246,25 +2247,6 @@
           <FunctionImportMapping FunctionImportName="ChangeSellerStatus_Sk" FunctionName="sdirecttestdbModel.Store.ChangeSellerStatus_Sk" />
           <FunctionImportMapping FunctionImportName="CreateOrder_Sk" FunctionName="sdirecttestdbModel.Store.CreateOrder_Sk" />
           <FunctionImportMapping FunctionImportName="FinalizeOrder_Sk" FunctionName="sdirecttestdbModel.Store.FinalizeOrder_Sk" />
-          <FunctionImportMapping FunctionImportName="GetUserDetails_Sk" FunctionName="sdirecttestdbModel.Store.GetUserDetails_Sk">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="sdirecttestdbModel.GetUserDetails_Sk_Result">
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="RegisterUser_Sk" FunctionName="sdirecttestdbModel.Store.RegisterUser_Sk" />
           <FunctionImportMapping FunctionImportName="SellerRequests_Sk" FunctionName="sdirecttestdbModel.Store.SellerRequests_Sk">
             <ResultMapping>
@@ -2290,6 +2272,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserDetails_Sk" FunctionName="sdirecttestdbModel.Store.GetUserDetails_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.GetUserDetails_Sk_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
