@@ -9,7 +9,6 @@ using E_Commerce_ShoebApi.Models;
 
 namespace E_Commerce_ShoebApi
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
@@ -20,9 +19,9 @@ namespace E_Commerce_ShoebApi
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+           context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            using (var db = new sdirecttestdbEntities())
+            using (var db = new sdirecttestdbEntities1())
             {
                 if (db != null)
                 {

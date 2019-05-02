@@ -15,7 +15,6 @@ using Newtonsoft.Json;
 namespace E_Commerce_ShoebApi.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-
     public class ViewController : ApiController
     {
         BAL_ISearchProduct BAL_itblProducts;
@@ -35,9 +34,9 @@ namespace E_Commerce_ShoebApi.Controllers
             this.BAL_iRegisterUser = BAL_iRegisterUser;
             this.DAL_iGenererate = DAL_iGenererate;
         }
-
+        [Authorize]
         [HttpGet]
-        [Route("api/values/E-Commerce-ShoebApi/{productName}")]
+        [Route("api/view/{productName}")]
         public IHttpActionResult GetEmployee(string productName)
         {
             return Json(BAL_itblProducts.GetProducts(productName));
@@ -45,8 +44,8 @@ namespace E_Commerce_ShoebApi.Controllers
         //// POST api/values
         [Authorize]
         [HttpPost] 
-        [Route("api/values/PostCredentials")]
-        public IHttpActionResult PostCredentials([FromBody]EmailPasswordView credentials)
+        [Route("api/view/PostCredentials")]
+        public IHttpActionResult PostCredentials(EmailPasswordView credentials)
         {
             if (ModelState.IsValid)
             {
@@ -54,8 +53,8 @@ namespace E_Commerce_ShoebApi.Controllers
             }
             return Content(HttpStatusCode.BadRequest, "Request Failed");
         }
-      
 
+        [Authorize]
         [HttpPost]
         [Route("api/view/RegisterNewProduct")]
         public IHttpActionResult PostNewProduct([FromBody]AddProductView newProduct)
@@ -70,9 +69,14 @@ namespace E_Commerce_ShoebApi.Controllers
 
         [HttpPost]
         [Route("api/view/GenerateOtp")]
-        public void GenerateOtp([FromBody]EmailView email)
+        public IHttpActionResult GenerateOtp([FromBody]EmailView email)
         {
-            DAL_iGenererate.GenerateOTPviaEmail(email.Email);
+            //return DAL_iGenererate.GenerateOTPviaEmail(email.Email);
+            if (DAL_iGenererate.GenerateOTPviaEmail(email.Email))
+                return Content(HttpStatusCode.OK, "Check Email For OTP Verification");
+            else
+                return Content(HttpStatusCode.BadRequest, "Email Already Taken");
+
         }
 
         public class EmailView
@@ -83,25 +87,26 @@ namespace E_Commerce_ShoebApi.Controllers
 
         [HttpPost]
         [Route("api/view/RegisterNewUser")]
-        public IHttpActionResult PostRegisterNewUser([FromBody]RegisterUserView user)
+        public IHttpActionResult RegisterNewUser(RegisterUserView user)
         {
             if (ModelState.IsValid)
             {
                 if (DAL_iGenererate.VerifyOtp(user.Email, user.OTP))
                 {
                     BAL_iRegisterUser.Register(user);
-                    return Ok();
+                    return Content(HttpStatusCode.OK, "Thank You! Please Login from HomePage.");
                 }
             }
-            return Content(HttpStatusCode.BadRequest, "Request Failed");
+            return Content(HttpStatusCode.BadRequest, "Invalid OTP");
         }
+        [Authorize]
         [HttpGet]
         [Route("api/view/GetSellerRequests")]
         public IHttpActionResult GetSellerRequests()
         {
-            using(var db = new sdirecttestdbEntities())
+            using(var db = new sdirecttestdbEntities1())
             {
-                return Json(db.SellerRequests_Sk().ToList());
+                return Json(db.spSellerRequests_Sk().ToList());
             }
         }
 

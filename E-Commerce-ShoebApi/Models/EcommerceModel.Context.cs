@@ -15,10 +15,10 @@ namespace E_Commerce_ShoebApi.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class sdirecttestdbEntities : DbContext
+    public partial class sdirecttestdbEntities1 : DbContext
     {
-        public sdirecttestdbEntities()
-            : base("name=sdirecttestdbEntities")
+        public sdirecttestdbEntities1()
+            : base("name=sdirecttestdbEntities1")
         {
         }
     
@@ -35,9 +35,9 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblCity_Sk> tblCity_Sk { get; set; }
         public virtual DbSet<tblCountry_Sk> tblCountry_Sk { get; set; }
         public virtual DbSet<tblInventory_Sk> tblInventory_Sk { get; set; }
-        public virtual DbSet<tblItems_Sk> tblItems_Sk { get; set; }
         public virtual DbSet<tblOrders_Sk> tblOrders_Sk { get; set; }
         public virtual DbSet<tblOrderStatus_Sk> tblOrderStatus_Sk { get; set; }
+        public virtual DbSet<tblOtp_Sk> tblOtp_Sk { get; set; }
         public virtual DbSet<tblPaymentMethod_Sk> tblPaymentMethod_Sk { get; set; }
         public virtual DbSet<tblProducts_Sk> tblProducts_Sk { get; set; }
         public virtual DbSet<tblProductsCategory_Sk> tblProductsCategory_Sk { get; set; }
@@ -47,9 +47,21 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblShippingMethod_Sk> tblShippingMethod_Sk { get; set; }
         public virtual DbSet<tblState_Sk> tblState_Sk { get; set; }
         public virtual DbSet<tblUser_Sk> tblUser_Sk { get; set; }
-        public virtual DbSet<tblOtp_Sk> tblOtp_Sk { get; set; }
     
-        public virtual int AddProduct_Sk(Nullable<int> productCategoryId, string productName, string description, string brand, byte[] image, string sellerName, string updaterName, Nullable<int> pricePerUnit, Nullable<int> productCount, Nullable<int> sellerId)
+        public virtual int spAddOtp_Sk(string email, Nullable<int> oTP)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var oTPParameter = oTP.HasValue ?
+                new ObjectParameter("OTP", oTP) :
+                new ObjectParameter("OTP", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddOtp_Sk", emailParameter, oTPParameter);
+        }
+    
+        public virtual int spAddProduct_Sk(Nullable<int> productCategoryId, string productName, string description, string brand, byte[] image, string sellerName, string updaterName, Nullable<int> pricePerUnit, Nullable<int> productCount, Nullable<int> sellerId)
         {
             var productCategoryIdParameter = productCategoryId.HasValue ?
                 new ObjectParameter("ProductCategoryId", productCategoryId) :
@@ -91,10 +103,10 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("SellerId", sellerId) :
                 new ObjectParameter("SellerId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddProduct_Sk", productCategoryIdParameter, productNameParameter, descriptionParameter, brandParameter, imageParameter, sellerNameParameter, updaterNameParameter, pricePerUnitParameter, productCountParameter, sellerIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddProduct_Sk", productCategoryIdParameter, productNameParameter, descriptionParameter, brandParameter, imageParameter, sellerNameParameter, updaterNameParameter, pricePerUnitParameter, productCountParameter, sellerIdParameter);
         }
     
-        public virtual int AddShippingMethod_Sk(Nullable<int> uSERID, Nullable<int> oRDERID, string shippingMethod)
+        public virtual int spAddShippingMethod_Sk(Nullable<int> uSERID, Nullable<int> oRDERID, string shippingMethod)
         {
             var uSERIDParameter = uSERID.HasValue ?
                 new ObjectParameter("USERID", uSERID) :
@@ -108,10 +120,27 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("ShippingMethod", shippingMethod) :
                 new ObjectParameter("ShippingMethod", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddShippingMethod_Sk", uSERIDParameter, oRDERIDParameter, shippingMethodParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddShippingMethod_Sk", uSERIDParameter, oRDERIDParameter, shippingMethodParameter);
         }
     
-        public virtual int ChangeSellerStatus_Sk(Nullable<int> sELLERID, Nullable<bool> fLAG)
+        public virtual int spChangeOrderStatus_Sk(Nullable<int> orderId, string orderStatus, Nullable<int> userId)
+        {
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("OrderId", orderId) :
+                new ObjectParameter("OrderId", typeof(int));
+    
+            var orderStatusParameter = orderStatus != null ?
+                new ObjectParameter("OrderStatus", orderStatus) :
+                new ObjectParameter("OrderStatus", typeof(string));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spChangeOrderStatus_Sk", orderIdParameter, orderStatusParameter, userIdParameter);
+        }
+    
+        public virtual int spChangeSellerStatus_Sk(Nullable<int> sELLERID, Nullable<bool> fLAG)
         {
             var sELLERIDParameter = sELLERID.HasValue ?
                 new ObjectParameter("SELLERID", sELLERID) :
@@ -121,10 +150,10 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("FLAG", fLAG) :
                 new ObjectParameter("FLAG", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeSellerStatus_Sk", sELLERIDParameter, fLAGParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spChangeSellerStatus_Sk", sELLERIDParameter, fLAGParameter);
         }
     
-        public virtual int CreateOrder_Sk(Nullable<int> uSERID, Nullable<int> pRODUCTID)
+        public virtual int spCreateOrder_Sk(Nullable<int> uSERID, Nullable<int> pRODUCTID)
         {
             var uSERIDParameter = uSERID.HasValue ?
                 new ObjectParameter("USERID", uSERID) :
@@ -134,19 +163,62 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("PRODUCTID", pRODUCTID) :
                 new ObjectParameter("PRODUCTID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateOrder_Sk", uSERIDParameter, pRODUCTIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCreateOrder_Sk", uSERIDParameter, pRODUCTIDParameter);
         }
     
-        public virtual int FinalizeOrder_Sk(Nullable<int> oRDERID)
+        public virtual int spDeleteOtp_Sk(Nullable<int> otpId)
+        {
+            var otpIdParameter = otpId.HasValue ?
+                new ObjectParameter("OtpId", otpId) :
+                new ObjectParameter("OtpId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDeleteOtp_Sk", otpIdParameter);
+        }
+    
+        public virtual int spExecutePayment_Sk(Nullable<int> orderId, string email, string password, string accountNumber, Nullable<int> bankId)
+        {
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("OrderId", orderId) :
+                new ObjectParameter("OrderId", typeof(int));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var accountNumberParameter = accountNumber != null ?
+                new ObjectParameter("AccountNumber", accountNumber) :
+                new ObjectParameter("AccountNumber", typeof(string));
+    
+            var bankIdParameter = bankId.HasValue ?
+                new ObjectParameter("BankId", bankId) :
+                new ObjectParameter("BankId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spExecutePayment_Sk", orderIdParameter, emailParameter, passwordParameter, accountNumberParameter, bankIdParameter);
+        }
+    
+        public virtual int spFinalizeOrder_Sk(Nullable<int> oRDERID)
         {
             var oRDERIDParameter = oRDERID.HasValue ?
                 new ObjectParameter("ORDERID", oRDERID) :
                 new ObjectParameter("ORDERID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FinalizeOrder_Sk", oRDERIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFinalizeOrder_Sk", oRDERIDParameter);
         }
     
-        public virtual int RegisterUser_Sk(string firstName, string middleName, string lastName, string email, string password, byte[] image, Nullable<long> mobile, string cityName1, Nullable<long> pincode1, string type1, string address1, string type2, string cityName2, Nullable<long> pincode2, string address2, Nullable<bool> isSeller, string businessType, string bankName, Nullable<long> accountNumber)
+        public virtual ObjectResult<spGetUserDetails_Sk_Result> spGetUserDetails_Sk(Nullable<int> num)
+        {
+            var numParameter = num.HasValue ?
+                new ObjectParameter("num", num) :
+                new ObjectParameter("num", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserDetails_Sk_Result>("spGetUserDetails_Sk", numParameter);
+        }
+    
+        public virtual int spRegisterUser_Sk(string firstName, string middleName, string lastName, string email, string password, byte[] image, string mobile, string cityName1, Nullable<long> pincode1, string type1, string address1, string type2, string cityName2, Nullable<long> pincode2, string address2, Nullable<bool> isSeller, string businessType, string bankName, string accountNumber)
         {
             var firstNameParameter = firstName != null ?
                 new ObjectParameter("FirstName", firstName) :
@@ -172,9 +244,9 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("Image", image) :
                 new ObjectParameter("Image", typeof(byte[]));
     
-            var mobileParameter = mobile.HasValue ?
+            var mobileParameter = mobile != null ?
                 new ObjectParameter("Mobile", mobile) :
-                new ObjectParameter("Mobile", typeof(long));
+                new ObjectParameter("Mobile", typeof(string));
     
             var cityName1Parameter = cityName1 != null ?
                 new ObjectParameter("CityName1", cityName1) :
@@ -220,38 +292,33 @@ namespace E_Commerce_ShoebApi.Models
                 new ObjectParameter("BankName", bankName) :
                 new ObjectParameter("BankName", typeof(string));
     
-            var accountNumberParameter = accountNumber.HasValue ?
+            var accountNumberParameter = accountNumber != null ?
                 new ObjectParameter("AccountNumber", accountNumber) :
-                new ObjectParameter("AccountNumber", typeof(long));
+                new ObjectParameter("AccountNumber", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegisterUser_Sk", firstNameParameter, middleNameParameter, lastNameParameter, emailParameter, passwordParameter, imageParameter, mobileParameter, cityName1Parameter, pincode1Parameter, type1Parameter, address1Parameter, type2Parameter, cityName2Parameter, pincode2Parameter, address2Parameter, isSellerParameter, businessTypeParameter, bankNameParameter, accountNumberParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spRegisterUser_Sk", firstNameParameter, middleNameParameter, lastNameParameter, emailParameter, passwordParameter, imageParameter, mobileParameter, cityName1Parameter, pincode1Parameter, type1Parameter, address1Parameter, type2Parameter, cityName2Parameter, pincode2Parameter, address2Parameter, isSellerParameter, businessTypeParameter, bankNameParameter, accountNumberParameter);
         }
     
-        public virtual ObjectResult<SellerRequests_Sk_Result> SellerRequests_Sk()
+        public virtual ObjectResult<spSellerOrdersPlaced_Sk_Result> spSellerOrdersPlaced_Sk(Nullable<int> userId, Nullable<int> sellerId, string status)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SellerRequests_Sk_Result>("SellerRequests_Sk");
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var sellerIdParameter = sellerId.HasValue ?
+                new ObjectParameter("SellerId", sellerId) :
+                new ObjectParameter("SellerId", typeof(int));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSellerOrdersPlaced_Sk_Result>("spSellerOrdersPlaced_Sk", userIdParameter, sellerIdParameter, statusParameter);
         }
     
-        public virtual int AddOtp_Sk(string email, Nullable<int> oTP)
+        public virtual ObjectResult<spSellerRequests_Sk_Result> spSellerRequests_Sk()
         {
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var oTPParameter = oTP.HasValue ?
-                new ObjectParameter("OTP", oTP) :
-                new ObjectParameter("OTP", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddOtp_Sk", emailParameter, oTPParameter);
-        }
-    
-        public virtual ObjectResult<GetUserDetails_Sk_Result> GetUserDetails_Sk(Nullable<int> num)
-        {
-            var numParameter = num.HasValue ?
-                new ObjectParameter("num", num) :
-                new ObjectParameter("num", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Sk_Result>("GetUserDetails_Sk", numParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSellerRequests_Sk_Result>("spSellerRequests_Sk");
         }
     }
 }

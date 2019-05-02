@@ -10,11 +10,11 @@ namespace E_Commerce_ShoebApi.DAL
     {
         public void RegisterSeller(List<RegisterSellerView> decision)
         {
-            using (var db = new sdirecttestdbEntities())
+            using (var db = new sdirecttestdbEntities1())
             {
                 foreach (var i in decision)
                 {
-                    db.ChangeSellerStatus_Sk(i.SellerId, i.IsActive);
+                    db.spChangeSellerStatus_Sk(i.SellerId, i.IsActive);
                 }
             }
         }

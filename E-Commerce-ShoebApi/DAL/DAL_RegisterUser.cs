@@ -10,9 +10,9 @@ namespace E_Commerce_ShoebApi.DAL
     {
         public void Register(RegisterUserView user)
         {
-            using (var db = new sdirecttestdbEntities())
+            using (var db = new sdirecttestdbEntities1())
             {
-                db.RegisterUser_Sk(
+                db.spRegisterUser_Sk(
                     user.FirstName,
                     user.MiddleName,
                     user.LastName,

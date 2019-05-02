@@ -14,12 +14,6 @@ namespace E_Commerce_ShoebApi.Models
     
     public partial class tblInventory_Sk
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblInventory_Sk()
-        {
-            this.tblItems_Sk = new HashSet<tblItems_Sk>();
-        }
-    
         public int InventoryId { get; set; }
         public int ProductId { get; set; }
         public int SellerId { get; set; }
@@ -35,7 +29,5 @@ namespace E_Commerce_ShoebApi.Models
     
         public virtual tblProducts_Sk tblProducts_Sk { get; set; }
         public virtual tblSellers_Sk tblSellers_Sk { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblItems_Sk> tblItems_Sk { get; set; }
     }
 }

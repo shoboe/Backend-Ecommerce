@@ -14,7 +14,7 @@ namespace E_Commerce_ShoebApi.DAL
         public List<SearchProductView> GetProducts(string productName)
         {
             List<SearchProductView> products = new List<SearchProductView>();
-            using (var db = new sdirecttestdbEntities())
+            using (var db = new sdirecttestdbEntities1())
             {
                 products.AddRange((from x in db.tblProducts_Sk
                                       where (x.ProductName == productName)

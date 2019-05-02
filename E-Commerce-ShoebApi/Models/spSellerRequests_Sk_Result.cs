@@ -11,7 +11,7 @@ namespace E_Commerce_ShoebApi.Models
 {
     using System;
     
-    public partial class SellerRequests_Sk_Result
+    public partial class spSellerRequests_Sk_Result
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

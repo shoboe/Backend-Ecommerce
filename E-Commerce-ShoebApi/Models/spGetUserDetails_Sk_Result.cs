@@ -11,8 +11,9 @@ namespace E_Commerce_ShoebApi.Models
 {
     using System;
     
-    public partial class GetUserDetails_Sk_Result
+    public partial class spGetUserDetails_Sk_Result
     {
+        public int RoleId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

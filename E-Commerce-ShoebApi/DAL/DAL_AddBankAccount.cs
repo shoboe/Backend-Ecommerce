@@ -10,13 +10,13 @@ namespace E_Commerce_ShoebApi.DAL
     {
         public void CreateAccount(AddBankAccountView user)
         {
-           using(var db = new sdirecttestdbEntities())
+           using(var db = new sdirecttestdbEntities1())
             {
                 db.tblBankNameUser_Sk.Add(new tblBankNameUser_Sk() {
                     BankId = user.BankId,
                     Username = user.Username,
                     Password = user.Password,
-                    Mobile = user.Mobile,
+                    Email = user.Email,
                     Balance = user.Balance,
                     AccountNumber = user.AccountNumber,
                     IsActive = true,

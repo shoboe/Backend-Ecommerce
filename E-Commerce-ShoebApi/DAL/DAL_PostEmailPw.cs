@@ -10,7 +10,7 @@ namespace E_Commerce_ShoebApi.DAL
     {
         public UserView Post(EmailPasswordView credentials)
         {
-            using(var db = new sdirecttestdbEntities())
+            using(var db = new sdirecttestdbEntities1())
             {
                 var result = (from obj in db.tblUser_Sk
                               where (obj.Email == credentials.Email)
@@ -21,12 +21,13 @@ namespace E_Commerce_ShoebApi.DAL
 
                 foreach (var i in result) {
 
-                    var UserTables = db.GetUserDetails_Sk(i.UserId).ToList();
+                    var UserTables = db.spGetUserDetails_Sk(i.UserId).ToList();
 
                     foreach(var j in UserTables)
                     {
                         if (k == 0)
                         {
+                            user.RoleId = j.RoleId;
                             user.UserId = j.UserId; 
                             user.FirstName = j.FirstName;
                             user.MiddleName = j.MiddleName;

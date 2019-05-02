@@ -8,7 +8,7 @@ namespace E_Commerce_ShoebApi.DAL
 {
     public interface DAL_IGenerateOTP
     {
-        void GenerateOTPviaEmail(string userEmail);
+        bool GenerateOTPviaEmail(string userEmail);
         bool VerifyOtp(string email, int otp);
     }
 }

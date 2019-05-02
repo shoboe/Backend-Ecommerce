@@ -18,9 +18,7 @@ namespace E_Commerce_ShoebApi.Models
         public int BankId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public long Mobile { get; set; }
         public int Balance { get; set; }
-        public long AccountNumber { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public System.DateTime IsCreatedOn { get; set; }
         public string IsCreatedBy { get; set; }
@@ -28,6 +26,8 @@ namespace E_Commerce_ShoebApi.Models
         public string IsUpdatedBy { get; set; }
         public bool IsDeleted { get; set; }
         public string IsDeletedBy { get; set; }
+        public string Email { get; set; }
+        public string AccountNumber { get; set; }
     
         public virtual tblBank_Sk tblBank_Sk { get; set; }
     }

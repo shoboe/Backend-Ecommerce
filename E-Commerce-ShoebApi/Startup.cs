@@ -7,12 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup(typeof(E_Commerce_ShoebApi.Startup))]
+
 namespace E_Commerce_ShoebApi
 {
+   
     public class Startup
     {
+ 
         public void ConfigureAuth(IAppBuilder app)
         {
 
@@ -30,6 +34,7 @@ namespace E_Commerce_ShoebApi
 
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
+
         }
 
         public void Configuration(IAppBuilder app)
