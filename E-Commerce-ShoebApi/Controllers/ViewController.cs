@@ -23,9 +23,11 @@ namespace E_Commerce_ShoebApi.Controllers
         BAL_IAddBankAccount BAL_iAddBankAccount;
         BAL_IRegisterUser BAL_iRegisterUser;
         DAL_IGenerateOTP DAL_iGenererate;
+        DAL_IGetAllUsers DAL_iGetAllUsers;
         public ViewController(BAL_ISearchProduct BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw,
             BAL_INewProduct BAL_iNewProduct, BAL_IAddBankAccount BAL_iAddBankAccount,
-             BAL_IRegisterUser BAL_iRegisterUser, DAL_IGenerateOTP DAL_iGenererate)
+             BAL_IRegisterUser BAL_iRegisterUser, DAL_IGenerateOTP DAL_iGenererate,
+              DAL_IGetAllUsers DAL_iGetAllUsers)
         {
             this.BAL_itblProducts = BAL_itblProducts;
             this.BAL_iPostEmailPw = BAL_iPostEmailPw;
@@ -33,11 +35,12 @@ namespace E_Commerce_ShoebApi.Controllers
             this.BAL_iAddBankAccount = BAL_iAddBankAccount;
             this.BAL_iRegisterUser = BAL_iRegisterUser;
             this.DAL_iGenererate = DAL_iGenererate;
+            this.DAL_iGetAllUsers = DAL_iGetAllUsers;
         }
-        [Authorize]
+
         [HttpGet]
-        [Route("api/view/{productName}")]
-        public IHttpActionResult GetEmployee(string productName)
+        [Route("api/view/{GetProducts}")]
+        public IHttpActionResult GetProducts(string productName)
         {
             return Json(BAL_itblProducts.GetProducts(productName));
         }
@@ -57,7 +60,7 @@ namespace E_Commerce_ShoebApi.Controllers
         [Authorize]
         [HttpPost]
         [Route("api/view/RegisterNewProduct")]
-        public IHttpActionResult PostNewProduct([FromBody]AddProductView newProduct)
+        public IHttpActionResult RegisterNewProduct([FromBody]AddProductView newProduct)
         {
             if (ModelState.IsValid)
             {
@@ -79,10 +82,7 @@ namespace E_Commerce_ShoebApi.Controllers
 
         }
 
-        public class EmailView
-        {
-            public string Email { get; set; }
-        }
+
 
 
         [HttpPost]
@@ -110,7 +110,36 @@ namespace E_Commerce_ShoebApi.Controllers
             }
         }
 
+        //For Demo Usage:
+        [Authorize]
+        [HttpPost]
+        [Route("api/view/ChangeSellerStatus")]
+        public IHttpActionResult ChangeSellerStatus(List<ChangeSellerStatusModel> statusUpdate)
+        {
+            if (statusUpdate.Count != 0)
+            {
+                using (var db = new sdirecttestdbEntities1())
+                {
+                    foreach (var i in statusUpdate)
+                        db.spChangeSellerStatus_Sk(i.SellerId, i.Action);
+                }
+                return Content(HttpStatusCode.OK, "Done");
+            }
+            else
+                return Content(HttpStatusCode.BadRequest, "Nothing To Update");
+        }
+        [Authorize]
+        [HttpGet]
+        [Route("api/view/GetAllUsers")]
+        public IHttpActionResult GetAllUsers()
+        {
+        
+           using (var db = new sdirecttestdbEntities1())
+             {
+                return Json(this.DAL_iGetAllUsers.GetAllUsers());
+             }
 
+        }
 
 
         //[HttpDelete]

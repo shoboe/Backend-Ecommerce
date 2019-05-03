@@ -320,5 +320,19 @@ namespace E_Commerce_ShoebApi.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSellerRequests_Sk_Result>("spSellerRequests_Sk");
         }
+    
+        public virtual ObjectResult<spGetProducts_Sk_Result> spGetProducts_Sk(string productName)
+        {
+            var productNameParameter = productName != null ?
+                new ObjectParameter("ProductName", productName) :
+                new ObjectParameter("ProductName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetProducts_Sk_Result>("spGetProducts_Sk", productNameParameter);
+        }
+    
+        public virtual ObjectResult<spGetAllUsers_Sk_Result> spGetAllUsers_Sk()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllUsers_Sk_Result>("spGetAllUsers_Sk");
+        }
     }
 }

@@ -130,7 +130,7 @@
           <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
           <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" />
-          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblOrders_Sk">
           <Key>
@@ -708,6 +708,10 @@
         <Function Name="spFinalizeOrder_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ORDERID" Type="int" Mode="In" />
         </Function>
+        <Function Name="spGetAllUsers_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetProducts_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="spGetUserDetails_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="num" Type="int" Mode="In" />
         </Function>
@@ -1086,6 +1090,10 @@
             <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
             <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
           </AssociationSet>
+          <FunctionImport Name="spGetProducts_Sk" ReturnType="Collection(sdirecttestdbModel.spGetProducts_Sk_Result)">
+          <Parameter Name="ProductName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAllUsers_Sk" ReturnType="Collection(sdirecttestdbModel.spGetAllUsers_Sk_Result)" />
         </EntityContainer>
         <ComplexType Name="spGetUserDetails_Sk_Result">
           <Property Type="Int32" Name="RoleId" Nullable="false" />
@@ -1269,7 +1277,7 @@
           <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsUpdatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="IsDeletedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblProducts_Sk" Relationship="sdirecttestdbModel.FK__tblInvent__Produ__35F2D38B" FromRole="tblInventory_Sk" ToRole="tblProducts_Sk" />
           <NavigationProperty Name="tblSellers_Sk" Relationship="sdirecttestdbModel.FK__tblInvent__Selle__36E6F7C4" FromRole="tblInventory_Sk" ToRole="tblSellers_Sk" />
         </EntityType>
@@ -1838,6 +1846,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="spGetProducts_Sk_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="ProductCategoryId" Nullable="false" />
+          <Property Type="String" Name="Productname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Brand" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Image" Nullable="false" />
+          <Property Type="Int32" Name="InventoryId" Nullable="false" />
+          <Property Type="Int32" Name="SellerId" Nullable="false" />
+          <Property Type="Int32" Name="PricePerUnit" Nullable="false" />
+          <Property Type="Int32" Name="ProductCount" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetAllUsers_Sk_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="IsCreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="IsCreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="IsUpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="IsUpdatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="IsDeletedBy" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="Image" Nullable="false" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2245,6 +2283,44 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spGetProducts_Sk" FunctionName="sdirecttestdbModel.Store.spGetProducts_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetProducts_Sk_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="Productname" ColumnName="Productname" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAllUsers_Sk" FunctionName="sdirecttestdbModel.Store.spGetAllUsers_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetAllUsers_Sk_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

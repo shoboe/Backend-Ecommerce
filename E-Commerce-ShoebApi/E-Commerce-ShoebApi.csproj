@@ -159,8 +159,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BAL\BAL_AddBankAccount.cs" />
     <Compile Include="BAL\BAL_Cart.cs" />
+    <Compile Include="BAL\BAL_GetAllUsers.cs" />
     <Compile Include="BAL\BAL_IAddBankAccount.cs" />
     <Compile Include="BAL\BAL_ICart.cs" />
+    <Compile Include="BAL\BAL_IGetAllUsers.cs" />
     <Compile Include="BAL\BAL_INewProduct.cs" />
     <Compile Include="BAL\BAL_IPostEmailPw.cs" />
     <Compile Include="BAL\BAL_ISellerRequestAction.cs" />
@@ -173,7 +175,9 @@
     <Compile Include="BAL\BAL_SearchProduct.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="DAL\AddBankAccountView.cs" />
+    <Compile Include="DAL\DAL_GetAllUsers.cs" />
     <Compile Include="DAL\DAL_IGenerateOTP.cs" />
+    <Compile Include="DAL\DAL_IGetAllUsers.cs" />
     <Compile Include="DAL\DAL_ISellerRequestAction.cs" />
     <Compile Include="DAL\DAL_IRegisterUser.cs" />
     <Compile Include="DAL\DAL_RegisterUser.cs" />
@@ -189,6 +193,7 @@
     <Compile Include="DAL\DAL_NewProduct.cs" />
     <Compile Include="DAL\DAL_PostEmailPw.cs" />
     <Compile Include="DAL\DAL_SearchProduct.cs" />
+    <Compile Include="Models\ChangeSellerStatusModel.cs" />
     <Compile Include="Models\ECommerceModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -204,12 +209,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ECommerceModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmailView.cs" />
     <Compile Include="Models\GenerateOTP.cs" />
+    <Compile Include="Models\GetAllUsersModel.cs" />
     <Compile Include="Models\ImageFormat.cs" />
     <Compile Include="DAL\SearchProductView.cs" />
     <Compile Include="Models\EmailPasswordView.cs" />
     <Compile Include="Models\RegisterSellerView.cs" />
     <Compile Include="Models\RegisterUserView.cs" />
+    <Compile Include="Models\spGetAllUsers_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spGetProducts_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\spGetUserDetails_Sk_Result.cs">
       <DependentUpon>ECommerceModel.tt</DependentUpon>
     </Compile>
