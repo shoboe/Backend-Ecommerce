@@ -35,6 +35,7 @@ namespace E_Commerce_ShoebApi.Models
         public virtual DbSet<tblCity_Sk> tblCity_Sk { get; set; }
         public virtual DbSet<tblCountry_Sk> tblCountry_Sk { get; set; }
         public virtual DbSet<tblInventory_Sk> tblInventory_Sk { get; set; }
+        public virtual DbSet<tblItems_Sk> tblItems_Sk { get; set; }
         public virtual DbSet<tblOrders_Sk> tblOrders_Sk { get; set; }
         public virtual DbSet<tblOrderStatus_Sk> tblOrderStatus_Sk { get; set; }
         public virtual DbSet<tblOtp_Sk> tblOtp_Sk { get; set; }
@@ -153,6 +154,15 @@ namespace E_Commerce_ShoebApi.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spChangeSellerStatus_Sk", sELLERIDParameter, fLAGParameter);
         }
     
+        public virtual int spCheckSellerStatus_Sk(Nullable<int> sellerId)
+        {
+            var sellerIdParameter = sellerId.HasValue ?
+                new ObjectParameter("SellerId", sellerId) :
+                new ObjectParameter("SellerId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCheckSellerStatus_Sk", sellerIdParameter);
+        }
+    
         public virtual int spCreateOrder_Sk(Nullable<int> uSERID, Nullable<int> pRODUCTID)
         {
             var uSERIDParameter = uSERID.HasValue ?
@@ -209,13 +219,36 @@ namespace E_Commerce_ShoebApi.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFinalizeOrder_Sk", oRDERIDParameter);
         }
     
-        public virtual ObjectResult<spGetUserDetails_Sk_Result> spGetUserDetails_Sk(Nullable<int> num)
+        public virtual ObjectResult<spGetAllUsers_Sk_Result> spGetAllUsers_Sk()
         {
-            var numParameter = num.HasValue ?
-                new ObjectParameter("num", num) :
-                new ObjectParameter("num", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllUsers_Sk_Result>("spGetAllUsers_Sk");
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserDetails_Sk_Result>("spGetUserDetails_Sk", numParameter);
+        public virtual ObjectResult<spGetProducts_Sk_Result> spGetProducts_Sk(string productName)
+        {
+            var productNameParameter = productName != null ?
+                new ObjectParameter("ProductName", productName) :
+                new ObjectParameter("ProductName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetProducts_Sk_Result>("spGetProducts_Sk", productNameParameter);
+        }
+    
+        public virtual ObjectResult<spGetSellerFullName_Sk_Result> spGetSellerFullName_Sk(Nullable<int> sellerId)
+        {
+            var sellerIdParameter = sellerId.HasValue ?
+                new ObjectParameter("SellerId", sellerId) :
+                new ObjectParameter("SellerId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetSellerFullName_Sk_Result>("spGetSellerFullName_Sk", sellerIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetUserDetails_Sk_Result> spGetUserDetails_Sk(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserDetails_Sk_Result>("spGetUserDetails_Sk", userIdParameter);
         }
     
         public virtual int spRegisterUser_Sk(string firstName, string middleName, string lastName, string email, string password, byte[] image, string mobile, string cityName1, Nullable<long> pincode1, string type1, string address1, string type2, string cityName2, Nullable<long> pincode2, string address2, Nullable<bool> isSeller, string businessType, string bankName, string accountNumber)
@@ -319,20 +352,6 @@ namespace E_Commerce_ShoebApi.Models
         public virtual ObjectResult<spSellerRequests_Sk_Result> spSellerRequests_Sk()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSellerRequests_Sk_Result>("spSellerRequests_Sk");
-        }
-    
-        public virtual ObjectResult<spGetProducts_Sk_Result> spGetProducts_Sk(string productName)
-        {
-            var productNameParameter = productName != null ?
-                new ObjectParameter("ProductName", productName) :
-                new ObjectParameter("ProductName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetProducts_Sk_Result>("spGetProducts_Sk", productNameParameter);
-        }
-    
-        public virtual ObjectResult<spGetAllUsers_Sk_Result> spGetAllUsers_Sk()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllUsers_Sk_Result>("spGetAllUsers_Sk");
         }
     }
 }

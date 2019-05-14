@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce-ShoebApi", "E-Commerce-ShoebApi\E-Commerce-ShoebApi.csproj", "{24105454-FD81-4404-9E19-F95316C5A522}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLayer", "DatabaseLayer\DatabaseLayer.csproj", "{10026ED2-02E5-4D11-9B3F-E64A14954A03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{5326EAC4-DE69-4797-B73E-791711C39E56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{24105454-FD81-4404-9E19-F95316C5A522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24105454-FD81-4404-9E19-F95316C5A522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24105454-FD81-4404-9E19-F95316C5A522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10026ED2-02E5-4D11-9B3F-E64A14954A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10026ED2-02E5-4D11-9B3F-E64A14954A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10026ED2-02E5-4D11-9B3F-E64A14954A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10026ED2-02E5-4D11-9B3F-E64A14954A03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5326EAC4-DE69-4797-B73E-791711C39E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5326EAC4-DE69-4797-B73E-791711C39E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5326EAC4-DE69-4797-B73E-791711C39E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5326EAC4-DE69-4797-B73E-791711C39E56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,6 +17,7 @@ namespace E_Commerce_ShoebApi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblOrders_Sk()
         {
+            this.tblItems_Sk = new HashSet<tblItems_Sk>();
             this.tblOrderStatus_Sk = new HashSet<tblOrderStatus_Sk>();
         }
     
@@ -36,6 +37,8 @@ namespace E_Commerce_ShoebApi.Models
     
         public virtual tblBuyers_Sk tblBuyers_Sk { get; set; }
         public virtual tblBuyers_Sk tblBuyers_Sk1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblItems_Sk> tblItems_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrderStatus_Sk> tblOrderStatus_Sk { get; set; }
         public virtual tblPaymentMethod_Sk tblPaymentMethod_Sk { get; set; }

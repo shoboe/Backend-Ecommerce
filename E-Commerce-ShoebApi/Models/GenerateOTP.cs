@@ -13,13 +13,12 @@ namespace E_Commerce_ShoebApi.Models
             using(var db = new sdirecttestdbEntities1())
             {
                 var result = (from i in db.tblUser_Sk
-                             where i.Email == userEmail
-                             select i).ToList();
-                if (result.Count == 1)
+                              where i.Email == userEmail
+                              select i).Any();
+                if (result)
                     return false;
                 else
                 {
-
                     var random = new Random();
                     var num = random.Next(10000, 54999);
 
@@ -65,19 +64,15 @@ namespace E_Commerce_ShoebApi.Models
             {
                 var result = (from x in db.tblOtp_Sk
                               where x.Email == email && x.OTP == otp && x.IsActive == true
-                              select x
-                              ).ToList();
-                if (result.Count == 1)
-                {
+                              select x);
+
                     foreach(var i in result)
                     {
                         db.spDeleteOtp_Sk(i.OtpId);
+                        return true;
                     }
-                    return true;
-                }
-
-                else return false;
             }
+            return false;
         }
     }
 }

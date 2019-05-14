@@ -7,6 +7,7 @@ namespace E_Commerce_ShoebApi.Models
 {
     public class UserView
     {
+        public Nullable<bool> IsSeller { get; set; }
         public int RoleId { get; set; }
         public int UserId { get; set; }
         public string FirstName { get; set; }

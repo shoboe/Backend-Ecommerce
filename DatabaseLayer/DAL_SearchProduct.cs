@@ -16,8 +16,8 @@ namespace E_Commerce_ShoebApi.DAL
             List<SearchProductView> products = new List<SearchProductView>();
             using (var db = new sdirecttestdbEntities1())
             {
-                var result = db.spGetProducts_Sk(productName).ToList();
-                foreach (var x in result)
+                var productResult = db.spGetProducts_Sk(productName).ToList();
+                foreach (var x in productResult)
                 {
                     products.Add(new SearchProductView()
                     {
@@ -29,9 +29,21 @@ namespace E_Commerce_ShoebApi.DAL
                         Image = this.ByteArrayToString(x.Image),
                         InventoryId = x.InventoryId,
                         PricePerUnit = x.PricePerUnit,
-                        ProductCount = x.ProductCount
+                        ProductCount = x.ProductCount,
+                        SellerId = x.SellerId
                     });
                 }
+                foreach(var i in products)
+                {
+                    var sellerNameResult = db.spGetSellerFullName_Sk(i.SellerId).ToList();
+                    foreach(var j in sellerNameResult)
+                    {
+                        i.SellerFirstName = j.FirstName;
+                        i.SellerMiddleName = j.MiddleName;
+                        i.SellerLastName = j.LastName;
+                    }
+                }
+             
             }
             return products;
             //List<SearchProductView> products = new List<SearchProductView>();

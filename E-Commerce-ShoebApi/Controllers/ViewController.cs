@@ -63,9 +63,13 @@ namespace E_Commerce_ShoebApi.Controllers
         public IHttpActionResult RegisterNewProduct([FromBody]AddProductView newProduct)
         {
             if (ModelState.IsValid)
-            {
-                BAL_iNewProduct.AddProduct(newProduct);
-                return Ok(); 
+             {
+                if (CheckIfSellerVerified.VerifySeller(newProduct.SellerId))
+                {
+                    BAL_iNewProduct.AddProduct(newProduct);
+                    Content(HttpStatusCode.OK, "Added");
+                }
+                return Content(HttpStatusCode.OK, "Not Authorized To Sell");
             }
             return Content(HttpStatusCode.BadRequest, "Request Failed");
          }
@@ -79,10 +83,7 @@ namespace E_Commerce_ShoebApi.Controllers
                 return Content(HttpStatusCode.OK, "Check Email For OTP Verification");
             else
                 return Content(HttpStatusCode.BadRequest, "Email Already Taken");
-
         }
-
-
 
 
         [HttpPost]
@@ -93,6 +94,7 @@ namespace E_Commerce_ShoebApi.Controllers
             {
                 if (DAL_iGenererate.VerifyOtp(user.Email, user.OTP))
                 {
+                        
                     BAL_iRegisterUser.Register(user);
                     return Content(HttpStatusCode.OK, "Thank You! Please Login from HomePage.");
                 }
@@ -102,11 +104,17 @@ namespace E_Commerce_ShoebApi.Controllers
         [Authorize]
         [HttpGet]
         [Route("api/view/GetSellerRequests")]
-        public IHttpActionResult GetSellerRequests()
+        public IHttpActionResult GetSellerRequests(int UserId)
         {
             using(var db = new sdirecttestdbEntities1())
             {
-                return Json(db.spSellerRequests_Sk().ToList());
+                var IsAdmin = (from x in db.tblUser_Sk
+                               where x.UserId == UserId && x.RoleId == 1
+                               select x).FirstOrDefault();
+                if(IsAdmin!=null)
+                    return Json(db.spSellerRequests_Sk().ToList());
+                else
+                    return Content(HttpStatusCode.BadRequest, "Not Authorized");
             }
         }
 
@@ -120,6 +128,7 @@ namespace E_Commerce_ShoebApi.Controllers
             {
                 using (var db = new sdirecttestdbEntities1())
                 {
+
                     foreach (var i in statusUpdate)
                         db.spChangeSellerStatus_Sk(i.SellerId, i.Action);
                 }
@@ -131,13 +140,20 @@ namespace E_Commerce_ShoebApi.Controllers
         [Authorize]
         [HttpGet]
         [Route("api/view/GetAllUsers")]
-        public IHttpActionResult GetAllUsers()
+        public IHttpActionResult GetAllUsers(int UserId)
         {
         
            using (var db = new sdirecttestdbEntities1())
-             {
-                return Json(this.DAL_iGetAllUsers.GetAllUsers());
-             }
+            {
+                var IsAdmin = (from x in db.tblUser_Sk
+                               where x.UserId == UserId && x.RoleId == 1
+                               select x).FirstOrDefault();
+                if (IsAdmin != null)
+                    return Json(this.DAL_iGetAllUsers.GetAllUsers());
+
+                return Content(HttpStatusCode.BadRequest, "Not Authorized");
+
+            }
 
         }
 

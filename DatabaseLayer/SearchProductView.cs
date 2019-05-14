@@ -16,5 +16,9 @@ namespace E_Commerce_ShoebApi.DAL
         public int InventoryId { get; set; }
         public int PricePerUnit { get; set; }
         public int ProductCount { get; set; }
+        public int SellerId { get; set; }
+        public string SellerFirstName { get; set; }
+        public string SellerMiddleName { get; set; }
+        public string SellerLastName { get; set; }
     }
 }

@@ -40,6 +40,7 @@ namespace E_Commerce_ShoebApi.Models
         public string IsDeletedBy { get; set; }
         public byte[] Image { get; set; }
         public string Mobile { get; set; }
+        public Nullable<bool> IsSeller { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAddress_Sk> tblAddress_Sk { get; set; }

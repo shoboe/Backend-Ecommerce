@@ -27,6 +27,7 @@ namespace E_Commerce_ShoebApi.DAL
                     {
                         if (k == 0)
                         {
+                            user.IsSeller = j.IsSeller;
                             user.RoleId = j.RoleId;
                             user.UserId = j.UserId; 
                             user.FirstName = j.FirstName;
