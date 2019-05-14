@@ -185,9 +185,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Soheb Projects\\Backend-Ecommerce\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
-      "projectName": "BusinessLogicLayer",
-      "projectPath": "D:\\Soheb Projects\\Backend-Ecommerce\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+      "projectUniqueName": "D:\\Soheb Projects\\Backend-Ecommerce\\BusinessLogicLayer\\BusinessLogicLayer1.csproj",
+      "projectName": "BusinessLogicLayer1",
+      "projectPath": "D:\\Soheb Projects\\Backend-Ecommerce\\BusinessLogicLayer\\BusinessLogicLayer1.csproj",
       "packagesPath": "C:\\Users\\shoebk.IXCNEW\\.nuget\\packages\\",
       "outputPath": "D:\\Soheb Projects\\Backend-Ecommerce\\BusinessLogicLayer\\obj\\",
       "projectStyle": "PackageReference",

@@ -5,10 +5,10 @@ namespace E_Commerce_ShoebApi.App_Start
 {
     using System;
     using System.Web;
-    using E_Commerce_ShoebApi.BAL;
-    using E_Commerce_ShoebApi.DAL;
+    using BusinessLogicLayer;
+    using DataAccessLayer;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
+    
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;

@@ -1,0 +1,2046 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sdirecttestdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAddress_Sk">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pincode" Type="bigint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblBank_Sk">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblBuyers_Sk">
+          <Key>
+            <PropertyRef Name="BuyerId" />
+          </Key>
+          <Property Name="BuyerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ShippingAddress" Type="int" Nullable="false" />
+          <Property Name="BillingAddress" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCity_Sk">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblInventory_Sk">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="SellerId" Type="int" Nullable="false" />
+          <Property Name="PricePerUnit" Type="int" Nullable="false" />
+          <Property Name="ProductCount" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblItems_Sk">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="InventoryId" Type="int" Nullable="false" />
+          <Property Name="ItemCount" Type="int" Nullable="false" />
+          <Property Name="NetPrice" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOrders_Sk">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyerId" Type="int" Nullable="false" />
+          <Property Name="ShippingMethodId" Type="int" Nullable="false" />
+          <Property Name="NetPrice" Type="int" Nullable="false" />
+          <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+          <Property Name="PaidFrom" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOrderStatus_Sk">
+          <Key>
+            <PropertyRef Name="OrderStatusId" />
+          </Key>
+          <Property Name="OrderStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderStatusChangedOn" Type="datetime" Nullable="false" />
+          <Property Name="OrderStatusChangedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOtp_Sk">
+          <Key>
+            <PropertyRef Name="OtpId" />
+          </Key>
+          <Property Name="OtpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OTP" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPaymentMethod_Sk">
+          <Key>
+            <PropertyRef Name="PaymentMethodId" />
+          </Key>
+          <Property Name="PaymentMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblProducts_Sk">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCategoryId" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblProductsCategory_Sk">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSellers_Sk">
+          <Key>
+            <PropertyRef Name="SellerId" />
+          </Key>
+          <Property Name="SellerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SellerStatusId" Type="int" Nullable="false" />
+          <Property Name="BusinessTypeId" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="AccountNumber" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSellerStatus_Sk">
+          <Key>
+            <PropertyRef Name="SellerStatusId" />
+          </Key>
+          <Property Name="SellerStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StatusChangedOn" Type="datetime" Nullable="false" />
+          <Property Name="StatusChangedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblShippingMethod_Sk">
+          <Key>
+            <PropertyRef Name="ShippingMethodId" />
+          </Key>
+          <Property Name="ShippingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Duration" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser_Sk">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsCreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="IsSeller" Type="bit" />
+        </EntityType>
+        <Association Name="FK__tblAddres__CityI__79DDE984">
+          <End Role="tblCity_Sk" Type="Self.tblCity_Sk" Multiplicity="1" />
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity_Sk">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAddress_Sk">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAddres__UserI__7AD20DBD">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblAddress_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuyers__Billi__20F7B6A5">
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAddress_Sk">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="tblBuyers_Sk">
+              <PropertyRef Name="BillingAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuyers__Shipp__21EBDADE">
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAddress_Sk">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="tblBuyers_Sk">
+              <PropertyRef Name="ShippingAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuyers__UserI__22DFFF17">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblBuyers_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblInvent__Produ__35F2D38B">
+          <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="1" />
+          <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducts_Sk">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="tblInventory_Sk">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblInvent__Selle__36E6F7C4">
+          <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
+          <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSellers_Sk">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="tblInventory_Sk">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblItems___Inven__60DD3190">
+          <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="1" />
+          <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInventory_Sk">
+              <PropertyRef Name="InventoryId" />
+            </Principal>
+            <Dependent Role="tblItems_Sk">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblItems___Order__61D155C9">
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
+          <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrders_Sk">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="tblItems_Sk">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Buyer__4535171B">
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBuyers_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Buyer__50A6C9C7">
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBuyers_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrderS__Order__5A303401">
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
+          <End Role="tblOrderStatus_Sk" Type="Self.tblOrderStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrders_Sk">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="tblOrderStatus_Sk">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Payme__519AEE00">
+          <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPaymentMethod_Sk">
+              <PropertyRef Name="PaymentMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__471D5F8D">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__481183C6">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__528F1239">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__53833672">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPaymen__BankI__4EBE8155">
+          <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
+          <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBank_Sk">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="tblPaymentMethod_Sk">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__Produ__2F45D5FC">
+          <End Role="tblProductsCategory_Sk" Type="Self.tblProductsCategory_Sk" Multiplicity="1" />
+          <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductsCategory_Sk">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="tblProducts_Sk">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__BankI__176E4C6B">
+          <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
+          <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBank_Sk">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="tblSellers_Sk">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__Selle__195694DD">
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="1" />
+          <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSellerStatus_Sk">
+              <PropertyRef Name="SellerStatusId" />
+            </Principal>
+            <Dependent Role="tblSellers_Sk">
+              <PropertyRef Name="SellerStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__082C08DB">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__09202D14">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__0A14514D">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spAddOtp_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="OTP" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAddProduct_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductCategoryId" Type="int" Mode="In" />
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Brand" Type="varchar" Mode="In" />
+          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="SellerName" Type="varchar" Mode="In" />
+          <Parameter Name="UpdaterName" Type="varchar" Mode="In" />
+          <Parameter Name="PricePerUnit" Type="int" Mode="In" />
+          <Parameter Name="ProductCount" Type="int" Mode="In" />
+          <Parameter Name="SellerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAddShippingMethod_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USERID" Type="int" Mode="In" />
+          <Parameter Name="ORDERID" Type="int" Mode="In" />
+          <Parameter Name="ShippingMethod" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spChangeSellerStatus_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SELLERID" Type="int" Mode="In" />
+          <Parameter Name="FLAG" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="spCheckSellerStatus_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SellerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spCreateOrder_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USERID" Type="int" Mode="In" />
+          <Parameter Name="PRODUCTID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDeleteOtp_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OtpId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spExecutePayment_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderId" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="AccountNumber" Type="varchar" Mode="In" />
+          <Parameter Name="BankId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spFinalizeOrder_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetAllUsers_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetProducts_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetSellerFullName_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SellerId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetUserDetails_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spRegisterUser_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Image" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="CityName1" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode1" Type="bigint" Mode="In" />
+          <Parameter Name="Type1" Type="char" Mode="In" />
+          <Parameter Name="Address1" Type="varchar" Mode="In" />
+          <Parameter Name="Type2" Type="char" Mode="In" />
+          <Parameter Name="CityName2" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode2" Type="bigint" Mode="In" />
+          <Parameter Name="Address2" Type="varchar" Mode="In" />
+          <Parameter Name="IsSeller" Type="bit" Mode="In" />
+          <Parameter Name="BusinessType" Type="varchar" Mode="In" />
+          <Parameter Name="BankName" Type="varchar" Mode="In" />
+          <Parameter Name="AccountNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spSellerOrdersPlaced_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="SellerId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spSellerRequests_Sk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="sdirecttestdbModelStoreContainer">
+          <EntitySet Name="tblAddress_Sk" EntityType="Self.tblAddress_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBank_Sk" EntityType="Self.tblBank_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBuyers_Sk" EntityType="Self.tblBuyers_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCity_Sk" EntityType="Self.tblCity_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInventory_Sk" EntityType="Self.tblInventory_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblItems_Sk" EntityType="Self.tblItems_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrders_Sk" EntityType="Self.tblOrders_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrderStatus_Sk" EntityType="Self.tblOrderStatus_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOtp_Sk" EntityType="Self.tblOtp_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPaymentMethod_Sk" EntityType="Self.tblPaymentMethod_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProducts_Sk" EntityType="Self.tblProducts_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductsCategory_Sk" EntityType="Self.tblProductsCategory_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSellers_Sk" EntityType="Self.tblSellers_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSellerStatus_Sk" EntityType="Self.tblSellerStatus_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblShippingMethod_Sk" EntityType="Self.tblShippingMethod_Sk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser_Sk" EntityType="Self.tblUser_Sk" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblAddres__CityI__79DDE984" Association="Self.FK__tblAddres__CityI__79DDE984">
+            <End Role="tblCity_Sk" EntitySet="tblCity_Sk" />
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAddres__UserI__7AD20DBD" Association="Self.FK__tblAddres__UserI__7AD20DBD">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuyers__Billi__20F7B6A5" Association="Self.FK__tblBuyers__Billi__20F7B6A5">
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuyers__Shipp__21EBDADE" Association="Self.FK__tblBuyers__Shipp__21EBDADE">
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuyers__UserI__22DFFF17" Association="Self.FK__tblBuyers__UserI__22DFFF17">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblInvent__Produ__35F2D38B" Association="Self.FK__tblInvent__Produ__35F2D38B">
+            <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
+            <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblInvent__Selle__36E6F7C4" Association="Self.FK__tblInvent__Selle__36E6F7C4">
+            <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
+            <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblItems___Inven__60DD3190" Association="Self.FK__tblItems___Inven__60DD3190">
+            <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
+            <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblItems___Order__61D155C9" Association="Self.FK__tblItems___Order__61D155C9">
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+            <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Buyer__4535171B" Association="Self.FK__tblOrders__Buyer__4535171B">
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Buyer__50A6C9C7" Association="Self.FK__tblOrders__Buyer__50A6C9C7">
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrderS__Order__5A303401" Association="Self.FK__tblOrderS__Order__5A303401">
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+            <End Role="tblOrderStatus_Sk" EntitySet="tblOrderStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Payme__519AEE00" Association="Self.FK__tblOrders__Payme__519AEE00">
+            <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__471D5F8D" Association="Self.FK__tblOrders__Shipp__471D5F8D">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__481183C6" Association="Self.FK__tblOrders__Shipp__481183C6">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__528F1239" Association="Self.FK__tblOrders__Shipp__528F1239">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__53833672" Association="Self.FK__tblOrders__Shipp__53833672">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPaymen__BankI__4EBE8155" Association="Self.FK__tblPaymen__BankI__4EBE8155">
+            <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
+            <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__Produ__2F45D5FC" Association="Self.FK__tblProduc__Produ__2F45D5FC">
+            <End Role="tblProductsCategory_Sk" EntitySet="tblProductsCategory_Sk" />
+            <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__BankI__176E4C6B" Association="Self.FK__tblSeller__BankI__176E4C6B">
+            <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
+            <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__Selle__195694DD" Association="Self.FK__tblSeller__Selle__195694DD">
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+            <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__082C08DB" Association="Self.FK__tblSeller__UserI__082C08DB">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__09202D14" Association="Self.FK__tblSeller__UserI__09202D14">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__0A14514D" Association="Self.FK__tblSeller__UserI__0A14514D">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sdirecttestdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAddress_Sk">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pincode" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCity_Sk" Relationship="Self.FK__tblAddres__CityI__79DDE984" FromRole="tblAddress_Sk" ToRole="tblCity_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblAddres__UserI__7AD20DBD" FromRole="tblAddress_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblBuyers__Billi__20F7B6A5" FromRole="tblAddress_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk1" Relationship="Self.FK__tblBuyers__Shipp__21EBDADE" FromRole="tblAddress_Sk" ToRole="tblBuyers_Sk" />
+        </EntityType>
+        <EntityType Name="tblBank_Sk">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblPaymentMethod_Sk" Relationship="Self.FK__tblPaymen__BankI__4EBE8155" FromRole="tblBank_Sk" ToRole="tblPaymentMethod_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__BankI__176E4C6B" FromRole="tblBank_Sk" ToRole="tblSellers_Sk" />
+        </EntityType>
+        <EntityType Name="tblBuyers_Sk">
+          <Key>
+            <PropertyRef Name="BuyerId" />
+          </Key>
+          <Property Name="BuyerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ShippingAddress" Type="Int32" Nullable="false" />
+          <Property Name="BillingAddress" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblBuyers__Billi__20F7B6A5" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblAddress_Sk1" Relationship="Self.FK__tblBuyers__Shipp__21EBDADE" FromRole="tblBuyers_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblBuyers__UserI__22DFFF17" FromRole="tblBuyers_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Buyer__4535171B" FromRole="tblBuyers_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblOrders_Sk1" Relationship="Self.FK__tblOrders__Buyer__50A6C9C7" FromRole="tblBuyers_Sk" ToRole="tblOrders_Sk" />
+        </EntityType>
+        <EntityType Name="tblCity_Sk">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblAddres__CityI__79DDE984" FromRole="tblCity_Sk" ToRole="tblAddress_Sk" />
+        </EntityType>
+        <EntityType Name="tblInventory_Sk">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SellerId" Type="Int32" Nullable="false" />
+          <Property Name="PricePerUnit" Type="Int32" Nullable="false" />
+          <Property Name="ProductCount" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tblInvent__Produ__35F2D38B" FromRole="tblInventory_Sk" ToRole="tblProducts_Sk" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblInvent__Selle__36E6F7C4" FromRole="tblInventory_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblItems_Sk" Relationship="Self.FK__tblItems___Inven__60DD3190" FromRole="tblInventory_Sk" ToRole="tblItems_Sk" />
+        </EntityType>
+        <EntityType Name="tblItems_Sk">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="InventoryId" Type="Int32" Nullable="false" />
+          <Property Name="ItemCount" Type="Int32" Nullable="false" />
+          <Property Name="NetPrice" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblItems___Inven__60DD3190" FromRole="tblItems_Sk" ToRole="tblInventory_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblItems___Order__61D155C9" FromRole="tblItems_Sk" ToRole="tblOrders_Sk" />
+        </EntityType>
+        <EntityType Name="tblOrders_Sk">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyerId" Type="Int32" Nullable="false" />
+          <Property Name="ShippingMethodId" Type="Int32" Nullable="false" />
+          <Property Name="NetPrice" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
+          <Property Name="PaidFrom" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblOrders__Buyer__4535171B" FromRole="tblOrders_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk1" Relationship="Self.FK__tblOrders__Buyer__50A6C9C7" FromRole="tblOrders_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblItems_Sk" Relationship="Self.FK__tblItems___Order__61D155C9" FromRole="tblOrders_Sk" ToRole="tblItems_Sk" />
+          <NavigationProperty Name="tblOrderStatus_Sk" Relationship="Self.FK__tblOrderS__Order__5A303401" FromRole="tblOrders_Sk" ToRole="tblOrderStatus_Sk" />
+          <NavigationProperty Name="tblPaymentMethod_Sk" Relationship="Self.FK__tblOrders__Payme__519AEE00" FromRole="tblOrders_Sk" ToRole="tblPaymentMethod_Sk" />
+          <NavigationProperty Name="tblShippingMethod_Sk" Relationship="Self.FK__tblOrders__Shipp__471D5F8D" FromRole="tblOrders_Sk" ToRole="tblShippingMethod_Sk" />
+          <NavigationProperty Name="tblShippingMethod_Sk1" Relationship="Self.FK__tblOrders__Shipp__481183C6" FromRole="tblOrders_Sk" ToRole="tblShippingMethod_Sk" />
+          <NavigationProperty Name="tblShippingMethod_Sk2" Relationship="Self.FK__tblOrders__Shipp__528F1239" FromRole="tblOrders_Sk" ToRole="tblShippingMethod_Sk" />
+          <NavigationProperty Name="tblShippingMethod_Sk3" Relationship="Self.FK__tblOrders__Shipp__53833672" FromRole="tblOrders_Sk" ToRole="tblShippingMethod_Sk" />
+        </EntityType>
+        <EntityType Name="tblOrderStatus_Sk">
+          <Key>
+            <PropertyRef Name="OrderStatusId" />
+          </Key>
+          <Property Name="OrderStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderStatusChangedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderStatusChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrderS__Order__5A303401" FromRole="tblOrderStatus_Sk" ToRole="tblOrders_Sk" />
+        </EntityType>
+        <EntityType Name="tblOtp_Sk">
+          <Key>
+            <PropertyRef Name="OtpId" />
+          </Key>
+          <Property Name="OtpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OTP" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPaymentMethod_Sk">
+          <Key>
+            <PropertyRef Name="PaymentMethodId" />
+          </Key>
+          <Property Name="PaymentMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblPaymen__BankI__4EBE8155" FromRole="tblPaymentMethod_Sk" ToRole="tblBank_Sk" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Payme__519AEE00" FromRole="tblPaymentMethod_Sk" ToRole="tblOrders_Sk" />
+        </EntityType>
+        <EntityType Name="tblProducts_Sk">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblInvent__Produ__35F2D38B" FromRole="tblProducts_Sk" ToRole="tblInventory_Sk" />
+          <NavigationProperty Name="tblProductsCategory_Sk" Relationship="Self.FK__tblProduc__Produ__2F45D5FC" FromRole="tblProducts_Sk" ToRole="tblProductsCategory_Sk" />
+        </EntityType>
+        <EntityType Name="tblProductsCategory_Sk">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblProducts_Sk" Relationship="Self.FK__tblProduc__Produ__2F45D5FC" FromRole="tblProductsCategory_Sk" ToRole="tblProducts_Sk" />
+        </EntityType>
+        <EntityType Name="tblSellers_Sk">
+          <Key>
+            <PropertyRef Name="SellerId" />
+          </Key>
+          <Property Name="SellerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SellerStatusId" Type="Int32" Nullable="false" />
+          <Property Name="BusinessTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumber" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblBank_Sk" Relationship="Self.FK__tblSeller__BankI__176E4C6B" FromRole="tblSellers_Sk" ToRole="tblBank_Sk" />
+          <NavigationProperty Name="tblInventory_Sk" Relationship="Self.FK__tblInvent__Selle__36E6F7C4" FromRole="tblSellers_Sk" ToRole="tblInventory_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk" Relationship="Self.FK__tblSeller__Selle__195694DD" FromRole="tblSellers_Sk" ToRole="tblSellerStatus_Sk" />
+        </EntityType>
+        <EntityType Name="tblSellerStatus_Sk">
+          <Key>
+            <PropertyRef Name="SellerStatusId" />
+          </Key>
+          <Property Name="SellerStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatusChangedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StatusChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblSellers_Sk" Relationship="Self.FK__tblSeller__Selle__195694DD" FromRole="tblSellerStatus_Sk" ToRole="tblSellers_Sk" />
+          <NavigationProperty Name="tblUser_Sk" Relationship="Self.FK__tblSeller__UserI__082C08DB" FromRole="tblSellerStatus_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblUser_Sk1" Relationship="Self.FK__tblSeller__UserI__09202D14" FromRole="tblSellerStatus_Sk" ToRole="tblUser_Sk" />
+          <NavigationProperty Name="tblUser_Sk2" Relationship="Self.FK__tblSeller__UserI__0A14514D" FromRole="tblSellerStatus_Sk" ToRole="tblUser_Sk" />
+        </EntityType>
+        <EntityType Name="tblShippingMethod_Sk">
+          <Key>
+            <PropertyRef Name="ShippingMethodId" />
+          </Key>
+          <Property Name="ShippingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblOrders_Sk" Relationship="Self.FK__tblOrders__Shipp__471D5F8D" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblOrders_Sk1" Relationship="Self.FK__tblOrders__Shipp__481183C6" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblOrders_Sk2" Relationship="Self.FK__tblOrders__Shipp__528F1239" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
+          <NavigationProperty Name="tblOrders_Sk3" Relationship="Self.FK__tblOrders__Shipp__53833672" FromRole="tblShippingMethod_Sk" ToRole="tblOrders_Sk" />
+        </EntityType>
+        <EntityType Name="tblUser_Sk">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsSeller" Type="Boolean" />
+          <NavigationProperty Name="tblAddress_Sk" Relationship="Self.FK__tblAddres__UserI__7AD20DBD" FromRole="tblUser_Sk" ToRole="tblAddress_Sk" />
+          <NavigationProperty Name="tblBuyers_Sk" Relationship="Self.FK__tblBuyers__UserI__22DFFF17" FromRole="tblUser_Sk" ToRole="tblBuyers_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk" Relationship="Self.FK__tblSeller__UserI__082C08DB" FromRole="tblUser_Sk" ToRole="tblSellerStatus_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk1" Relationship="Self.FK__tblSeller__UserI__09202D14" FromRole="tblUser_Sk" ToRole="tblSellerStatus_Sk" />
+          <NavigationProperty Name="tblSellerStatus_Sk2" Relationship="Self.FK__tblSeller__UserI__0A14514D" FromRole="tblUser_Sk" ToRole="tblSellerStatus_Sk" />
+        </EntityType>
+        <Association Name="FK__tblAddres__CityI__79DDE984">
+          <End Role="tblCity_Sk" Type="Self.tblCity_Sk" Multiplicity="1" />
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity_Sk">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblAddress_Sk">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAddres__UserI__7AD20DBD">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblAddress_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuyers__Billi__20F7B6A5">
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAddress_Sk">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="tblBuyers_Sk">
+              <PropertyRef Name="BillingAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuyers__Shipp__21EBDADE">
+          <End Role="tblAddress_Sk" Type="Self.tblAddress_Sk" Multiplicity="1" />
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAddress_Sk">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="tblBuyers_Sk">
+              <PropertyRef Name="ShippingAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPaymen__BankI__4EBE8155">
+          <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
+          <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBank_Sk">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="tblPaymentMethod_Sk">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__BankI__176E4C6B">
+          <End Role="tblBank_Sk" Type="Self.tblBank_Sk" Multiplicity="1" />
+          <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBank_Sk">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="tblSellers_Sk">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuyers__UserI__22DFFF17">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblBuyers_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Buyer__4535171B">
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBuyers_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Buyer__50A6C9C7">
+          <End Role="tblBuyers_Sk" Type="Self.tblBuyers_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBuyers_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblInvent__Produ__35F2D38B">
+          <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="1" />
+          <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProducts_Sk">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="tblInventory_Sk">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblInvent__Selle__36E6F7C4">
+          <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="1" />
+          <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSellers_Sk">
+              <PropertyRef Name="SellerId" />
+            </Principal>
+            <Dependent Role="tblInventory_Sk">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblItems___Inven__60DD3190">
+          <End Role="tblInventory_Sk" Type="Self.tblInventory_Sk" Multiplicity="1" />
+          <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInventory_Sk">
+              <PropertyRef Name="InventoryId" />
+            </Principal>
+            <Dependent Role="tblItems_Sk">
+              <PropertyRef Name="InventoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblItems___Order__61D155C9">
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
+          <End Role="tblItems_Sk" Type="Self.tblItems_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrders_Sk">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="tblItems_Sk">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrderS__Order__5A303401">
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="1" />
+          <End Role="tblOrderStatus_Sk" Type="Self.tblOrderStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrders_Sk">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="tblOrderStatus_Sk">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Payme__519AEE00">
+          <End Role="tblPaymentMethod_Sk" Type="Self.tblPaymentMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPaymentMethod_Sk">
+              <PropertyRef Name="PaymentMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__471D5F8D">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__481183C6">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__528F1239">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblOrders__Shipp__53833672">
+          <End Role="tblShippingMethod_Sk" Type="Self.tblShippingMethod_Sk" Multiplicity="1" />
+          <End Role="tblOrders_Sk" Type="Self.tblOrders_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShippingMethod_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Principal>
+            <Dependent Role="tblOrders_Sk">
+              <PropertyRef Name="ShippingMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__Produ__2F45D5FC">
+          <End Role="tblProductsCategory_Sk" Type="Self.tblProductsCategory_Sk" Multiplicity="1" />
+          <End Role="tblProducts_Sk" Type="Self.tblProducts_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductsCategory_Sk">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="tblProducts_Sk">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__Selle__195694DD">
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="1" />
+          <End Role="tblSellers_Sk" Type="Self.tblSellers_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSellerStatus_Sk">
+              <PropertyRef Name="SellerStatusId" />
+            </Principal>
+            <Dependent Role="tblSellers_Sk">
+              <PropertyRef Name="SellerStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__082C08DB">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__09202D14">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblSeller__UserI__0A14514D">
+          <End Role="tblUser_Sk" Type="Self.tblUser_Sk" Multiplicity="1" />
+          <End Role="tblSellerStatus_Sk" Type="Self.tblSellerStatus_Sk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser_Sk">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblSellerStatus_Sk">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sdirecttestdbEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAddress_Sk" EntityType="Self.tblAddress_Sk" />
+          <EntitySet Name="tblBank_Sk" EntityType="Self.tblBank_Sk" />
+          <EntitySet Name="tblBuyers_Sk" EntityType="Self.tblBuyers_Sk" />
+          <EntitySet Name="tblCity_Sk" EntityType="Self.tblCity_Sk" />
+          <EntitySet Name="tblInventory_Sk" EntityType="Self.tblInventory_Sk" />
+          <EntitySet Name="tblItems_Sk" EntityType="Self.tblItems_Sk" />
+          <EntitySet Name="tblOrders_Sk" EntityType="Self.tblOrders_Sk" />
+          <EntitySet Name="tblOrderStatus_Sk" EntityType="Self.tblOrderStatus_Sk" />
+          <EntitySet Name="tblOtp_Sk" EntityType="Self.tblOtp_Sk" />
+          <EntitySet Name="tblPaymentMethod_Sk" EntityType="Self.tblPaymentMethod_Sk" />
+          <EntitySet Name="tblProducts_Sk" EntityType="Self.tblProducts_Sk" />
+          <EntitySet Name="tblProductsCategory_Sk" EntityType="Self.tblProductsCategory_Sk" />
+          <EntitySet Name="tblSellers_Sk" EntityType="Self.tblSellers_Sk" />
+          <EntitySet Name="tblSellerStatus_Sk" EntityType="Self.tblSellerStatus_Sk" />
+          <EntitySet Name="tblShippingMethod_Sk" EntityType="Self.tblShippingMethod_Sk" />
+          <EntitySet Name="tblUser_Sk" EntityType="Self.tblUser_Sk" />
+          <AssociationSet Name="FK__tblAddres__CityI__79DDE984" Association="Self.FK__tblAddres__CityI__79DDE984">
+            <End Role="tblCity_Sk" EntitySet="tblCity_Sk" />
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAddres__UserI__7AD20DBD" Association="Self.FK__tblAddres__UserI__7AD20DBD">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuyers__Billi__20F7B6A5" Association="Self.FK__tblBuyers__Billi__20F7B6A5">
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuyers__Shipp__21EBDADE" Association="Self.FK__tblBuyers__Shipp__21EBDADE">
+            <End Role="tblAddress_Sk" EntitySet="tblAddress_Sk" />
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPaymen__BankI__4EBE8155" Association="Self.FK__tblPaymen__BankI__4EBE8155">
+            <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
+            <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__BankI__176E4C6B" Association="Self.FK__tblSeller__BankI__176E4C6B">
+            <End Role="tblBank_Sk" EntitySet="tblBank_Sk" />
+            <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuyers__UserI__22DFFF17" Association="Self.FK__tblBuyers__UserI__22DFFF17">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Buyer__4535171B" Association="Self.FK__tblOrders__Buyer__4535171B">
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Buyer__50A6C9C7" Association="Self.FK__tblOrders__Buyer__50A6C9C7">
+            <End Role="tblBuyers_Sk" EntitySet="tblBuyers_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblInvent__Produ__35F2D38B" Association="Self.FK__tblInvent__Produ__35F2D38B">
+            <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
+            <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblInvent__Selle__36E6F7C4" Association="Self.FK__tblInvent__Selle__36E6F7C4">
+            <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
+            <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblItems___Inven__60DD3190" Association="Self.FK__tblItems___Inven__60DD3190">
+            <End Role="tblInventory_Sk" EntitySet="tblInventory_Sk" />
+            <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblItems___Order__61D155C9" Association="Self.FK__tblItems___Order__61D155C9">
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+            <End Role="tblItems_Sk" EntitySet="tblItems_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrderS__Order__5A303401" Association="Self.FK__tblOrderS__Order__5A303401">
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+            <End Role="tblOrderStatus_Sk" EntitySet="tblOrderStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Payme__519AEE00" Association="Self.FK__tblOrders__Payme__519AEE00">
+            <End Role="tblPaymentMethod_Sk" EntitySet="tblPaymentMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__471D5F8D" Association="Self.FK__tblOrders__Shipp__471D5F8D">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__481183C6" Association="Self.FK__tblOrders__Shipp__481183C6">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__528F1239" Association="Self.FK__tblOrders__Shipp__528F1239">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblOrders__Shipp__53833672" Association="Self.FK__tblOrders__Shipp__53833672">
+            <End Role="tblShippingMethod_Sk" EntitySet="tblShippingMethod_Sk" />
+            <End Role="tblOrders_Sk" EntitySet="tblOrders_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__Produ__2F45D5FC" Association="Self.FK__tblProduc__Produ__2F45D5FC">
+            <End Role="tblProductsCategory_Sk" EntitySet="tblProductsCategory_Sk" />
+            <End Role="tblProducts_Sk" EntitySet="tblProducts_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__Selle__195694DD" Association="Self.FK__tblSeller__Selle__195694DD">
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+            <End Role="tblSellers_Sk" EntitySet="tblSellers_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__082C08DB" Association="Self.FK__tblSeller__UserI__082C08DB">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__09202D14" Association="Self.FK__tblSeller__UserI__09202D14">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblSeller__UserI__0A14514D" Association="Self.FK__tblSeller__UserI__0A14514D">
+            <End Role="tblUser_Sk" EntitySet="tblUser_Sk" />
+            <End Role="tblSellerStatus_Sk" EntitySet="tblSellerStatus_Sk" />
+          </AssociationSet>
+          <FunctionImport Name="spAddOtp_Sk">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="OTP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddProduct_Sk">
+            <Parameter Name="ProductCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Brand" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="SellerName" Mode="In" Type="String" />
+            <Parameter Name="UpdaterName" Mode="In" Type="String" />
+            <Parameter Name="PricePerUnit" Mode="In" Type="Int32" />
+            <Parameter Name="ProductCount" Mode="In" Type="Int32" />
+            <Parameter Name="SellerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAddShippingMethod_Sk">
+            <Parameter Name="USERID" Mode="In" Type="Int32" />
+            <Parameter Name="ORDERID" Mode="In" Type="Int32" />
+            <Parameter Name="ShippingMethod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spChangeSellerStatus_Sk">
+            <Parameter Name="SELLERID" Mode="In" Type="Int32" />
+            <Parameter Name="FLAG" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="spCheckSellerStatus_Sk">
+            <Parameter Name="SellerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spCreateOrder_Sk">
+            <Parameter Name="USERID" Mode="In" Type="Int32" />
+            <Parameter Name="PRODUCTID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDeleteOtp_Sk">
+            <Parameter Name="OtpId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spExecutePayment_Sk">
+            <Parameter Name="OrderId" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="AccountNumber" Mode="In" Type="String" />
+            <Parameter Name="BankId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFinalizeOrder_Sk">
+            <Parameter Name="ORDERID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAllUsers_Sk" ReturnType="Collection(sdirecttestdbModel.spGetAllUsers_Sk_Result)" />
+          <FunctionImport Name="spGetProducts_Sk" ReturnType="Collection(sdirecttestdbModel.spGetProducts_Sk_Result)">
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetSellerFullName_Sk" ReturnType="Collection(sdirecttestdbModel.spGetSellerFullName_Sk_Result)">
+            <Parameter Name="SellerId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUserDetails_Sk" ReturnType="Collection(sdirecttestdbModel.spGetUserDetails_Sk_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spRegisterUser_Sk">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="MiddleName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="CityName1" Mode="In" Type="String" />
+            <Parameter Name="Pincode1" Mode="In" Type="Int64" />
+            <Parameter Name="Type1" Mode="In" Type="String" />
+            <Parameter Name="Address1" Mode="In" Type="String" />
+            <Parameter Name="Type2" Mode="In" Type="String" />
+            <Parameter Name="CityName2" Mode="In" Type="String" />
+            <Parameter Name="Pincode2" Mode="In" Type="Int64" />
+            <Parameter Name="Address2" Mode="In" Type="String" />
+            <Parameter Name="IsSeller" Mode="In" Type="Boolean" />
+            <Parameter Name="BusinessType" Mode="In" Type="String" />
+            <Parameter Name="BankName" Mode="In" Type="String" />
+            <Parameter Name="AccountNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSellerOrdersPlaced_Sk" ReturnType="Collection(sdirecttestdbModel.spSellerOrdersPlaced_Sk_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="SellerId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSellerRequests_Sk" ReturnType="Collection(sdirecttestdbModel.spSellerRequests_Sk_Result)" />
+        </EntityContainer>
+        <ComplexType Name="spGetAllUsers_Sk_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="IsCreatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="IsCreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="IsUpdatedOn" Nullable="false" Precision="23" />
+          <Property Type="String" Name="IsUpdatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="IsDeletedBy" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="Image" Nullable="false" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="spGetProducts_Sk_Result">
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="ProductCategoryId" Nullable="false" />
+          <Property Type="String" Name="Productname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Brand" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Image" Nullable="false" />
+          <Property Type="Int32" Name="InventoryId" Nullable="false" />
+          <Property Type="Int32" Name="SellerId" Nullable="false" />
+          <Property Type="Int32" Name="PricePerUnit" Nullable="false" />
+          <Property Type="Int32" Name="ProductCount" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetSellerFullName_Sk_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetUserDetails_Sk_Result">
+          <Property Type="Boolean" Name="IsSeller" Nullable="true" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="Binary" Name="Image" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Pincode" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spSellerOrdersPlaced_Sk_Result">
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ItemCount" Nullable="false" />
+          <Property Type="Int32" Name="NetPrice" Nullable="false" />
+          <Property Type="Int32" Name="BuyerId" Nullable="false" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="Int32" Name="ShippingMethodId" Nullable="false" />
+          <Property Type="DateTime" Name="OrderPlacedOn" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="OrderStatusId" Nullable="false" />
+          <Property Type="String" Name="OrderStatus" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="OrderStatusChangedOn" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spSellerRequests_Sk_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="SellerId" Nullable="false" />
+          <Property Type="Int32" Name="SellerStatusId" Nullable="false" />
+          <Property Type="String" Name="StatusName" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="StatusChangedOn" Nullable="false" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sdirecttestdbModelStoreContainer" CdmEntityContainer="sdirecttestdbEntities1">
+          <EntitySetMapping Name="tblAddress_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblAddress_Sk">
+              <MappingFragment StoreEntitySet="tblAddress_Sk">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBank_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblBank_Sk">
+              <MappingFragment StoreEntitySet="tblBank_Sk">
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBuyers_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblBuyers_Sk">
+              <MappingFragment StoreEntitySet="tblBuyers_Sk">
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+                <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCity_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblCity_Sk">
+              <MappingFragment StoreEntitySet="tblCity_Sk">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInventory_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblInventory_Sk">
+              <MappingFragment StoreEntitySet="tblInventory_Sk">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblItems_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblItems_Sk">
+              <MappingFragment StoreEntitySet="tblItems_Sk">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblOrders_Sk">
+              <MappingFragment StoreEntitySet="tblOrders_Sk">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="ShippingMethodId" ColumnName="ShippingMethodId" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+                <ScalarProperty Name="PaidFrom" ColumnName="PaidFrom" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderStatus_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblOrderStatus_Sk">
+              <MappingFragment StoreEntitySet="tblOrderStatus_Sk">
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderStatusChangedOn" ColumnName="OrderStatusChangedOn" />
+                <ScalarProperty Name="OrderStatusChangedBy" ColumnName="OrderStatusChangedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOtp_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblOtp_Sk">
+              <MappingFragment StoreEntitySet="tblOtp_Sk">
+                <ScalarProperty Name="OtpId" ColumnName="OtpId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPaymentMethod_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblPaymentMethod_Sk">
+              <MappingFragment StoreEntitySet="tblPaymentMethod_Sk">
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducts_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblProducts_Sk">
+              <MappingFragment StoreEntitySet="tblProducts_Sk">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductsCategory_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblProductsCategory_Sk">
+              <MappingFragment StoreEntitySet="tblProductsCategory_Sk">
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSellers_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblSellers_Sk">
+              <MappingFragment StoreEntitySet="tblSellers_Sk">
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="SellerStatusId" ColumnName="SellerStatusId" />
+                <ScalarProperty Name="BusinessTypeId" ColumnName="BusinessTypeId" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSellerStatus_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblSellerStatus_Sk">
+              <MappingFragment StoreEntitySet="tblSellerStatus_Sk">
+                <ScalarProperty Name="SellerStatusId" ColumnName="SellerStatusId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusChangedOn" ColumnName="StatusChangedOn" />
+                <ScalarProperty Name="StatusChangedBy" ColumnName="StatusChangedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblShippingMethod_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblShippingMethod_Sk">
+              <MappingFragment StoreEntitySet="tblShippingMethod_Sk">
+                <ScalarProperty Name="ShippingMethodId" ColumnName="ShippingMethodId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUser_Sk">
+            <EntityTypeMapping TypeName="sdirecttestdbModel.tblUser_Sk">
+              <MappingFragment StoreEntitySet="tblUser_Sk">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IsSeller" ColumnName="IsSeller" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAddOtp_Sk" FunctionName="sdirecttestdbModel.Store.spAddOtp_Sk" />
+          <FunctionImportMapping FunctionImportName="spAddProduct_Sk" FunctionName="sdirecttestdbModel.Store.spAddProduct_Sk" />
+          <FunctionImportMapping FunctionImportName="spAddShippingMethod_Sk" FunctionName="sdirecttestdbModel.Store.spAddShippingMethod_Sk" />
+          <FunctionImportMapping FunctionImportName="spChangeSellerStatus_Sk" FunctionName="sdirecttestdbModel.Store.spChangeSellerStatus_Sk" />
+          <FunctionImportMapping FunctionImportName="spCheckSellerStatus_Sk" FunctionName="sdirecttestdbModel.Store.spCheckSellerStatus_Sk" />
+          <FunctionImportMapping FunctionImportName="spCreateOrder_Sk" FunctionName="sdirecttestdbModel.Store.spCreateOrder_Sk" />
+          <FunctionImportMapping FunctionImportName="spDeleteOtp_Sk" FunctionName="sdirecttestdbModel.Store.spDeleteOtp_Sk" />
+          <FunctionImportMapping FunctionImportName="spExecutePayment_Sk" FunctionName="sdirecttestdbModel.Store.spExecutePayment_Sk" />
+          <FunctionImportMapping FunctionImportName="spFinalizeOrder_Sk" FunctionName="sdirecttestdbModel.Store.spFinalizeOrder_Sk" />
+          <FunctionImportMapping FunctionImportName="spGetAllUsers_Sk" FunctionName="sdirecttestdbModel.Store.spGetAllUsers_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetAllUsers_Sk_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+                <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+                <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+                <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetProducts_Sk" FunctionName="sdirecttestdbModel.Store.spGetProducts_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetProducts_Sk_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="Productname" ColumnName="Productname" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetSellerFullName_Sk" FunctionName="sdirecttestdbModel.Store.spGetSellerFullName_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetSellerFullName_Sk_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetUserDetails_Sk" FunctionName="sdirecttestdbModel.Store.spGetUserDetails_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetUserDetails_Sk_Result">
+                <ScalarProperty Name="IsSeller" ColumnName="IsSeller" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spRegisterUser_Sk" FunctionName="sdirecttestdbModel.Store.spRegisterUser_Sk" />
+          <FunctionImportMapping FunctionImportName="spSellerOrdersPlaced_Sk" FunctionName="sdirecttestdbModel.Store.spSellerOrdersPlaced_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spSellerOrdersPlaced_Sk_Result">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ShippingMethodId" ColumnName="ShippingMethodId" />
+                <ScalarProperty Name="OrderPlacedOn" ColumnName="OrderPlacedOn" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderStatusChangedOn" ColumnName="OrderStatusChangedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSellerRequests_Sk" FunctionName="sdirecttestdbModel.Store.spSellerRequests_Sk">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sdirecttestdbModel.spSellerRequests_Sk_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="SellerStatusId" ColumnName="SellerStatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusChangedOn" ColumnName="StatusChangedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

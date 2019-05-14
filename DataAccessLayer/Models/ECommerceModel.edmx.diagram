@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="376726c700694aefa4651f9e29867a97" Name="Diagram1">
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblAddress_Sk" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblBank_Sk" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblBuyers_Sk" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblCity_Sk" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblInventory_Sk" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblItems_Sk" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblOrders_Sk" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblOrderStatus_Sk" Width="1.5" PointX="9.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblOtp_Sk" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblPaymentMethod_Sk" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblProducts_Sk" Width="1.5" PointX="5.25" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblProductsCategory_Sk" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblSellers_Sk" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblSellerStatus_Sk" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblShippingMethod_Sk" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="sdirecttestdbModel.tblUser_Sk" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblAddres__CityI__79DDE984" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblAddres__UserI__7AD20DBD" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblBuyers__Billi__20F7B6A5" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblBuyers__Shipp__21EBDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblPaymen__BankI__4EBE8155" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__BankI__176E4C6B" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblBuyers__UserI__22DFFF17" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrders__Buyer__4535171B" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrders__Buyer__50A6C9C7" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblInvent__Produ__35F2D38B" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblInvent__Selle__36E6F7C4" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblItems___Inven__60DD3190" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblItems___Order__61D155C9" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrderS__Order__5A303401" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrders__Payme__519AEE00" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrders__Shipp__471D5F8D" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrders__Shipp__481183C6" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrders__Shipp__528F1239" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblOrders__Shipp__53833672" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblProduc__Produ__2F45D5FC" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__Selle__195694DD" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__UserI__082C08DB" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__UserI__09202D14" ManuallyRouted="false" />
+        <AssociationConnector Association="sdirecttestdbModel.FK__tblSeller__UserI__0A14514D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

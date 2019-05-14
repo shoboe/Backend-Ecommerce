@@ -185,9 +185,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Soheb Projects\\Backend-Ecommerce\\DatabaseLayer\\DatabaseLayer.csproj",
-      "projectName": "DatabaseLayer",
-      "projectPath": "D:\\Soheb Projects\\Backend-Ecommerce\\DatabaseLayer\\DatabaseLayer.csproj",
+      "projectUniqueName": "D:\\Soheb Projects\\Backend-Ecommerce\\DatabaseLayer\\DatabaseLayer1.csproj",
+      "projectName": "DatabaseLayer1",
+      "projectPath": "D:\\Soheb Projects\\Backend-Ecommerce\\DatabaseLayer\\DatabaseLayer1.csproj",
       "packagesPath": "C:\\Users\\shoebk.IXCNEW\\.nuget\\packages\\",
       "outputPath": "D:\\Soheb Projects\\Backend-Ecommerce\\DatabaseLayer\\obj\\",
       "projectStyle": "PackageReference",

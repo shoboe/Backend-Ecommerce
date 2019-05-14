@@ -7,8 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Results;
 using System.Web.Script.Serialization;
-using E_Commerce_ShoebApi.BAL;
-using E_Commerce_ShoebApi.DAL;
+
 using E_Commerce_ShoebApi.Models;
 using Newtonsoft.Json;
 

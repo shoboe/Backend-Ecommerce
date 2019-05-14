@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{053CA561-8D9A-44B3-9854-FBA0AECCC3D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AddBankAccountView.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DAL_AddBankAccount.cs" />
+    <Compile Include="DAL_Cart.cs" />
+    <Compile Include="DAL_GetAllUsers.cs" />
+    <Compile Include="DAL_IAddBankAccount.cs" />
+    <Compile Include="DAL_ICart.cs" />
+    <Compile Include="DAL_IGenerateOTP.cs" />
+    <Compile Include="DAL_IGetAllUsers.cs" />
+    <Compile Include="DAL_INewProduct.cs" />
+    <Compile Include="DAL_IPostEmailPw.cs" />
+    <Compile Include="DAL_IRegisterUser.cs" />
+    <Compile Include="DAL_ISearchProduct.cs" />
+    <Compile Include="DAL_ISellerRequestAction.cs" />
+    <Compile Include="DAL_NewProduct.cs" />
+    <Compile Include="DAL_PostEmailPw.cs" />
+    <Compile Include="DAL_RegisterUser.cs" />
+    <Compile Include="DAL_SearchProduct.cs" />
+    <Compile Include="DAL_SellerRequestAction.cs" />
+    <Compile Include="Models\AddProductView.cs" />
+    <Compile Include="Models\ChangeSellerStatusModel.cs" />
+    <Compile Include="Models\CheckIfSellerVerified.cs" />
+    <Compile Include="Models\ECommerceModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECommerceModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ECommerceModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ECommerceModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECommerceModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailPasswordView.cs" />
+    <Compile Include="Models\EmailView.cs" />
+    <Compile Include="Models\GenerateOTP.cs" />
+    <Compile Include="Models\GetAllUsersModel.cs" />
+    <Compile Include="Models\ImageFormat.cs" />
+    <Compile Include="Models\RegisterSellerView.cs" />
+    <Compile Include="Models\RegisterUserView.cs" />
+    <Compile Include="Models\spGetAllUsers_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spGetProducts_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spGetSellerFullName_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spGetUserDetails_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSellerOrdersPlaced_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spSellerRequests_Sk_Result.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAddress_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblBank_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblBuyers_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCity_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblInventory_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblItems_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrderStatus_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrders_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOtp_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPaymentMethod_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProductsCategory_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProducts_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSellerStatus_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSellers_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblShippingMethod_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUser_Sk.cs">
+      <DependentUpon>ECommerceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchProductView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\ECommerceModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ECommerceModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Models\ECommerceModel.edmx.diagram">
+      <DependentUpon>ECommerceModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ECommerceModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ECommerceModel.Context.cs</LastGenOutput>
+      <DependentUpon>ECommerceModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ECommerceModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ECommerceModel.edmx</DependentUpon>
+      <LastGenOutput>ECommerceModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataAccessLayer;
+using System;
 using System.Linq;
 using System.Net.Mail;
-using System.Web;
-using E_Commerce_ShoebApi.DAL;
 namespace E_Commerce_ShoebApi.Models
 {
     public class GenerateOTP : DAL_IGenerateOTP

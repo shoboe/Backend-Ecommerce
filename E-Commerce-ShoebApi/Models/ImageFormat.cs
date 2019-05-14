@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace E_Commerce_ShoebApi.DAL
+namespace E_Commerce_ShoebApi.Models
 {
     public class ImageFormat
     {
