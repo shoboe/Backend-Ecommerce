@@ -19,6 +19,7 @@ namespace DataAccessLayer.Models
         {
             this.tblPaymentMethod_Sk = new HashSet<tblPaymentMethod_Sk>();
             this.tblSellers_Sk = new HashSet<tblSellers_Sk>();
+            this.tblBankNameUser_Sk = new HashSet<tblBankNameUser_Sk>();
         }
     
         public int BankId { get; set; }
@@ -35,5 +36,7 @@ namespace DataAccessLayer.Models
         public virtual ICollection<tblPaymentMethod_Sk> tblPaymentMethod_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSellers_Sk> tblSellers_Sk { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBankNameUser_Sk> tblBankNameUser_Sk { get; set; }
     }
 }

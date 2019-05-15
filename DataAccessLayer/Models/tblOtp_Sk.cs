@@ -18,5 +18,10 @@ namespace DataAccessLayer.Models
         public string Email { get; set; }
         public int OTP { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<System.DateTime> IsUpdatedOn { get; set; }
+        public string IsUpdatedBy { get; set; }
+        public Nullable<System.DateTime> IsCreatedOn { get; set; }
+        public string IsCreatedBy { get; set; }
     }
 }

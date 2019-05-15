@@ -44,9 +44,11 @@
     <Compile Include="BAL_AddBankAccount.cs" />
     <Compile Include="BAL_Cart.cs" />
     <Compile Include="BAL_GetAllUsers.cs" />
+    <Compile Include="BAL_GetMyCart.cs" />
     <Compile Include="BAL_IAddBankAccount.cs" />
     <Compile Include="BAL_ICart.cs" />
     <Compile Include="BAL_IGetAllUsers.cs" />
+    <Compile Include="BAL_IGetMyCart.cs" />
     <Compile Include="BAL_INewProduct.cs" />
     <Compile Include="BAL_IPostEmailPw.cs" />
     <Compile Include="BAL_IRegisterUser.cs" />
@@ -57,7 +59,6 @@
     <Compile Include="BAL_RegisterUser.cs" />
     <Compile Include="BAL_SearchProduct.cs" />
     <Compile Include="BAL_SellerRequestAction.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

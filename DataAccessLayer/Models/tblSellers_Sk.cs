@@ -35,6 +35,7 @@ namespace DataAccessLayer.Models
         public string IsDeletedBy { get; set; }
     
         public virtual tblBank_Sk tblBank_Sk { get; set; }
+        public virtual tblBusinessType_Sk tblBusinessType_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInventory_Sk> tblInventory_Sk { get; set; }
         public virtual tblSellerStatus_Sk tblSellerStatus_Sk { get; set; }

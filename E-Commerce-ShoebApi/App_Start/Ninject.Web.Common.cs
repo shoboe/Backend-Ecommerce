@@ -5,8 +5,8 @@ namespace E_Commerce_ShoebApi.App_Start
 {
     using System;
     using System.Web;
-    using BusinessLogicLayer;
     using DataAccessLayer;
+    using BusinessAccessLayer;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     
     using Ninject;
@@ -74,10 +74,11 @@ namespace E_Commerce_ShoebApi.App_Start
             kernel.Bind<DAL_IAddBankAccount>().To<DAL_AddBankAccount>();
             kernel.Bind<BAL_IRegisterUser>().To<BAL_RegisterUser>();
             kernel.Bind<DAL_IRegisterUser>().To<DAL_RegisterUser>();
-            kernel.Bind<DAL_IGenerateOTP>().To<Models.GenerateOTP>();
+            kernel.Bind<DAL_IGenerateOTP>().To<DataAccessLayer.Models.GenerateOTP>();
             kernel.Bind<BAL_IGetAllUsers>().To<BAL_GetAllUsers>();
             kernel.Bind<DAL_IGetAllUsers>().To<DAL_GetAllUsers>();
-
+            kernel.Bind<BAL_IGetMyCart>().To<BAL_GetMyCart>();
+            kernel.Bind<DAL_IGetMyCart>().To<DAL_GetMyCart>();
         }
     }
 }

@@ -32,13 +32,7 @@ namespace BusinessAccessLayer
                 }
                 foreach(var i in products)
                 {
-                    var sellerNameResult = db.spGetSellerFullName_Sk(i.SellerId).ToList();
-                    foreach(var j in sellerNameResult)
-                    {
-                        i.SellerFirstName = j.FirstName;
-                        i.SellerMiddleName = j.MiddleName;
-                        i.SellerLastName = j.LastName;
-                    }
+                   i.SellerFullName = db.spGetSellerFullName_Sk(i.SellerId).FirstOrDefault().ToString();
                 }
              
             }

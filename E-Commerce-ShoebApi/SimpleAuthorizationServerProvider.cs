@@ -22,13 +22,13 @@ namespace E_Commerce_ShoebApi.Models
 
             using (var db = new sdirecttestdbEntities1())
             {
-                if (db != null)
+                    if (db != null)
                 {
                     var result = (from obj in db.tblUser_Sk
                                   where (obj.Email == context.UserName &&
                                     obj.Password == context.Password)
-                                  select obj).ToList();
-                    if (result.Count==1)
+                                  select obj);
+                    if (result!=null)
                     {
                             identity.AddClaim(new Claim("Age", "1"));
 

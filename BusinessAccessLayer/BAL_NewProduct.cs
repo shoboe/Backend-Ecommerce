@@ -1,5 +1,5 @@
-﻿using E_Commerce_ShoebApi.Models;
-using DataAccessLayer;
+﻿using DataAccessLayer;
+using DataAccessLayer.Models;
 
 namespace BusinessAccessLayer
 {

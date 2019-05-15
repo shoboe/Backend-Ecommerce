@@ -33,5 +33,6 @@ namespace DataAccessLayer.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAddress_Sk> tblAddress_Sk { get; set; }
+        public virtual tblState_Sk tblState_Sk { get; set; }
     }
 }

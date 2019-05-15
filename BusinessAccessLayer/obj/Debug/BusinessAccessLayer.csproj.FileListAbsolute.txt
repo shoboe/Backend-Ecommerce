@@ -1,1 +1,12 @@
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.dll
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.pdb
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\bin\Debug\EntityFramework.dll
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\bin\Debug\EntityFramework.xml
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csprojAssemblyReference.cache
 D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csproj.CoreCompileInputs.cache
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csproj.CopyComplete
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.dll
+D:\Soheb Projects\Backend-Ecommerce\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.pdb

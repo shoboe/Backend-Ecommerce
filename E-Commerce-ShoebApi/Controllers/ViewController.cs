@@ -7,7 +7,9 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Results;
 using System.Web.Script.Serialization;
-
+using BusinessAccessLayer;
+using DataAccessLayer;
+using DataAccessLayer.Models;
 using E_Commerce_ShoebApi.Models;
 using Newtonsoft.Json;
 
@@ -23,10 +25,11 @@ namespace E_Commerce_ShoebApi.Controllers
         BAL_IRegisterUser BAL_iRegisterUser;
         DAL_IGenerateOTP DAL_iGenererate;
         DAL_IGetAllUsers DAL_iGetAllUsers;
+        BAL_IGetMyCart BAL_iGetMyCart;
         public ViewController(BAL_ISearchProduct BAL_itblProducts, BAL_IPostEmailPw BAL_iPostEmailPw,
             BAL_INewProduct BAL_iNewProduct, BAL_IAddBankAccount BAL_iAddBankAccount,
              BAL_IRegisterUser BAL_iRegisterUser, DAL_IGenerateOTP DAL_iGenererate,
-              DAL_IGetAllUsers DAL_iGetAllUsers)
+              DAL_IGetAllUsers DAL_iGetAllUsers, BAL_IGetMyCart BAL_iGetMyCart)
         {
             this.BAL_itblProducts = BAL_itblProducts;
             this.BAL_iPostEmailPw = BAL_iPostEmailPw;
@@ -35,6 +38,7 @@ namespace E_Commerce_ShoebApi.Controllers
             this.BAL_iRegisterUser = BAL_iRegisterUser;
             this.DAL_iGenererate = DAL_iGenererate;
             this.DAL_iGetAllUsers = DAL_iGetAllUsers;
+            this.BAL_iGetMyCart = BAL_iGetMyCart;
         }
 
         [HttpGet]
@@ -139,13 +143,13 @@ namespace E_Commerce_ShoebApi.Controllers
         [Authorize]
         [HttpGet]
         [Route("api/view/GetAllUsers")]
-        public IHttpActionResult GetAllUsers(int UserId)
+        public IHttpActionResult GetAllUsers(int userId)
         {
         
            using (var db = new sdirecttestdbEntities1())
             {
                 var IsAdmin = (from x in db.tblUser_Sk
-                               where x.UserId == UserId && x.RoleId == 1
+                               where x.UserId == userId && x.RoleId == 1
                                select x).FirstOrDefault();
                 if (IsAdmin != null)
                     return Json(this.DAL_iGetAllUsers.GetAllUsers());
@@ -154,6 +158,39 @@ namespace E_Commerce_ShoebApi.Controllers
 
             }
 
+        }
+        [Authorize]
+        [HttpGet]
+        [Route("api/view/GetMyCart")]
+        public IHttpActionResult GetMyCart(int userId)
+        {
+            return Json(this.BAL_iGetMyCart.GetMyCart(userId));
+            
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("api/view/CreateOrder")]
+        public void CreateOrder(List<OrderView> orderView)
+        {
+            //How would you check if the cart is empty in db?
+            //If cart is empty then run sp to hard delete the order & its items.
+            using(var db = new sdirecttestdbEntities1())
+            {
+                foreach (var i in orderView)
+                    db.spCreateOrder_Sk(i.UserId, i.ProductCount, i.ProductId);
+            }
+
+        }
+        [Authorize]
+        [HttpGet]
+        [Route("api/view/RemoveOrder")]
+        public void RemoveOrder(int userId)
+        {
+            using (var db = new sdirecttestdbEntities1())
+            {
+                db.spRemoveOrder_Sk(userId);
+            }
         }
 
 

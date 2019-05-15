@@ -46,6 +46,7 @@ namespace DataAccessLayer.Models
         public virtual ICollection<tblAddress_Sk> tblAddress_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBuyers_Sk> tblBuyers_Sk { get; set; }
+        public virtual tblRole_Sk tblRole_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSellerStatus_Sk> tblSellerStatus_Sk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

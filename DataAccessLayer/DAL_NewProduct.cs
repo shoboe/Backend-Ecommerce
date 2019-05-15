@@ -12,8 +12,8 @@ namespace DataAccessLayer
                     newProduct.Description,
                     newProduct.Brand,
                     this.ImageToByteArray(newProduct.Image),
-                    newProduct.SellerName,
-                    newProduct.UpdaterName,
+                    newProduct.SellerFullName,
+                    newProduct.SellerFullName,
                     newProduct.PricePerUnit,
                     newProduct.ProductCount,
                     newProduct.SellerId

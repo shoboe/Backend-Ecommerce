@@ -35,6 +35,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblBusinessType_Sk">
+      <EntityTypeMapping TypeName="sdirecttestdbModel.tblBusinessType_Sk">
+        <MappingFragment StoreEntitySet="tblBusinessType_Sk">
+          <ScalarProperty Name="BusinessTypeId" ColumnName="BusinessTypeId" />
+          <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+          <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+          <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+          <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblBuyers_Sk">
       <EntityTypeMapping TypeName="sdirecttestdbModel.tblBuyers_Sk">
         <MappingFragment StoreEntitySet="tblBuyers_Sk">
@@ -58,6 +73,21 @@
           <ScalarProperty Name="CityId" ColumnName="CityId" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+          <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+          <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+          <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCountry_Sk">
+      <EntityTypeMapping TypeName="sdirecttestdbModel.tblCountry_Sk">
+        <MappingFragment StoreEntitySet="tblCountry_Sk">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
           <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
@@ -141,16 +171,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblOtp_Sk">
-      <EntityTypeMapping TypeName="sdirecttestdbModel.tblOtp_Sk">
-        <MappingFragment StoreEntitySet="tblOtp_Sk">
-          <ScalarProperty Name="OtpId" ColumnName="OtpId" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="OTP" ColumnName="OTP" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblPaymentMethod_Sk">
       <EntityTypeMapping TypeName="sdirecttestdbModel.tblPaymentMethod_Sk">
         <MappingFragment StoreEntitySet="tblPaymentMethod_Sk">
@@ -192,6 +212,21 @@
           <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+          <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+          <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+          <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRole_Sk">
+      <EntityTypeMapping TypeName="sdirecttestdbModel.tblRole_Sk">
+        <MappingFragment StoreEntitySet="tblRole_Sk">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
           <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
@@ -256,6 +291,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblState_Sk">
+      <EntityTypeMapping TypeName="sdirecttestdbModel.tblState_Sk">
+        <MappingFragment StoreEntitySet="tblState_Sk">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+          <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+          <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+          <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblUser_Sk">
       <EntityTypeMapping TypeName="sdirecttestdbModel.tblUser_Sk">
         <MappingFragment StoreEntitySet="tblUser_Sk">
@@ -281,7 +332,7 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="spAddOtp_Sk" FunctionName="sdirecttestdbModel.Store.spAddOtp_Sk" />
     <FunctionImportMapping FunctionImportName="spAddProduct_Sk" FunctionName="sdirecttestdbModel.Store.spAddProduct_Sk" />
-    <FunctionImportMapping FunctionImportName="spAddShippingMethod_Sk" FunctionName="sdirecttestdbModel.Store.spAddShippingMethod_Sk" />
+    <FunctionImportMapping FunctionImportName="spChangeOrderStatus_Sk" FunctionName="sdirecttestdbModel.Store.spChangeOrderStatus_Sk" />
     <FunctionImportMapping FunctionImportName="spChangeSellerStatus_Sk" FunctionName="sdirecttestdbModel.Store.spChangeSellerStatus_Sk" />
     <FunctionImportMapping FunctionImportName="spCheckSellerStatus_Sk" FunctionName="sdirecttestdbModel.Store.spCheckSellerStatus_Sk" />
     <FunctionImportMapping FunctionImportName="spCreateOrder_Sk" FunctionName="sdirecttestdbModel.Store.spCreateOrder_Sk" />
@@ -310,6 +361,29 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetItemCountAndInventoryId_Sk" FunctionName="sdirecttestdbModel.Store.spGetItemCountAndInventoryId_Sk">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetItemCountAndInventoryId_Sk_Result">
+          <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetMyCart_Sk" FunctionName="sdirecttestdbModel.Store.spGetMyCart_Sk">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetMyCart_Sk_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+          <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+          <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="spGetProducts_Sk" FunctionName="sdirecttestdbModel.Store.spGetProducts_Sk">
       <ResultMapping>
         <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetProducts_Sk_Result">
@@ -326,15 +400,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="spGetSellerFullName_Sk" FunctionName="sdirecttestdbModel.Store.spGetSellerFullName_Sk">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetSellerFullName_Sk_Result">
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetSellerFullName_Sk" FunctionName="sdirecttestdbModel.Store.spGetSellerFullName_Sk" />
     <FunctionImportMapping FunctionImportName="spGetUserDetails_Sk" FunctionName="sdirecttestdbModel.Store.spGetUserDetails_Sk">
       <ResultMapping>
         <ComplexTypeMapping TypeName="sdirecttestdbModel.spGetUserDetails_Sk_Result">
@@ -358,23 +424,42 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="spRegisterUser_Sk" FunctionName="sdirecttestdbModel.Store.spRegisterUser_Sk" />
-    <FunctionImportMapping FunctionImportName="spSellerOrdersPlaced_Sk" FunctionName="sdirecttestdbModel.Store.spSellerOrdersPlaced_Sk">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="sdirecttestdbModel.spSellerOrdersPlaced_Sk_Result">
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="Category" ColumnName="Category" />
-          <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
-          <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
-          <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="ShippingMethodId" ColumnName="ShippingMethodId" />
-          <ScalarProperty Name="OrderPlacedOn" ColumnName="OrderPlacedOn" />
-          <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
-          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-          <ScalarProperty Name="OrderStatusChangedOn" ColumnName="OrderStatusChangedOn" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <EntitySetMapping Name="tblBankNameUser_Sk">
+      <EntityTypeMapping TypeName="sdirecttestdbModel.tblBankNameUser_Sk">
+        <MappingFragment StoreEntitySet="tblBankNameUser_Sk">
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsDeletedBy" ColumnName="IsDeletedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+          <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+          <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+          <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="BankNameUserId" ColumnName="BankNameUserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOtp_Sk">
+      <EntityTypeMapping TypeName="sdirecttestdbModel.tblOtp_Sk">
+        <MappingFragment StoreEntitySet="tblOtp_Sk">
+          <ScalarProperty Name="IsCreatedBy" ColumnName="IsCreatedBy" />
+          <ScalarProperty Name="IsCreatedOn" ColumnName="IsCreatedOn" />
+          <ScalarProperty Name="IsUpdatedBy" ColumnName="IsUpdatedBy" />
+          <ScalarProperty Name="IsUpdatedOn" ColumnName="IsUpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="OtpId" ColumnName="OtpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spAddShippingMethod_Sk" FunctionName="sdirecttestdbModel.Store.spAddShippingMethod_Sk" />
     <FunctionImportMapping FunctionImportName="spSellerRequests_Sk" FunctionName="sdirecttestdbModel.Store.spSellerRequests_Sk">
       <ResultMapping>
         <ComplexTypeMapping TypeName="sdirecttestdbModel.spSellerRequests_Sk_Result">

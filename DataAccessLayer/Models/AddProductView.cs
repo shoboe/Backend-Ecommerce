@@ -16,9 +16,7 @@ namespace DataAccessLayer.Models
         [Required]
         public string Image { get; set; }
         [Required]
-        public string SellerName { get; set; }
-        [Required]
-        public string UpdaterName { get; set; }
+        public string SellerFullName { get; set; } 
         [Required]
         public int PricePerUnit { get; set; }
         [Required]

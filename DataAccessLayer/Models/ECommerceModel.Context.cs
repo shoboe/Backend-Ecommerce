@@ -29,20 +29,25 @@ namespace DataAccessLayer.Models
     
         public virtual DbSet<tblAddress_Sk> tblAddress_Sk { get; set; }
         public virtual DbSet<tblBank_Sk> tblBank_Sk { get; set; }
+        public virtual DbSet<tblBusinessType_Sk> tblBusinessType_Sk { get; set; }
         public virtual DbSet<tblBuyers_Sk> tblBuyers_Sk { get; set; }
         public virtual DbSet<tblCity_Sk> tblCity_Sk { get; set; }
+        public virtual DbSet<tblCountry_Sk> tblCountry_Sk { get; set; }
         public virtual DbSet<tblInventory_Sk> tblInventory_Sk { get; set; }
         public virtual DbSet<tblItems_Sk> tblItems_Sk { get; set; }
         public virtual DbSet<tblOrders_Sk> tblOrders_Sk { get; set; }
         public virtual DbSet<tblOrderStatus_Sk> tblOrderStatus_Sk { get; set; }
-        public virtual DbSet<tblOtp_Sk> tblOtp_Sk { get; set; }
         public virtual DbSet<tblPaymentMethod_Sk> tblPaymentMethod_Sk { get; set; }
         public virtual DbSet<tblProducts_Sk> tblProducts_Sk { get; set; }
         public virtual DbSet<tblProductsCategory_Sk> tblProductsCategory_Sk { get; set; }
+        public virtual DbSet<tblRole_Sk> tblRole_Sk { get; set; }
         public virtual DbSet<tblSellers_Sk> tblSellers_Sk { get; set; }
         public virtual DbSet<tblSellerStatus_Sk> tblSellerStatus_Sk { get; set; }
         public virtual DbSet<tblShippingMethod_Sk> tblShippingMethod_Sk { get; set; }
+        public virtual DbSet<tblState_Sk> tblState_Sk { get; set; }
         public virtual DbSet<tblUser_Sk> tblUser_Sk { get; set; }
+        public virtual DbSet<tblBankNameUser_Sk> tblBankNameUser_Sk { get; set; }
+        public virtual DbSet<tblOtp_Sk> tblOtp_Sk { get; set; }
     
         public virtual int spAddOtp_Sk(string email, Nullable<int> oTP)
         {
@@ -102,21 +107,21 @@ namespace DataAccessLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddProduct_Sk", productCategoryIdParameter, productNameParameter, descriptionParameter, brandParameter, imageParameter, sellerNameParameter, updaterNameParameter, pricePerUnitParameter, productCountParameter, sellerIdParameter);
         }
     
-        public virtual int spAddShippingMethod_Sk(Nullable<int> uSERID, Nullable<int> oRDERID, string shippingMethod)
+        public virtual int spChangeOrderStatus_Sk(Nullable<int> orderId, string orderStatus, Nullable<int> userId)
         {
-            var uSERIDParameter = uSERID.HasValue ?
-                new ObjectParameter("USERID", uSERID) :
-                new ObjectParameter("USERID", typeof(int));
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("OrderId", orderId) :
+                new ObjectParameter("OrderId", typeof(int));
     
-            var oRDERIDParameter = oRDERID.HasValue ?
-                new ObjectParameter("ORDERID", oRDERID) :
-                new ObjectParameter("ORDERID", typeof(int));
+            var orderStatusParameter = orderStatus != null ?
+                new ObjectParameter("OrderStatus", orderStatus) :
+                new ObjectParameter("OrderStatus", typeof(string));
     
-            var shippingMethodParameter = shippingMethod != null ?
-                new ObjectParameter("ShippingMethod", shippingMethod) :
-                new ObjectParameter("ShippingMethod", typeof(string));
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddShippingMethod_Sk", uSERIDParameter, oRDERIDParameter, shippingMethodParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spChangeOrderStatus_Sk", orderIdParameter, orderStatusParameter, userIdParameter);
         }
     
         public virtual int spChangeSellerStatus_Sk(Nullable<int> sELLERID, Nullable<bool> fLAG)
@@ -141,17 +146,21 @@ namespace DataAccessLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCheckSellerStatus_Sk", sellerIdParameter);
         }
     
-        public virtual int spCreateOrder_Sk(Nullable<int> uSERID, Nullable<int> pRODUCTID)
+        public virtual int spCreateOrder_Sk(Nullable<int> uSERID, Nullable<int> productCount, Nullable<int> pRODUCTID)
         {
             var uSERIDParameter = uSERID.HasValue ?
                 new ObjectParameter("USERID", uSERID) :
                 new ObjectParameter("USERID", typeof(int));
     
+            var productCountParameter = productCount.HasValue ?
+                new ObjectParameter("ProductCount", productCount) :
+                new ObjectParameter("ProductCount", typeof(int));
+    
             var pRODUCTIDParameter = pRODUCTID.HasValue ?
                 new ObjectParameter("PRODUCTID", pRODUCTID) :
                 new ObjectParameter("PRODUCTID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCreateOrder_Sk", uSERIDParameter, pRODUCTIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCreateOrder_Sk", uSERIDParameter, productCountParameter, pRODUCTIDParameter);
         }
     
         public virtual int spDeleteOtp_Sk(Nullable<int> otpId)
@@ -202,6 +211,24 @@ namespace DataAccessLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllUsers_Sk_Result>("spGetAllUsers_Sk");
         }
     
+        public virtual ObjectResult<spGetItemCountAndInventoryId_Sk_Result> spGetItemCountAndInventoryId_Sk(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetItemCountAndInventoryId_Sk_Result>("spGetItemCountAndInventoryId_Sk", userIdParameter);
+        }
+    
+        public virtual ObjectResult<spGetMyCart_Sk_Result> spGetMyCart_Sk(Nullable<int> inventoryId)
+        {
+            var inventoryIdParameter = inventoryId.HasValue ?
+                new ObjectParameter("InventoryId", inventoryId) :
+                new ObjectParameter("InventoryId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetMyCart_Sk_Result>("spGetMyCart_Sk", inventoryIdParameter);
+        }
+    
         public virtual ObjectResult<spGetProducts_Sk_Result> spGetProducts_Sk(string productName)
         {
             var productNameParameter = productName != null ?
@@ -211,13 +238,13 @@ namespace DataAccessLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetProducts_Sk_Result>("spGetProducts_Sk", productNameParameter);
         }
     
-        public virtual ObjectResult<spGetSellerFullName_Sk_Result> spGetSellerFullName_Sk(Nullable<int> sellerId)
+        public virtual ObjectResult<string> spGetSellerFullName_Sk(Nullable<int> sellerId)
         {
             var sellerIdParameter = sellerId.HasValue ?
                 new ObjectParameter("SellerId", sellerId) :
                 new ObjectParameter("SellerId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetSellerFullName_Sk_Result>("spGetSellerFullName_Sk", sellerIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spGetSellerFullName_Sk", sellerIdParameter);
         }
     
         public virtual ObjectResult<spGetUserDetails_Sk_Result> spGetUserDetails_Sk(Nullable<int> userId)
@@ -310,26 +337,35 @@ namespace DataAccessLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spRegisterUser_Sk", firstNameParameter, middleNameParameter, lastNameParameter, emailParameter, passwordParameter, imageParameter, mobileParameter, cityName1Parameter, pincode1Parameter, type1Parameter, address1Parameter, type2Parameter, cityName2Parameter, pincode2Parameter, address2Parameter, isSellerParameter, businessTypeParameter, bankNameParameter, accountNumberParameter);
         }
     
-        public virtual ObjectResult<spSellerOrdersPlaced_Sk_Result> spSellerOrdersPlaced_Sk(Nullable<int> userId, Nullable<int> sellerId, string status)
+        public virtual int spAddShippingMethod_Sk(Nullable<int> uSERID, Nullable<int> oRDERID, string shippingMethod)
         {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
+            var uSERIDParameter = uSERID.HasValue ?
+                new ObjectParameter("USERID", uSERID) :
+                new ObjectParameter("USERID", typeof(int));
     
-            var sellerIdParameter = sellerId.HasValue ?
-                new ObjectParameter("SellerId", sellerId) :
-                new ObjectParameter("SellerId", typeof(int));
+            var oRDERIDParameter = oRDERID.HasValue ?
+                new ObjectParameter("ORDERID", oRDERID) :
+                new ObjectParameter("ORDERID", typeof(int));
     
-            var statusParameter = status != null ?
-                new ObjectParameter("Status", status) :
-                new ObjectParameter("Status", typeof(string));
+            var shippingMethodParameter = shippingMethod != null ?
+                new ObjectParameter("ShippingMethod", shippingMethod) :
+                new ObjectParameter("ShippingMethod", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSellerOrdersPlaced_Sk_Result>("spSellerOrdersPlaced_Sk", userIdParameter, sellerIdParameter, statusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAddShippingMethod_Sk", uSERIDParameter, oRDERIDParameter, shippingMethodParameter);
         }
     
         public virtual ObjectResult<spSellerRequests_Sk_Result> spSellerRequests_Sk()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSellerRequests_Sk_Result>("spSellerRequests_Sk");
+        }
+    
+        public virtual int spRemoveOrder_Sk(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spRemoveOrder_Sk", userIdParameter);
         }
     }
 }

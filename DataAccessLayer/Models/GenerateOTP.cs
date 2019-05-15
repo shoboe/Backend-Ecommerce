@@ -12,7 +12,7 @@ namespace DataAccessLayer.Models
             using(var db = new sdirecttestdbEntities1())
             {
                 var result = (from i in db.tblUser_Sk
-                              where i.Email == userEmail
+                              where i.Email == userEmail && i.IsActive == true
                               select i).Any();
                 if (result)
                     return false;
@@ -52,8 +52,6 @@ namespace DataAccessLayer.Models
                     }
                 }
             }
-
-                    
             
         }
 
@@ -63,13 +61,13 @@ namespace DataAccessLayer.Models
             {
                 var result = (from x in db.tblOtp_Sk
                               where x.Email == email && x.OTP == otp && x.IsActive == true
-                              select x);
-
-                    foreach(var i in result)
-                    {
-                        db.spDeleteOtp_Sk(i.OtpId);
-                        return true;
-                    }
+                              select x).FirstOrDefault();
+                if (result != null)
+                {
+                    db.spDeleteOtp_Sk(result.OtpId);
+                    return true;
+                }
+               
             }
             return false;
         }
